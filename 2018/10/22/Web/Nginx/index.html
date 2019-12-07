@@ -26,8 +26,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/child/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/child/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -35,7 +35,7 @@
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
+                <a href="/child/" class="waves-effect waves-light">
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
@@ -428,11 +428,11 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/note/">
+                            <a href="/child/tags/note/">
                                 <span class="chip bg-color">note</span>
                             </a>
                         
-                            <a href="/tags/linux/">
+                            <a href="/child/tags/linux/">
                                 <span class="chip bg-color">linux</span>
                             </a>
                         
@@ -444,7 +444,7 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
+                            <a href="/child/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
                                 web开发
                             </a>
                         
@@ -560,7 +560,7 @@ total 8
 <p><strong>2. alias</strong>：是用来取别名，假设设置的匹配为 <code>/img</code>，<code>alias /usr/share/nginx/html</code>，url为 <code>http://www.hello.com/img/a.jpg</code> 搜索路径为<code>/usr/share/nginx/html/a.jpg</code>，可以看到没像root一样在html后面加路径，就是因为alias是取别名，访问 <code>/img</code> 变成访问取的别名。</p>
 <h2 id="关于监听端口"><a href="#关于监听端口" class="headerlink" title="关于监听端口"></a>关于监听端口</h2><p>这也是一个容易被忽视的概念，但也是web开发很基础的概念。</p>
 <p>首先要知道，通过域名解析，只能到ip，默认的端口是80，这是由http服务默认的，因为HTTP默认端口是80，HTTPS默认端口是443。</p>
-<p>假设域名是 <a href="http://www.liuzhidream.com">www.liuzhidream.com</a> 解析到ip 123.123.1.1 由浏览器发起的http请求 <a href="http://www.liuzhidream.com">www.liuzhidream.com</a> 实际是 <a href="http://www.liuzhidream.com:80，对应ip就是">www.liuzhidream.com:80，对应ip就是</a> 123.123.1.1:80。</p>
+<p>假设域名是 <a href="http://www.liuzhidream.com" target="_blank" rel="noopener">www.liuzhidream.com</a> 解析到ip 123.123.1.1 由浏览器发起的http请求 <a href="http://www.liuzhidream.com" target="_blank" rel="noopener">www.liuzhidream.com</a> 实际是 <a href="http://www.liuzhidream.com:80，对应ip就是" target="_blank" rel="noopener">www.liuzhidream.com:80，对应ip就是</a> 123.123.1.1:80。</p>
 <p>所以要在nginx上监听80端口，如果你想要监听其它端口，那么通过域名访问就要显示的指定端口了，或者通过其它方法：</p>
 <ol>
 <li>CDN </li>
@@ -666,7 +666,7 @@ http {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.liuzhidream.com" rel="external nofollow noreferrer">Liu Zhi</a>
+                    <a href="https://vanliuzhi.github.io/learn_programing" rel="external nofollow noreferrer">Liu Zhi</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -676,7 +676,7 @@ http {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.liuzhidream.com/2018/10/22/Web/Nginx/">http://www.liuzhidream.com/2018/10/22/Web/Nginx/</a>
+                    <a href="https://vanliuzhi.github.io/learn_programing/child/2018/10/22/Web/Nginx/">https://vanliuzhi.github.io/learn_programing/child/2018/10/22/Web/Nginx/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -689,7 +689,7 @@ http {
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="http://www.liuzhidream.com" target="_blank">Liu Zhi</a>
+                    <a href="https://vanliuzhi.github.io/learn_programing" target="_blank">Liu Zhi</a>
                     !
                 </span>
             </div>
@@ -714,11 +714,11 @@ http {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/note/">
+                                <a href="/child/tags/note/">
                                     <span class="chip bg-color">note</span>
                                 </a>
                             
-                                <a href="/tags/linux/">
+                                <a href="/child/tags/linux/">
                                     <span class="chip bg-color">linux</span>
                                 </a>
                             
@@ -889,7 +889,7 @@ http {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/Web/RabbitMQ/">
+                <a href="/child/2018/10/22/Web/RabbitMQ/">
                     <div class="card-image">
                         
                         
@@ -915,7 +915,7 @@ http {
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
+                            <a href="/child/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
                                     web开发
                                 </a>
                             
@@ -926,11 +926,11 @@ http {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
+                    <a href="/child/tags/note/">
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/linux/">
+                    <a href="/child/tags/linux/">
                         <span class="chip bg-color">linux</span>
                     </a>
                     
@@ -945,7 +945,7 @@ http {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Web/Redis/">
+                <a href="/child/2018/10/22/Web/Redis/">
                     <div class="card-image">
                         
                         
@@ -968,7 +968,7 @@ http {
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/database/" class="post-category">
+                            <a href="/child/categories/database/" class="post-category">
                                     database
                                 </a>
                             
@@ -979,15 +979,15 @@ http {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
+                    <a href="/child/tags/note/">
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/python/">
+                    <a href="/child/tags/python/">
                         <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/database/">
+                    <a href="/child/tags/database/">
                         <span class="chip bg-color">database</span>
                     </a>
                     
@@ -1128,7 +1128,7 @@ http {
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">年份</span>
-            <a href="http://www.liuzhidream.com" target="_blank">Liu Zhi</a>
+            <a href="https://vanliuzhi.github.io/learn_programing" target="_blank">Liu Zhi</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1229,7 +1229,7 @@ http {
 
 
 
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+    <a href="/child/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
         <i class="fas fa-rss"></i>
     </a>
 
@@ -1255,7 +1255,7 @@ http {
 <script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    searchFunc("/child/" + "search.xml", 'searchInput', 'searchResult');
 });
 </script>
     <!-- 回到顶部按钮 -->

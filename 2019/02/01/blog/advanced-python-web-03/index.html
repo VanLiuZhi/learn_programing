@@ -29,8 +29,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<link rel="stylesheet" href="/child/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/child/css/prism-line-numbers.css" type="text/css"></head>
 
 
 <body>
@@ -38,7 +38,7 @@
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
+                <a href="/child/" class="waves-effect waves-light">
                     
                     <img src="/medias/logo.png" class="logo-img" alt="LOGO">
                     
@@ -431,15 +431,15 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web/">
+                            <a href="/child/tags/web/">
                                 <span class="chip bg-color">web</span>
                             </a>
                         
-                            <a href="/tags/python/">
+                            <a href="/child/tags/python/">
                                 <span class="chip bg-color">python</span>
                             </a>
                         
-                            <a href="/tags/technology/">
+                            <a href="/child/tags/technology/">
                                 <span class="chip bg-color">technology</span>
                             </a>
                         
@@ -451,7 +451,7 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/technology-%E6%8A%80%E6%9C%AF/" class="post-category">
+                            <a href="/child/categories/technology-%E6%8A%80%E6%9C%AF/" class="post-category">
                                 technology 技术
                             </a>
                         
@@ -513,7 +513,7 @@
 </ol>
 <p>本项目除了Python环境外，其余在开发测试阶段都是依赖于docker的，像Redis，RabbitMQ等服务都是跑在docker中，部署的话只需要构建一个当前Python环境配合已有的服务即可。</p>
 <h2 id="docker-基本"><a href="#docker-基本" class="headerlink" title="docker 基本"></a>docker 基本</h2><p>docker 是容器技术，初学者很容易和虚拟机的概念混用，包括在使用的时候也是如此。这一点非常的重要，我在初用docker的时候，把软件都装在一个容器里面，也是看别人的博客入门给我这种感觉，其实不应该这样，这种做法更像一个虚拟机，可以用来做开发，比如打包一个完整项目的开发环境，大家用这个镜像可以马上运行项目。正确的用法应该是每个服务一个容器，彼此分类开来。</p>
-<p>docker的概念围绕着容器container和镜像image展开，镜像是固化的文件，容器是镜像的实例，更多的可以查看我以前做的总结 <a href="http://www.liuzhidream.com/2018/10/22/Docker/Docker/">Docker 容器在 web 开发中的运用</a></p>
+<p>docker的概念围绕着容器container和镜像image展开，镜像是固化的文件，容器是镜像的实例，更多的可以查看我以前做的总结 <a href="http://www.liuzhidream.com/2018/10/22/Docker/Docker/" target="_blank" rel="noopener">Docker 容器在 web 开发中的运用</a></p>
 <h3 id="数据卷"><a href="#数据卷" class="headerlink" title="数据卷"></a>数据卷</h3><p>数据卷是为了做数据持久化，在容器内长生的数据随着容器删除就没了，这对应像mysql这样的需要持久化数据的服务当然是不允许的，所以有了数据卷的概念，把容器的一个目录和本机的一个目录映射，本机产生的数据容器可以使用，反之亦然。</p>
 <h3 id="网络与端口"><a href="#网络与端口" class="headerlink" title="网络与端口"></a>网络与端口</h3><p>能映射数据也能映射端口，映射端口的意思就是本机的端口和容器是互通的，访问本机的端口就是访问容器的端口。</p>
 <p>网络是比较重要的概念，不了解网络的机制让容器之间通信变得头疼，很容易卡在这里，可以使用docker来创建网络，处在同一网络中的容器可以互相通信，这个时候其实容器处在一个局域网中，只要知道ip也能通信，但是通常不这么做。</p>
@@ -763,7 +763,7 @@ http {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.liuzhidream.com" rel="external nofollow noreferrer">Liu Zhi</a>
+                    <a href="https://vanliuzhi.github.io/learn_programing" rel="external nofollow noreferrer">Liu Zhi</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -773,7 +773,7 @@ http {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.liuzhidream.com/2019/02/01/blog/advanced-python-web-03/">http://www.liuzhidream.com/2019/02/01/blog/advanced-python-web-03/</a>
+                    <a href="https://vanliuzhi.github.io/learn_programing/child/2019/02/01/blog/advanced-python-web-03/">https://vanliuzhi.github.io/learn_programing/child/2019/02/01/blog/advanced-python-web-03/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -786,7 +786,7 @@ http {
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="http://www.liuzhidream.com" target="_blank">Liu Zhi</a>
+                    <a href="https://vanliuzhi.github.io/learn_programing" target="_blank">Liu Zhi</a>
                     !
                 </span>
             </div>
@@ -811,15 +811,15 @@ http {
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/web/">
+                                <a href="/child/tags/web/">
                                     <span class="chip bg-color">web</span>
                                 </a>
                             
-                                <a href="/tags/python/">
+                                <a href="/child/tags/python/">
                                     <span class="chip bg-color">python</span>
                                 </a>
                             
-                                <a href="/tags/technology/">
+                                <a href="/child/tags/technology/">
                                     <span class="chip bg-color">technology</span>
                                 </a>
                             
@@ -990,7 +990,7 @@ http {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/02/01/blog/advanced-python-web-04/">
+                <a href="/child/2019/02/01/blog/advanced-python-web-04/">
                     <div class="card-image">
                         
                         
@@ -1013,7 +1013,7 @@ http {
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/technology-%E6%8A%80%E6%9C%AF/" class="post-category">
+                            <a href="/child/categories/technology-%E6%8A%80%E6%9C%AF/" class="post-category">
                                     technology 技术
                                 </a>
                             
@@ -1024,15 +1024,15 @@ http {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web/">
+                    <a href="/child/tags/web/">
                         <span class="chip bg-color">web</span>
                     </a>
                     
-                    <a href="/tags/python/">
+                    <a href="/child/tags/python/">
                         <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/technology/">
+                    <a href="/child/tags/technology/">
                         <span class="chip bg-color">technology</span>
                     </a>
                     
@@ -1047,7 +1047,7 @@ http {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/02/01/blog/advanced-python-web-02/">
+                <a href="/child/2019/02/01/blog/advanced-python-web-02/">
                     <div class="card-image">
                         
                         
@@ -1070,7 +1070,7 @@ http {
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/technology-%E6%8A%80%E6%9C%AF/" class="post-category">
+                            <a href="/child/categories/technology-%E6%8A%80%E6%9C%AF/" class="post-category">
                                     technology 技术
                                 </a>
                             
@@ -1081,15 +1081,15 @@ http {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web/">
+                    <a href="/child/tags/web/">
                         <span class="chip bg-color">web</span>
                     </a>
                     
-                    <a href="/tags/python/">
+                    <a href="/child/tags/python/">
                         <span class="chip bg-color">python</span>
                     </a>
                     
-                    <a href="/tags/technology/">
+                    <a href="/child/tags/technology/">
                         <span class="chip bg-color">technology</span>
                     </a>
                     
@@ -1230,7 +1230,7 @@ http {
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">年份</span>
-            <a href="http://www.liuzhidream.com" target="_blank">Liu Zhi</a>
+            <a href="https://vanliuzhi.github.io/learn_programing" target="_blank">Liu Zhi</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
@@ -1331,7 +1331,7 @@ http {
 
 
 
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+    <a href="/child/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
         <i class="fas fa-rss"></i>
     </a>
 
@@ -1357,7 +1357,7 @@ http {
 <script src="/js/search.js"></script>
 <script type="text/javascript">
 $(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+    searchFunc("/child/" + "search.xml", 'searchInput', 'searchResult');
 });
 </script>
     <!-- 回到顶部按钮 -->
