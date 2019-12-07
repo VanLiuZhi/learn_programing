@@ -650,11 +650,11 @@
         return Cache(cls, cls.cache_regions, cls.cache_label)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h2><p>任务队列也是web中常用的技术，一般的web程序都是同步阻塞的IO模型，这表示一个请求如果耗时间很长，将会影响其它用户，所以我们不能把这种耗时长的任务直接在本次请求中执行，应该交给像celery这样的异步任务队列。</p>
 <p>虽然有了异步编程，协程等方式不会一直阻塞进程，但是它们都是最大化利用cup的，该耗时的任务还是耗时，使用celery就可以解耦这些耗时的业务，让程序更加清晰，明确。</p>
-<p>本项目中，使用RabbitMQ做为消息代理，Redis作为结果存储，配置对应的参数后就可以使用celery了，具体的用法参考<a href="http://www.liuzhidream.com/2018/10/22/Web/Celery/" target="_blank" rel="noopener">Celery 在 web 开发中的运用</a></p>
+<p>本项目中，使用RabbitMQ做为消息代理，Redis作为结果存储，配置对应的参数后就可以使用celery了，具体的用法参考<a href="http://www.liuzhidream.com/2018/10/22/Web/Celery/">Celery 在 web 开发中的运用</a></p>
 <h2 id="搜索服务"><a href="#搜索服务" class="headerlink" title="搜索服务"></a>搜索服务</h2><p>以前我在写web的时候，对于搜索都是直接从数据库查询的，当数据需要从多张表中获取的时候，比较头疼了，需要把每张表都查一遍，当时也找过一些全局搜索的方案，只是没在项目中用起来。</p>
 <p>本项目用了Elasticsearch，简单来说就是查询都是去查由Elasticsearch提供的数据，那这些数据怎么来的？就是事先创建的，有点像数据库的索引，使用Elasticsearch，相当于和数据库分割了，我们不会再去查询数据。</p>
 <p>Elasticsearch其实也是一个数据库，它由Java编写，但是它的接口是走的http服务，这使得其它语言来使用它变得非常简单。你可能会疑问不是访问了另一个数据吗？对于速度上会有什么优势吗？其实像MySQL这样的数据库只要使用特定的引擎，查询效率会上升很多，但是为了兼顾存储，一般使用innodb，所以只要针对查询做特别的优化，就可以有不错的速度。</p>
-<p>用法参考<a href="http://www.liuzhidream.com/2019/01/11/Web/elasticsearch/" target="_blank" rel="noopener">elasticsearch 全文搜索解引擎在 web 开发中的运用</a></p>
+<p>用法参考<a href="http://www.liuzhidream.com/2019/01/11/Web/elasticsearch/">elasticsearch 全文搜索解引擎在 web 开发中的运用</a></p>
 <p>通过创建类来存储数据</p>
 <pre class="line-numbers language-py"><code class="language-py">class Item(Document):
     id = Integer()
@@ -721,7 +721,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://vanliuzhi.github.io" rel="external nofollow noreferrer">Liu Zhi</a>
+                    <a href="http://www.liuzhidream.com" rel="external nofollow noreferrer">Liu Zhi</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -731,7 +731,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://vanliuzhi.github.io/2019/02/01/blog/advanced-python-web-01/">https://vanliuzhi.github.io/2019/02/01/blog/advanced-python-web-01/</a>
+                    <a href="http://www.liuzhidream.com/2019/02/01/blog/advanced-python-web-01/">http://www.liuzhidream.com/2019/02/01/blog/advanced-python-web-01/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -744,7 +744,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://vanliuzhi.github.io" target="_blank">Liu Zhi</a>
+                    <a href="http://www.liuzhidream.com" target="_blank">Liu Zhi</a>
                     !
                 </span>
             </div>
@@ -1184,7 +1184,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">年份</span>
-            <a href="https://vanliuzhi.github.io" target="_blank">Liu Zhi</a>
+            <a href="http://www.liuzhidream.com" target="_blank">Liu Zhi</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
             <br>
