@@ -406,14 +406,14 @@ select * from table_a a inner join tabl">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2019-12-17
+                    2020-04-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    850
+                    975
                 </div>
                 
 
@@ -452,6 +452,9 @@ select * from table_a a right join table_b b on a.key = b.key where a.key is NUL
 select * from table_a a full outer join table_b b on a.key = b.key
 
 select * from table_a a full outer join table_b b on a.key = b.key where a.key is NULL or b.key is NULL</code></pre><p>查询的效果就是取两张表的join结果，有不同的join方法，字段会被组合在一行中，也就是笛卡尔积。</p>
+<p>在某些数据库中，FULL JOIN 称为 FULL OUTER JOIN。</p>
+<p>左连接以左边表为准，由于结果是两张表的字段，没匹配上的为null。 右连接类推，FULL JOIN 是 左右连接合并</p>
+<p>inner join 取笛卡尔积</p>
 <h3 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子"></a>一些例子</h3><p>select a.id from app_info a right join agents_profit_setting b on a.id = b.id;<br>注意使用了别名a为表app_info取别名，所以在其它需要用到表app_info都使用别名访问</p>
 <p>select a.id, b.id as b_id from app_info a right join agents_profit_setting b on a.id = b.id;<br>返回a，b的id，并对b的id取别名b_id</p>
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>系统提供了一些通用函数，可以在语句中使用</p>
@@ -470,6 +473,16 @@ selete <span class="token operator">*</span> <span class="token keyword">from</s
 <p>第2页： 从第20个开始，获取30条数据</p>
 <pre class="line-numbers language-sql"><code class="language-sql">selete <span class="token operator">*</span> <span class="token keyword">from</span> testtable <span class="token keyword">limit</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">;</span> 
 selete <span class="token operator">*</span> <span class="token keyword">from</span> testtable <span class="token keyword">limit</span> <span class="token number">30</span> <span class="token keyword">offset</span> <span class="token number">20</span><span class="token punctuation">;</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="datetime-时间范围内查询"><a href="#datetime-时间范围内查询" class="headerlink" title="datetime 时间范围内查询"></a>datetime 时间范围内查询</h2><p>datetime可以直接传递字符串，它本质就是存储字符串</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token number">a</span><span class="token punctuation">.</span>ID<span class="token punctuation">)</span> <span class="token keyword">from</span> mondata<span class="token punctuation">.</span>processlist <span class="token keyword">as</span> <span class="token number">a</span> <span class="token keyword">where</span> COLLECT_TIME <span class="token operator">BETWEEN</span> 
+STR_TO_DATE<span class="token punctuation">(</span>
+        <span class="token string">'2020-04-08 00:00:00'</span><span class="token punctuation">,</span>
+        <span class="token string">'%Y-%m-%d %H'</span>
+    <span class="token punctuation">)</span>
+<span class="token operator">AND</span> STR_TO_DATE<span class="token punctuation">(</span>
+    <span class="token string">'2020-04-09 00:00:00'</span><span class="token punctuation">,</span>
+    <span class="token string">'%Y-%m-%d %H'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="分组取最大值"><a href="#分组取最大值" class="headerlink" title="分组取最大值"></a>分组取最大值</h2><ol>
 <li>推荐标准用法</li>
 </ol>
@@ -1260,7 +1273,7 @@ WSGIWSGI协议是Python为web服务器制定的标准，只要遵循WSGI协议�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

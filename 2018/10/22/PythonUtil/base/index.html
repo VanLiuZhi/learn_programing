@@ -1000,22 +1000,22 @@ space <span class="token operator">=</span> <span class="token string">' '</span
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/Python-socket/base/">
+                <a href="/2018/10/22/Python-multiprocessing/base/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Python-socket">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Python-multiprocessing 多进程">
                         
-                        <span class="card-title">Python-socket</span>
+                        <span class="card-title">Python-multiprocessing 多进程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            python网络编程笔记
+                            python多进程学习笔记
 
 
-EAGAIN当客户通过Socket提供的send函数发送大的数据包时，就可能返回一个EAGAIN的错误。该错误产生的原因是由于 send 函数中的size变量大小超过了tcp_sendspace的值。tcp_s
+进程Python标准库为我们提供了 threading 和 multiprocessing 模块编写相应的多线程/多进程代码。从Python3.2开始，标准库为我们提供了 concurrent.futures
                         
                     </div>
                     <div class="publish-info">
@@ -1056,19 +1056,29 @@ EAGAIN当客户通过Socket提供的send函数发送大的数据包时，就可�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Python-asyncio/base/">
+                <a href="/2018/10/22/PythonUtil/common_tool/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Python-异步与协程">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="python常用方法">
                         
-                        <span class="card-title">Python-异步与协程</span>
+                        <span class="card-title">python常用方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            异步编程是一个很难的点，不同于同步编程，编程模型将变得复杂。下文引用理查德·史蒂文斯（William Richard (Rich) Stevens，1951年2月5日－1999年9月1日）所编写的《UNIX网络编程》关于I/O Models
+                            记录python常用方法
+
+
+获取文件所在目录
+import os
+
+path = os.path.dirname(os.path.abspath(__file__))
+print(path)
+
+dict扩展
+class AttrDict(
                         
                     </div>
                     <div class="publish-info">
@@ -1241,7 +1251,7 @@ EAGAIN当客户通过Socket提供的send函数发送大的数据包时，就可�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

@@ -368,12 +368,12 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/note/">
-                                <span class="chip bg-color">note</span>
+                            <a href="/tags/Note/">
+                                <span class="chip bg-color">Note</span>
                             </a>
                         
-                            <a href="/tags/http/">
-                                <span class="chip bg-color">http</span>
+                            <a href="/tags/Http/">
+                                <span class="chip bg-color">Http</span>
                             </a>
                         
                     </div>
@@ -384,8 +384,8 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
-                                web开发
+                            <a href="/categories/Web/" class="post-category">
+                                Web
                             </a>
                         
                     </div>
@@ -404,14 +404,14 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2019-11-30
+                    2020-04-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
@@ -548,6 +548,8 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
 <li>get安全性非常低，post安全性较高。但是执行效率却比Post方法好。 </li>
 </ol>
 <p>建议：<br>1、get方式的安全性较Post方式要差些，包含机密信息的话，建议用Post数据提交方式；<br>2、在做数据查询时，建议用Get方式；而在做数据添加、修改或删除时，建议用Post方式；</p>
+<h2 id="302响应"><a href="#302响应" class="headerlink" title="302响应"></a>302响应</h2><p>当ajax请求响应302的时候，得到的响应会先由浏览器去请求302响应体中headers里面的location的地址，这个地址的响应才会是ajax请求得到的东西</p>
+<p>就是接口302的时候，浏览器最终反馈是去请求重定向地址的响应</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -581,7 +583,7 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.liuzhidream.com" rel="external nofollow noreferrer">Liu Zhi</a>
+                    <a href="https://www.liuzhidream.com" rel="external nofollow noreferrer">vanliuzh</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -604,7 +606,7 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://www.liuzhidream.com" target="_blank">Liu Zhi</a>
+                    <a href="https://www.liuzhidream.com" target="_blank">vanliuzh</a>
                     !
                 </span>
             </div>
@@ -629,12 +631,12 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/note/">
-                                    <span class="chip bg-color">note</span>
+                                <a href="/tags/Note/">
+                                    <span class="chip bg-color">Note</span>
                                 </a>
                             
-                                <a href="/tags/http/">
-                                    <span class="chip bg-color">http</span>
+                                <a href="/tags/Http/">
+                                    <span class="chip bg-color">Http</span>
                                 </a>
                             
                         </div>
@@ -1067,19 +1069,22 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/Web/Redis/">
+                <a href="/2018/10/22/Web/RabbitMQ/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Redis在web开发中的运用">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="RabbitMQ 消息队列">
                         
-                        <span class="card-title">Redis在web开发中的运用</span>
+                        <span class="card-title">RabbitMQ 消息队列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的
+                            MQ全称为Message Queue, 消息队列（MQ）是一种应用程序对应用程序的通信方法。应用程序通过读写出入队列的消息（针对应用程序的数据）来通信，而无需专用连接来链接它们。
+
+
+概念需要了解一个协议：AMQP协议，协议的流程由消息发布
                         
                     </div>
                     <div class="publish-info">
@@ -1090,8 +1095,8 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/database/" class="post-category">
-                                    database
+                            <a href="/categories/Middleware/" class="post-category">
+                                    Middleware
                                 </a>
                             
                             
@@ -1101,16 +1106,16 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
-                    <a href="/tags/database/">
-                        <span class="chip bg-color">database</span>
+                    <a href="/tags/Web/">
+                        <span class="chip bg-color">Web</span>
                     </a>
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -1124,24 +1129,19 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Web/other/">
+                <a href="/2018/10/22/blog/ORID/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="web相关">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="ORID 焦点呈现法（Focused Conversation Method）">
                         
-                        <span class="card-title">web相关</span>
+                        <span class="card-title">ORID 焦点呈现法（Focused Conversation Method）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            web相关学习笔记
-
-
-网络网关和路由器最大的区别是是否连接相似的网络。如果连接相似的网络，则称为路由器。而连接不相似的网络，称为网关。（个人认为这个关字可以从海关上来理解，出关，海关）
-相似的网络和不相似的网络有两种不同的含义。
-逻辑层面
+                            ORID，即焦点呈现法（Focused Conversation Method），是一种通过催化师（主持人、引导讲师）引导来开展的结构化汇谈（会议、交谈）形式。该方法常被用作对事实进行分析和感觉某一工具和方法（O实践-客观事实、R感受-客观
                         
                     </div>
                     <div class="publish-info">
@@ -1152,8 +1152,8 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
-                                    web开发
+                            <a href="/categories/causerie/" class="post-category">
+                                    causerie
                                 </a>
                             
                             
@@ -1163,8 +1163,8 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/causerie/">
+                        <span class="chip bg-color">causerie</span>
                     </a>
                     
                 </div>
@@ -1310,7 +1310,7 @@ http actionHTTP协议中GET、POST和HEAD的介绍  200">
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

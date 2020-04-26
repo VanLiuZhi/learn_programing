@@ -405,14 +405,14 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-23
+                    2020-03-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
@@ -722,6 +722,25 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
         <span class="token keyword">return</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> objects<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="restTemplate-响应泛型"><a href="#restTemplate-响应泛型" class="headerlink" title="restTemplate 响应泛型"></a>restTemplate 响应泛型</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> A<span class="token operator">></span> T <span class="token function">exchange</span><span class="token punctuation">(</span>String url<span class="token punctuation">,</span> HttpMethod method<span class="token punctuation">,</span> ParameterizedTypeReference<span class="token operator">&lt;</span>T<span class="token operator">></span> responseBodyType<span class="token punctuation">,</span> A requestBody<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        RestTemplate restTemplate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RestTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 请求头</span>
+        HttpHeaders headers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HttpHeaders</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        MimeType mimeType <span class="token operator">=</span> MimeTypeUtils<span class="token punctuation">.</span><span class="token function">parseMimeType</span><span class="token punctuation">(</span><span class="token string">"application/json"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        MediaType mediaType <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MediaType</span><span class="token punctuation">(</span>mimeType<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> mimeType<span class="token punctuation">.</span><span class="token function">getSubtype</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> StandardCharsets<span class="token punctuation">.</span>UTF_8<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 请求体</span>
+        headers<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span>mediaType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 发送请求</span>
+        HttpEntity<span class="token operator">&lt;</span>A<span class="token operator">></span> entity <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HttpEntity</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>requestBody<span class="token punctuation">,</span> headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ResponseEntity<span class="token operator">&lt;</span>T<span class="token operator">></span> resultEntity <span class="token operator">=</span> restTemplate<span class="token punctuation">.</span><span class="token function">exchange</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> method<span class="token punctuation">,</span> entity<span class="token punctuation">,</span> responseBodyType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> resultEntity<span class="token punctuation">.</span><span class="token function">getBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 调用</span>
+
+ParameterizedTypeReference<span class="token operator">&lt;</span>ResponseBean<span class="token operator">&lt;</span>BasePushData<span class="token operator">>></span> responseBodyType <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ParameterizedTypeReference</span><span class="token operator">&lt;</span>ResponseBean<span class="token operator">&lt;</span>BasePushData<span class="token operator">>></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//        String res = restTemplate.postForObject("http://localhost:8920/store", basePushData, String.class);</span>
+        ResponseBean<span class="token operator">&lt;</span>BasePushData<span class="token operator">></span> ret <span class="token operator">=</span> <span class="token function">exchange</span><span class="token punctuation">(</span><span class="token string">"http://localhost:8920/store"</span><span class="token punctuation">,</span> HttpMethod<span class="token punctuation">.</span>POST<span class="token punctuation">,</span> responseBodyType<span class="token punctuation">,</span> basePushData<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1241,19 +1260,21 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/04/05/Java/Java8-new-syntax/">
+                <a href="/2018/04/05/Java/java-redis/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Java8 new语法特性">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Java Redis">
                         
-                        <span class="card-title">Java8 new语法特性</span>
+                        <span class="card-title">Java Redis</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java8 new语法特性 发现很多小伙伴还没有用上Java的新特性，这其实也和Java比较标准化的原因有关吧，稳定才是企业的诉求，像lambda，函数式等其它语言都过的东西，却很少在Java中看见，不过会还是要会的，跟上时代的步伐，尤其是函数式编程的思想
+                            概念：Jedis：是Redis的Java实现客户端，提供了比较全面的Redis命令的支持，
+Redisson：实现了分布式和可扩展的Java数据结构。
+Lettuce：高级Redis客户端，用于线程安全同步，异步和响应使用，支持集群，Sen
                         
                     </div>
                     <div class="publish-info">
@@ -1294,7 +1315,7 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/04/05/Java/base/">
+                <a href="/2018/01/05/Java/base/">
                     <div class="card-image">
                         
                         
@@ -1306,12 +1327,12 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程
+                            Java 学习笔记，Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-01-05
                             </span>
                         <span class="publish-author">
                             
@@ -1479,7 +1500,7 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

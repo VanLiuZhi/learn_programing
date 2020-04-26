@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="elasticsearch 全文搜索解引擎在 web 开发中的运用, Java，Python，JavaScript，Linux">
+    <meta name="keywords" content="Elasticsearch 全文搜索解引擎在 Web 开发中的运用, Java，Python，JavaScript，Linux">
     <meta name="description" content="搜索服务是Web开发中非常常见的服务，一般比较基本的会直接访问到数据库，但是如果要查询多个数据库才能得到搜索结果，这无疑加大了数据库的负担，而且频繁的访问数据库容易成为应用的瓶颈。可以使用elasticsearch来提供搜索服务，降低数据库">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>elasticsearch 全文搜索解引擎在 web 开发中的运用 | VanLiuZhi</title>
+    <title>Elasticsearch 全文搜索解引擎在 Web 开发中的运用 | VanLiuZhi</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -241,13 +241,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        elasticsearch 全文搜索解引擎在 web 开发中的运用
+                        Elasticsearch 全文搜索解引擎在 Web 开发中的运用
                     </div>
                 </div>
             </div>
@@ -365,12 +365,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web/">
-                                <span class="chip bg-color">web</span>
+                            <a href="/tags/Note/">
+                                <span class="chip bg-color">Note</span>
                             </a>
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/Python/">
+                                <span class="chip bg-color">Python</span>
                             </a>
                         
                     </div>
@@ -381,8 +381,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
-                                web开发
+                            <a href="/categories/Middleware/" class="post-category">
+                                Middleware
                             </a>
                         
                     </div>
@@ -401,21 +401,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2019-11-30
+                    2020-04-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    837
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 				
@@ -482,7 +482,64 @@ client = connections.get_connection(search._using)
 rs = list(parallel_bulk(client, objects,
                         chunk_size=500))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>举例了parallel_bulk的用法，这里需要迭代才会执行，使用list</p>
-<h2 id="新内容"><a href="#新内容" class="headerlink" title="新内容"></a>新内容</h2><p>es 7.0 对应  head 插件 5.x  这是我上次的坑 如果不用5.x 的head 会连不上es</p>
+<h2 id="版本总结"><a href="#版本总结" class="headerlink" title="版本总结"></a>版本总结</h2><p>es 7.0 对应  head 插件 5.x  这是我上次的坑 如果不用5.x 的head 会连不上es</p>
+<p>es7可以不指定index来搜索了，默认index是_doc，而7一下还是要通过index来区别数据</p>
+<p>es5可以指定多个type在一个index中，不建议这么做，es7不能再指定多个type</p>
+<p>可以 用<em>模糊index查询 ，比如 `abc-</em>` * 可以是用户表示，这样就全文查询所有用户了</p>
+<h2 id="restful-接口实例"><a href="#restful-接口实例" class="headerlink" title="restful 接口实例"></a>restful 接口实例</h2><p>就是用_search 然后带上请求体，请求体由es特定的语法组成<br>es7可以不指定index来搜索了，默认index是_doc，而7一下还是要通过index来区别数据</p>
+<ul>
+<li>查询所有的index</li>
+</ul>
+<p>curl -X GET ‘<a href="http://125.124.23.121:9200/_cat/indices?v'" target="_blank" rel="noopener">http://125.124.23.121:9200/_cat/indices?v'</a><br>curl -X GET ‘<a href="http://127.0.0.1:9200/_cat/indices?v'" target="_blank" rel="noopener">http://127.0.0.1:9200/_cat/indices?v'</a></p>
+<ul>
+<li>查询所有的mapping，type</li>
+</ul>
+<p>curl ‘localhost:9200/_mapping?pretty=true’</p>
+<ul>
+<li>查询所有记录</li>
+</ul>
+<p>curl ‘localhost:9200/traffic-zjyzsd/edrtraffic/AW5oGoTioA_5X_ZtZ_53?pretty=true’<br>curl ‘localhost:9200/my_index/my_index2/_search?pretty=true’  /索引/type   不指定索引就是查询全部类型</p>
+<ol>
+<li>使用match匹配，accounts索引下，type是person， 字段 是 desc ，字段内容包含 “软件的”</li>
+</ol>
+<p>$ curl ‘localhost:9200/accounts/person/_search’  -d ‘<br>{<br>  “query” : { “match” : { “desc” : “软件” }}<br>}’</p>
+<ol start="2">
+<li>默认是10条记录，from指定开始位置，默认是0，从头开始，以此做分页</li>
+</ol>
+<p>$ curl ‘localhost:9200/accounts/person/_search’  -d ‘<br>{<br>  “query” : { “match” : { “desc” : “管理” }},<br>  “from”: 1,<br>  “size”: 1<br>}’</p>
+<ol start="3">
+<li>Elastic 认为它们是or关系，就是满足一个就行</li>
+</ol>
+<p>$ curl ‘localhost:9200/accounts/person/_search’  -d ‘<br>{<br>  “query” : { “match” : { “desc” : “软件 系统” }}<br>}’</p>
+<ol start="4">
+<li>如果要执行多个关键词的and搜索，必须使用布尔查询。</li>
+</ol>
+<p>$ curl ‘localhost:9200/accounts/person/_search’  -d ‘<br>{<br>  “query”: {<br>    “bool”: {<br>      “must”: [<br>        { “match”: { “desc”: “软件” } },<br>        { “match”: { “desc”: “系统” } }<br>      ]<br>    }<br>  }<br>}’</p>
+<ol start="5">
+<li>根据id查询记录</li>
+</ol>
+<p>curl ‘localhost:9200/accounts/person/1?pretty=true’</p>
+<ul>
+<li>导入数据</li>
+</ul>
+<p>curl -H ‘Content-Type: application/x-ndjson’  -s -XPOST localhost:9200/_bulk –data-binary edr-test.json</p>
+<ul>
+<li>多条件查询</li>
+</ul>
+<p>curl ‘localhost:9200/edr-*/edrdoc/_search?pretty=true’  -d ‘{“size”:2, “query”: {“bool”: {“must”: [{ “term”: { “eventId” : “6002” } },{“term”: { “kid”:”KB3000483” } }]}}}’</p>
+<ul>
+<li>单条件查询，match和term</li>
+</ul>
+<p>curl ‘localhost:9200/edr-<em>/edrdoc/_search?pretty=true’ -d ‘{“query” : { “match” : { “kid” : “KB3000483” }}}’<br>curl ‘localhost:9200/edr-</em>/edrdoc/_search?pretty=true’ -d ‘{“query” : { “term” : { “eventId” : “6002” }}}’</p>
+<ul>
+<li>时间范围查询</li>
+</ul>
+<p>curl ‘localhost:9200/edr-*/edrdoc/_search?pretty=true’ -d ‘{“size”:10, “query”: {“range”: { “uploadtime”: { “gte”:1578436338552, “lte”: 1578436338559} } }}’</p>
+<ul>
+<li>删除数据，条件删除和匹配删除</li>
+</ul>
+<p>curl -X Delete ‘localhost:9200/edr-usertest/edrdoc/AXEvV–mxoIOfpIMeV0J</p>
+<p>curl -X POST ‘localhost:9200/edr-usertest/edrdoc/_delete_by_query?pretty=true’ -d ‘{“query”: { “term” : { “id” : “9856519d-cd0b-486f-b8a8-17363159315f” }}}’</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -516,7 +573,7 @@ rs = list(parallel_bulk(client, objects,
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.liuzhidream.com" rel="external nofollow noreferrer">Liu Zhi</a>
+                    <a href="https://www.liuzhidream.com" rel="external nofollow noreferrer">vanliuzh</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -539,7 +596,7 @@ rs = list(parallel_bulk(client, objects,
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="https://www.liuzhidream.com" target="_blank">Liu Zhi</a>
+                    <a href="https://www.liuzhidream.com" target="_blank">vanliuzh</a>
                     !
                 </span>
             </div>
@@ -564,12 +621,12 @@ rs = list(parallel_bulk(client, objects,
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/web/">
-                                    <span class="chip bg-color">web</span>
+                                <a href="/tags/Note/">
+                                    <span class="chip bg-color">Note</span>
                                 </a>
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/Python/">
+                                    <span class="chip bg-color">Python</span>
                                 </a>
                             
                         </div>
@@ -1059,30 +1116,28 @@ rs = list(parallel_bulk(client, objects,
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/12/05/Java/java-jvm/">
+                <a href="/2019/01/05/Java/concurrent/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Java-JVM 知识点总结">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Java 并发">
                         
-                        <span class="card-title">Java-JVM 知识点总结</span>
+                        <span class="card-title">Java 并发</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            JVM虚拟机总结笔记
-Java内存模型(内存结构)
-堆内存 Hape
-方法区(或者叫永久代) Method Area(PermGen)  jdk1.8更换为 元空间 Metaspace
-线程私有空间
+                            review
 
-Java内存结构分为三大块，1和2是线
+
+基础与名词解释竞态条件: 多个线程竞争同一个资源，如果对资源的访问顺序敏感，就称存在竞态条件临界区: 导致竞态条件发生的代码称为临界区
+Java运行至少启动两个线程，一个是main线程，一个是垃圾回收线程(当然实际肯定不止
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-12-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-05
                             </span>
                         <span class="publish-author">
                             
@@ -1099,12 +1154,12 @@ Java内存结构分为三大块，1和2是线
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/note/">
+                        <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/Note/">
-                        <span class="chip bg-color">Note</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
                     </a>
                     
                 </div>
@@ -1250,7 +1305,7 @@ Java内存结构分为三大块，1和2是线
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

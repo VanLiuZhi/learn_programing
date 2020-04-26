@@ -412,21 +412,21 @@ Vue.prototype
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2019-11-30
+                    2020-04-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    14 分
                 </div>
                 
 				
@@ -506,37 +506,6 @@ timestamp: 1565707913336</code></pre><h2 id="vue-cli3-0"><a href="#vue-cli3-0" c
 </ul>
 <p>该组件用于<code>'/user'</code>路由下，即登录注册等</p>
 <h2 id="数据管理"><a href="#数据管理" class="headerlink" title="数据管理"></a>数据管理</h2><p>暂时使用sql文件的方式，对表的改动都基于sql文件</p>
-<h2 id="权限设计"><a href="#权限设计" class="headerlink" title="权限设计"></a>权限设计</h2><p>RBAC设计思想</p>
-<p>基于角色的访问控制（Role-Based Access Control）<br>有两种正在实践中使用的RBAC访问控制方式：隐式(模糊)的方式和显示(明确)的方式。</p>
-<p>隐式：假如用于属于管理员，在对账户操作的时候，就去判断用于是否是管理员角色，因为在常规的认知中，管理员一般都是能操作账号的，但是实际是否分配的这样的权限是未知的，这就是隐式的，是一种假设。<br>显示：就是明确的权限判断</p>
-<h3 id="设计实现"><a href="#设计实现" class="headerlink" title="设计实现"></a>设计实现</h3><ol>
-<li>用户管理<ul>
-<li>新建用户</li>
-<li>分配角色</li>
-<li>删除用户</li>
-<li>获取用户列表</li>
-</ul>
-</li>
-<li>角色管理<ul>
-<li>新建角色</li>
-<li>分配权限</li>
-<li>获取角色列表</li>
-</ul>
-</li>
-<li>权限管理<ul>
-<li>新建权限 （把权限完全最小粒度化，只有权限名，不做更多的关联，通过更为详细的权限命名来扩展）</li>
-<li>获取权限列表</li>
-<li>删除权限</li>
-</ul>
-</li>
-</ol>
-<h3 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h3><ol>
-<li>user 用户表</li>
-<li>role 角色表</li>
-<li>permission 权限表</li>
-<li>user_role 用户和角色关联表</li>
-<li>role_permission 角色和权限关联表</li>
-</ol>
 <h2 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h2><p>程序主入口，一般会导入各种配置文件，前端的路由和后端的接口URL不是一个概念，路由的URL跳转不会去和后端交互</p>
 <h3 id="permission"><a href="#permission" class="headerlink" title="permission"></a>permission</h3><p>权限控制部分，通过路由守卫来完成，根据有无token来决定下一步。目前绝大部分项目的思路都很类似，比较的工程化，最好也参照这个流程来</p>
 <ol>
@@ -600,6 +569,123 @@ timestamp: 1565707913336</code></pre><h2 id="vue-cli3-0"><a href="#vue-cli3-0" c
 <ul>
 <li>数据赋值</li>
 </ul>
+<h2 id="后端技术栈"><a href="#后端技术栈" class="headerlink" title="后端技术栈"></a>后端技术栈</h2><p>grafana  可视化监控界面</p>
+<p>OpenResty Nginx配合lua的高性能web服务器</p>
+<p>elasticsearch-head  是用于监控 Elasticsearch 状态的客户端插件，使用node运行</p>
+<p>kafka </p>
+<p>zookeeper</p>
+<p>logstash</p>
+<p>filebeat</p>
+<p>elasticsearch</p>
+<p>Redis-Desktop-Manager</p>
+<p>redis</p>
+<p>ZooInspector zk数据查看工具</p>
+<h2 id="后端框架版本"><a href="#后端框架版本" class="headerlink" title="后端框架版本"></a>后端框架版本</h2><p>spring boot 2.1.12.RELEASE</p>
+<p>spring cloud Greenwich.SR5</p>
+<h2 id="微服务带来的挑战"><a href="#微服务带来的挑战" class="headerlink" title="微服务带来的挑战"></a>微服务带来的挑战</h2><p>服务部署的挑战<br>服务伸缩的挑战<br>服务高可用<br>服务容错<br>依赖关系<br>服务监控</p>
+<h2 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h2><p>DevOps（Development和Operations的组合词）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。</p>
+<h2 id="权限设计"><a href="#权限设计" class="headerlink" title="权限设计"></a>权限设计</h2><p>RBAC设计思想</p>
+<p>基于角色的访问控制（Role-Based Access Control）<br>有两种正在实践中使用的RBAC访问控制方式：隐式(模糊)的方式和显示(明确)的方式。</p>
+<p>隐式：假如用于属于管理员，在对账户操作的时候，就去判断用于是否是管理员角色，因为在常规的认知中，管理员一般都是能操作账号的，但是实际是否分配的这样的权限是未知的，这就是隐式的，是一种假设。<br>显示：就是明确的权限判断</p>
+<h3 id="设计实现"><a href="#设计实现" class="headerlink" title="设计实现"></a>设计实现</h3><ol>
+<li>用户管理<ul>
+<li>新建用户</li>
+<li>分配角色</li>
+<li>删除用户</li>
+<li>获取用户列表</li>
+</ul>
+</li>
+<li>角色管理<ul>
+<li>新建角色</li>
+<li>分配权限</li>
+<li>获取角色列表</li>
+</ul>
+</li>
+<li>权限管理<ul>
+<li>新建权限 （把权限完全最小粒度化，只有权限名，不做更多的关联，通过更为详细的权限命名来扩展）</li>
+<li>获取权限列表</li>
+<li>删除权限</li>
+</ul>
+</li>
+</ol>
+<h3 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h3><ol>
+<li>user 用户表</li>
+<li>role 角色表</li>
+<li>permission 权限表</li>
+<li>user_role 用户和角色关联表</li>
+<li>role_permission 角色和权限关联表</li>
+</ol>
+<h2 id="数据库与ORM"><a href="#数据库与ORM" class="headerlink" title="数据库与ORM"></a>数据库与ORM</h2><p><code>主要分析，数据配置，与orm框架结合，连接池，多数据源配置等如何使用</code></p>
+<h3 id="mybatis"><a href="#mybatis" class="headerlink" title="mybatis"></a>mybatis</h3><p>数据库ORM使用mybatis，通常情况，引入mybatis的spring boot风格的依赖，还有MySQL connect依赖就会自动装配，相关bean就会注入容器，此时如果不配置MySQL，是会有错误日志的</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--mybatis Spring boot 支持--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.mybatis.spring.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>数据源配置比较简单，这里使用默认的连接池配置</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>mysql<span class="token punctuation">:</span>//$<span class="token punctuation">{</span>MYSQL_HOST<span class="token punctuation">:</span>localhost<span class="token punctuation">}</span><span class="token punctuation">:</span>$<span class="token punctuation">{</span>MYSQL_PORT<span class="token punctuation">:</span><span class="token number">5506</span><span class="token punctuation">}</span>/$<span class="token punctuation">{</span>DB_AUTH<span class="token punctuation">:</span>rrd_store<span class="token punctuation">}</span><span class="token punctuation">?</span>useUnicode=true<span class="token important">&amp;allowMultiQueries</span>=true<span class="token important">&amp;serverTimezone</span>=Asia/Shanghai<span class="token important">&amp;characterEncoding</span>=UTF<span class="token punctuation">-</span>8<span class="token important">&amp;zeroDateTimeBehavior</span>=convertToNull<span class="token important">&amp;useSSL</span>=false
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>MYSQL_USERNAME<span class="token punctuation">:</span>root<span class="token punctuation">}</span>
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>MYSQL_PASSWORD<span class="token punctuation">:</span>root123<span class="token punctuation">}</span>
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> com.zaxxer.hikari.HikariDataSource
+    <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> com.mysql.jdbc.Driver<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h3><p>当然这样用的太基础了，实际还要加上分页插件，连接池等配置，还有数据库性能监控，或者使用mybatis-plus增强功能</p>
+<p>Springboot默认的连接池Hikari，实际情况，会考虑使用Druid</p>
+<p>依赖</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.alibaba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>druid-spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.1.10<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>还有一种依赖是这个，使用这种的话要自己创建配置类，所以还是用spring-boot风格的吧，就是上面一种</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.alibaba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>druid<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.1.3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">druid</span><span class="token punctuation">:</span>
+      <span class="token key atrule">initial-size</span><span class="token punctuation">:</span> <span class="token number">5</span>
+      <span class="token key atrule">min-idle</span><span class="token punctuation">:</span> <span class="token number">5</span>
+      <span class="token key atrule">max-active</span><span class="token punctuation">:</span> <span class="token number">20</span>
+      <span class="token comment" spellcheck="true"># 省略...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>也就是把参数写在druid下面，对于type的配置，可以不写，引入依赖就用Druid，具体需要源码验证，不放心就显示配置</p>
+<p>druid自带了监控页面，以及防止sql注入配置，多数据源配置，具体看文档</p>
+<p>druid监控页面 去广告<a href="https://blog.csdn.net/chouya3495/article/details/100661794" target="_blank" rel="noopener">https://blog.csdn.net/chouya3495/article/details/100661794</a></p>
+<h3 id="mybatis-plus"><a href="#mybatis-plus" class="headerlink" title="mybatis-plus"></a>mybatis-plus</h3><p>把依赖替换，注意mybatis-plus的配置名称和mybatis不同，但是配置的内容大同小异</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.0.7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.0.7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.baomidou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-generator<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.0.7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="多数据"><a href="#多数据" class="headerlink" title="多数据"></a>多数据</h3><p>多数据源指的是使用多个数据库</p>
+<p>不知道你有没有注意到一点，假设我的数据源配置是 jdbc:mysql://127.0.0.1:9906/rrd_store<br>我在mybatis中是 from <code>honor-user-center</code>.sys_user，能正常访问到数据库</p>
+<p>rrd_store 和 honor-user-center 都是 9906连接下的两个数据库，也就是说连接上后，是可以去访问不同的数据库的</p>
+<p>但是假如我有多个连接，比较9906，7706，做读写分离，那么上面的小技巧就没用了，这种情况就是多数据源，需要我们去连接不同地址的数据库</p>
+<p>具体做法大致有2种，涉及到很多底层的东西，先知道一个概念，就是数据源对象</p>
+<ol>
+<li><p>配置多个连接对象，每个连接对象都是不同的配置，直接和mybatis映射绑定</p>
+</li>
+<li><p>配置一个连接对象，但是里面有多个数据源对象，通过注解切换数据源对象</p>
+</li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1208,16 +1294,16 @@ timestamp: 1565707913336</code></pre><h2 id="vue-cli3-0"><a href="#vue-cli3-0" c
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/note/">
+                        <span class="chip bg-color">note</span>
+                    </a>
+                    
                     <a href="/tags/linux/">
                         <span class="chip bg-color">linux</span>
                     </a>
                     
                     <a href="/tags/docker/">
                         <span class="chip bg-color">docker</span>
-                    </a>
-                    
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
                     </a>
                     
                 </div>
@@ -1363,7 +1449,7 @@ timestamp: 1565707913336</code></pre><h2 id="vue-cli3-0"><a href="#vue-cli3-0" c
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

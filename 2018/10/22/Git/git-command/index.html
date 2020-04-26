@@ -408,21 +408,21 @@ Git使用GitHub，给出的地址我们一">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2019-11-30
+                    2020-04-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    792
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 				
@@ -442,6 +442,13 @@ Git使用GitHub，给出的地址我们一">
 <a id="more"></a>
 
 <h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><p>使用GitHub，给出的地址我们一般用ssh。使用ssh需要https，如果不支持只能使用http，但是每次都要输口令。</p>
+<h2 id="用法总结"><a href="#用法总结" class="headerlink" title="用法总结"></a>用法总结</h2><p>在idea工具盛行的时代，使用idea工具能高效快速的使用Git。如果你纯命令，那么解决冲突和合并分支都是要用类似vim的工具，其效率可想而知</p>
+<p>推荐用idea</p>
+<p>另外，大部分情况我们操作本地仓库就足够了，本地仓库也创建分支，打标签，然后开发到一定程度也可以合并，这些都是本地仓库操作的。真正要提交到远程仓库的，一定是开发完成的了</p>
+<h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><p>工作区<br>暂存区<br>本地仓库<br>远程仓库</p>
+<h2 id="标签-tag"><a href="#标签-tag" class="headerlink" title="标签 tag"></a>标签 tag</h2><p>Git的 tag 和 branch 是比较容易混淆的概念</p>
+<p>标签分为轻量标签和附注标签，简单说就是附注标签会加上一些描述信息，轻量就没有了。然后标签是指向某个提交对象，也就是说你可以把本次提交打个标签，这样可以很方便的回到这个提交</p>
+<p>常见用法: 选一个commit对象，把它打上标签，一个commit对象可以打多个</p>
 <h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>Git鼓励大量使用分支：</p>
 <ul>
 <li>查看分支：git branch</li>
@@ -1017,25 +1024,20 @@ ls -l<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/Algorithm/base/">
+                <a href="/2018/10/22/Docker/Docker/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Algorithm 算法学习">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Docker 容器在 web 开发中的运用">
                         
-                        <span class="card-title">Algorithm 算法学习</span>
+                        <span class="card-title">Docker 容器在 web 开发中的运用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            算法相关，对于非科班出身的人来说，只能慢慢学习和体会了
-
-
-算法
-有穷性(Finiteness)算法的有穷性是指算法必须能在执行有限个步骤之后终止；
-确切性(Definiteness)算法的每一步骤必须有确切的定义；
-输入项(Input)一
+                            docker 容器技术学习笔记
+docker是使用go语言开发的应用容器引擎，docker 的开发商是 Docker,Inc. 可以说现在还没对手（目前找不到可以代替的软件）。从各方面来说你都应该学习docker，对于开发你可以快速构建环境
                         
                     </div>
                     <div class="publish-info">
@@ -1046,8 +1048,8 @@ ls -l<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/algorithm%E7%AE%97%E6%B3%95/" class="post-category">
-                                    algorithm算法
+                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
+                                    web开发
                                 </a>
                             
                             
@@ -1061,8 +1063,12 @@ ls -l<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/algorithm/">
-                        <span class="chip bg-color">algorithm</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
+                    </a>
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
@@ -1076,24 +1082,22 @@ ls -l<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Collect/collect/">
+                <a href="/2018/10/22/HTML/css/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Collect 站点收藏">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="css 在 web 开发中常见操作与学习总结">
                         
-                        <span class="card-title">Collect 站点收藏</span>
+                        <span class="card-title">css 在 web 开发中常见操作与学习总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            常用内容收集整理，内容来自网络与个人整理
+                            css总结笔记，不属于ECMAScript的知识点一般整理到此，可能包括浏览器对象模型，DOM等
 
 
-收藏内容内容来自某位大佬，网络收集与个人整理
-注册码IntelliJ IDEA
-https://blog.csdn.net/songfei_dream/article/details/93161
+自动换行style=’word-wrap:break-word; word-break:break-all;display:block;w
                         
                     </div>
                     <div class="publish-info">
@@ -1104,8 +1108,8 @@ https://blog.csdn.net/songfei_dream/article/details/93161
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/collect/" class="post-category">
-                                    collect
+                            <a href="/categories/css/" class="post-category">
+                                    css
                                 </a>
                             
                             
@@ -1115,8 +1119,12 @@ https://blog.csdn.net/songfei_dream/article/details/93161
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/water/">
-                        <span class="chip bg-color">water</span>
+                    <a href="/tags/css/">
+                        <span class="chip bg-color">css</span>
+                    </a>
+                    
+                    <a href="/tags/html/">
+                        <span class="chip bg-color">html</span>
                     </a>
                     
                 </div>
@@ -1262,7 +1270,7 @@ https://blog.csdn.net/songfei_dream/article/details/93161
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

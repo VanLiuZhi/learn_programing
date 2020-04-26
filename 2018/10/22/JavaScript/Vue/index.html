@@ -414,14 +414,14 @@ Vue一个不错的“简书”入门
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-01-12
+                    2020-04-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.9k
+                    5k
                 </div>
                 
 
@@ -820,6 +820,10 @@ that<span class="token punctuation">.</span>DataList<span class="token punctuati
     el<span class="token punctuation">.</span>checked <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="virtual-Scroller"><a href="#virtual-Scroller" class="headerlink" title="virtual Scroller"></a>virtual Scroller</h2><p>众所周知，渲染性能主要取决于渲染量， 过多的 DOM 会使你的网站速度变得很慢，即使在本地，也会出现相同的问题，但若通过虚拟滚动的方式，也就是在用户滚动时用足够的内容填充屏幕并不断更新，就能让网站保持高速运行，这也是 virtual-scroller 的基本原理。</p>
+<h2 id="缓存组件"><a href="#缓存组件" class="headerlink" title="缓存组件"></a>缓存组件</h2><pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>keep-alive</span> <span class="token attr-name">include</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-view</span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>keep-alive</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>另外路由有生命周期，可以在进入路由，跳去下一个路由的时候做处理，比如改变路由meta数据，然后关联keep-alive实现动态缓存组件</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1347,22 +1351,23 @@ that<span class="token punctuation">.</span>DataList<span class="token punctuati
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/Mac/Iterm2/">
+                <a href="/2018/10/22/JavaScript/ECMAScript/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Iterm2 终端工具">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="ECMAScript6 学习笔记">
                         
-                        <span class="card-title">Iterm2 终端工具</span>
+                        <span class="card-title">ECMAScript6 学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            不错的终端软件
+                            ECMAScript6 是 JavaScript 的第六版本，是一个标准，主要增加了面向对象的支持和一些新特性。
 
 
-移动一个单词在Profile – keys下，找到如同的原配置信息。其实这是已有的功能，不过Mac默认的快捷键被占用了，修改成我们习惯的。分别修改option+←和option+→的映射，选择Action为“Send E
+扩展运算符（ spread ）是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。
+con
                         
                     </div>
                     <div class="publish-info">
@@ -1373,8 +1378,8 @@ that<span class="token punctuation">.</span>DataList<span class="token punctuati
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/mac/" class="post-category">
-                                    mac
+                            <a href="/categories/javascript/" class="post-category">
+                                    javascript
                                 </a>
                             
                             
@@ -1388,12 +1393,8 @@ that<span class="token punctuation">.</span>DataList<span class="token punctuati
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/util/">
-                        <span class="chip bg-color">util</span>
-                    </a>
-                    
-                    <a href="/tags/mac/">
-                        <span class="chip bg-color">mac</span>
+                    <a href="/tags/javascript/">
+                        <span class="chip bg-color">javascript</span>
                     </a>
                     
                 </div>
@@ -1407,19 +1408,25 @@ that<span class="token punctuation">.</span>DataList<span class="token punctuati
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/MongoDB/MongoDB/">
+                <a href="/2018/10/22/JavaScript/element-UI/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="MongoDB NoSQL 数据库">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="element-UI 前端 Vue UI 组件">
                         
-                        <span class="card-title">MongoDB NoSQL 数据库</span>
+                        <span class="card-title">element-UI 前端 Vue UI 组件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MongoDB是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。它支持的数据结构非常松散，是类似json的bson格式，因此可以存储比较复杂的数据类型。Mongo最大的特点是它支持的查询语言非常强
+                            饿了么前端团队出品的Vue UI框架
+
+
+from rulesfrom rules 是表单组件中用于在表单验证规则的属性，把rules绑定给一个对象，对象的属性即为需要做验证的字段，属性值为验证规则
+
+rules: {
+type: [{ r
                         
                     </div>
                     <div class="publish-info">
@@ -1430,8 +1437,8 @@ that<span class="token punctuation">.</span>DataList<span class="token punctuati
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/database/" class="post-category">
-                                    database
+                            <a href="/categories/javascript/" class="post-category">
+                                    javascript
                                 </a>
                             
                             
@@ -1441,12 +1448,16 @@ that<span class="token punctuation">.</span>DataList<span class="token punctuati
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/javascript/">
+                        <span class="chip bg-color">javascript</span>
                     </a>
                     
-                    <a href="/tags/database/">
-                        <span class="chip bg-color">database</span>
+                    <a href="/tags/framework/">
+                        <span class="chip bg-color">framework</span>
+                    </a>
+                    
+                    <a href="/tags/Vue/">
+                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>
@@ -1592,7 +1603,7 @@ that<span class="token punctuation">.</span>DataList<span class="token punctuati
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

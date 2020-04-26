@@ -405,21 +405,21 @@ Security主要思想就是通过filter来实现的，">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-23
+                    2020-04-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    3.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    13 分
                 </div>
                 
 				
@@ -448,11 +448,6 @@ Security主要思想就是通过filter来实现的，">
 <li>框架的核心组件</li>
 </ol>
 <p>SecurityContextHolder 提供对SecurityContext的访问<br>SecurityContext 持有Authentication对象和其他可能需要的信息<br>AuthenticationManager 认证管理器，其中可以包含多个AuthenticationProvider<br>ProviderManager 对象为AuthenticationManager接口的实现类<br>AuthenticationProvider 主要用来进行认证操作的类 调用其中的authenticate()方法去进行认证操作<br>Authentication Spring Security方式的认证主体<br>GrantedAuthority 对认证主题的应用层面的授权，含当前用户的权限信息，通常使用角色表示<br>UserDetails 构建Authentication对象必须的信息，可以自定义，可能需要访问DB得到<br>UserDetailsService 通过username构建UserDetails对象，通过loadUserByUsername根据userName获取UserDetail对象 （可以在这里基于自身业务进行自定义的实现  如通过数据库，xml,缓存获取等）</p>
-<h2 id="OAuth-2-0"><a href="#OAuth-2-0" class="headerlink" title="OAuth 2.0"></a>OAuth 2.0</h2><p>OAuth 的核心就是向第三方应用颁发令牌，OAuth 2.0 规定了四种获得令牌的流程，可以选择一种方式颁发令牌</p>
-<p>授权码（authorization-code）  一般前后端分离用这种<br>隐藏式（implicit）<br>密码式（password）<br>客户端凭证（client credentials）</p>
-<p><code>在程序中，需要做相关的配置，使用上面的英文</code></p>
-<p>注意，不管哪一种授权方式，第三方应用申请令牌之前，都必须先到系统备案，说明自己的身份，然后会拿到两个身份识别码：客户端 ID（client ID）和客户端密钥（client secret）。这是为了防止令牌被滥用，没有备案过的第三方应用，是不会拿到令牌的</p>
-<p><code>在程序中也有这个配置，声名哪些服务能获取令牌</code></p>
 <h2 id="UserDetailsService"><a href="#UserDetailsService" class="headerlink" title="UserDetailsService"></a>UserDetailsService</h2><p>这是一个接口，实现后需要返回一个框架自身的User类型对象，User又是UserDetails的实现</p>
 <p>主要实现loadUserByUsername方法，就是如何通过用户名获取用户对象，这个用户对象必须是框架提供的类型，并且包括了相关的权限信息</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
@@ -509,6 +504,7 @@ Security主要思想就是通过filter来实现的，">
 <li>安全策略配置自定义</li>
 <li>用户详情和密码加密方法自定义</li>
 </ol>
+<p>最简单的实现就是覆盖两个方法，一个负责对请求资源的权限设置，比如哪些路径需要登录。还有另外一个方法，配置认证，就是配置怎么去认证，输入的账号密码是否正确</p>
 <p>刚才对UserDetailService的实现在这里就用到了</p>
 <h3 id="用到的注解"><a href="#用到的注解" class="headerlink" title="用到的注解"></a>用到的注解</h3><p><code>@EnableWebSecurity</code><br>启用WebSecurity，都要配置</p>
 <p><code>@EnableGlobalMethodSecurity(prePostEnabled=true)</code><br>要开启Spring方法级安全，在添加了@Configuration注解的类上再添加@EnableGlobalMethodSecurity注解即可，对请求方法做权限控制，一般都要用</p>
@@ -599,6 +595,70 @@ http<span class="token punctuation">.</span><span class="token function">request
     <span class="token keyword">return</span> securityBuilder<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>有2个and方法，有些方法会返回getBuilder，也和and一样，最后指向securityBuilder</p>
+<h2 id="OAuth-2-0"><a href="#OAuth-2-0" class="headerlink" title="OAuth 2.0"></a>OAuth 2.0</h2><p>项目源码数据库模型地址: <a href="https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql" target="_blank" rel="noopener">https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql</a></p>
+<p>学习一个新技术，最好的方式莫过于直接看源码</p>
+<p>security的使用还是比较简单的，复杂的是Oauth2</p>
+<p>OAuth 的核心就是向第三方应用颁发令牌，OAuth 2.0 规定了四种获得令牌的流程，可以选择一种方式颁发令牌</p>
+<p>授权码（authorization-code）<br>隐藏式（implicit）<br>密码式（password）<br>客户端凭证（client credentials）</p>
+<p>Authorization Code（授权码模式）：正宗的OAuth2的授权模式，客户端先将用户导向认证服务器，登录后获取授权码，然后进行授权，最后根据授权码获取访问令牌；<br>Implicit（简化模式）：和授权码模式相比，取消了获取授权码的过程，直接获取访问令牌；<br>Resource Owner Password Credentials（密码模式）：客户端直接向用户获取用户名和密码，之后向认证服务器获取访问令牌；<br>Client Credentials（客户端模式）：客户端直接通过客户端认证（比如client_id和client_secret）从认证服务器获取访问令牌。</p>
+<p>这里说下自己的理解: </p>
+<p>授权码模式安全级别最高，是因为，认证服务器，授权服务器都是自己信任的，而涉及到客户端获取用户账号密码，是不可信的。</p>
+<p>简单来说，假如我开发了一套大型系统，我提供给各个企业用，企业可以实现自己的访问客户端，但是用户数据在我这里，那么企业自己的客户端就是不可信的</p>
+<p>我们可以通过常见的qq第三方登录来说明。比如通过qq登录，客户端是第三方开发的，它支持qq登录，但是你不会直接把qq密码在客户端上输入，这是不安全的，qq提供认证服务器给客户端，客户端引导用户去qq的认证登录页面，由于这个页面是qq做的，所以它是安全的，你输入账号密码后，得到授权码，之后客户端通过授权码去获取令牌，这样后续qq的接口，比如获取用户详情等，客户端通常需要这些数据来创建自己的用户，之后的qq接口通过授权码访问即可。你会发现，客户端全程拿不到你的密码，所以授权码模式级别高，但是也复杂。只要理解了授权码模式，理解其它模式就简单了</p>
+<p><code>在程序中，需要做相关的配置，使用上面的英文</code></p>
+<p>注意，不管哪一种授权方式，第三方应用申请令牌之前，都必须先到系统备案，说明自己的身份，然后会拿到两个身份识别码：客户端 ID（client ID）和客户端密钥（client secret）。这是为了防止令牌被滥用，没有备案过的第三方应用，是不会拿到令牌的</p>
+<p><code>在程序中也有这个配置，声名哪些服务能获取令牌</code></p>
+<p>在架构设计中，一般存在三种角色</p>
+<ol>
+<li>客户应用</li>
+<li>资源服务器</li>
+<li>授权服务器  </li>
+</ol>
+<p>authorization 授权 authentication 认证</p>
+<p>authentication证明你是你，authorization证明你有这个权限</p>
+<p>简单来说，身份验证是验证您的身份的过程，而授权是验证您有权访问的过程</p>
+<p>参考 <a href="https://www.lagou.com/lgeduarticle/44562.html" target="_blank" rel="noopener">https://www.lagou.com/lgeduarticle/44562.html</a></p>
+<p>客户应用要从资源服务器获取数据，资源服务器会提供API，但是这样的话不安全，所以客户服务器需要提供一个Access Token，资源服务器会校验这个token，来确认这个客户应用是否有访问权限</p>
+<p>那么问题也来了，客户应用的Access Token是怎么来的？这就需要授权服务器了，客户应用去授权服务器上申请Access Token</p>
+<h3 id="涉及到的术语，概念"><a href="#涉及到的术语，概念" class="headerlink" title="涉及到的术语，概念"></a>涉及到的术语，概念</h3><p>复杂体现到术语和概念比较多，首先要理解这些东西，我们直接从代码去理解</p>
+<h3 id="1-资源服务器配置"><a href="#1-资源服务器配置" class="headerlink" title="1. 资源服务器配置"></a>1. 资源服务器配置</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@EnableResourceServer</span>
+ResourceServerConfigurerAdapter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>通常我们会做上面的配置，使用注解，继承一个类，通过这两步来完成资源服务器的配置，下面一步一步的分析</p>
+<p>@EnableResourceServer引入 OAuth2AuthenticationProcessingFilter 过滤器，import的类ResourceServerConfiguration</p>
+<p><code>主要覆盖方法</code></p>
+<p>public void configure(ResourceServerSecurityConfigurer resources)</p>
+<p>public void configure(HttpSecurity http)</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ResourceServerConfiguration</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token keyword">implements</span> <span class="token class-name">Ordered</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="2-授权服务配置"><a href="#2-授权服务配置" class="headerlink" title="2. 授权服务配置"></a>2. 授权服务配置</h3><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@EnableAuthorizationServer</span>
+AuthorizationServerConfigurerAdapter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>主要覆盖方法</code></p>
+<p>public void configure(ClientDetailsServiceConfigurer clients)</p>
+<p>public void configure(AuthorizationServerSecurityConfigurer oauthServer)</p>
+<h3 id="3-Security配置"><a href="#3-Security配置" class="headerlink" title="3. Security配置"></a>3. Security配置</h3><p>@EnableWebSecurity<br>WebSecurityConfigurerAdapter</p>
+<p><code>主要覆盖方法</code></p>
+<p>protected void configure(HttpSecurity http)</p>
+<h3 id="refresh-token"><a href="#refresh-token" class="headerlink" title="refresh_token"></a>refresh_token</h3><p>刷新模式，就是获取令牌的接口如果支持刷新模式，那么直接使用refresh_token就可以获取到令牌，该模式就不需要前面的繁琐流程，直接获取到令牌token，前提是你要有refresh_token，并且它没过期</p>
+<p>refresh_token一般是获取access token的时候返回的</p>
+<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><p>在一个服务上，可以同时实现 资源服务器配置 授权服务配置 Security配置</p>
+<p>一定要理解资源服务器，授权服务器，和security三个配置的职责</p>
+<p><code>资源服务器</code>: 负责控制资源</p>
+<p><code>授权服务器</code>: 发放令牌的</p>
+<p><code>security</code>: 安全校验，比如登录校验，权限校验</p>
+<p>开始用的时候，总感觉有些是重合的，但是其实是各司其职的</p>
+<p>然后根据不同的模式(4种)去做</p>
+<p>授权码模式相对来说比较繁琐，密码模式比较简单</p>
+<p>直接使用cloud的依赖，比较适合cloud的项目</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--oauth2依赖--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-oauth2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!--security依赖--></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-security<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1146,8 +1206,8 @@ XMLH
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
-                                    web开发
+                            <a href="/categories/Web/" class="post-category">
+                                    Web
                                 </a>
                             
                             
@@ -1157,8 +1217,12 @@ XMLH
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                    <a href="/tags/Web/">
+                        <span class="chip bg-color">Web</span>
                     </a>
                     
                 </div>
@@ -1187,13 +1251,7 @@ XMLH
                             mybatis 学习笔记和基础概念，在spring boot中的使用配置总结
 
 
-基础总共有两种使用方式：1. 无配置文件注解版，这种模式就不需要XML文件了；2. 使用传统的XML文件
-2 类型的使用流程总结
-流程：
-
-添加依赖
-
-配置s
+JDBC 配置参数官方地址 https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-referenc
                         
                     </div>
                     <div class="publish-info">
@@ -1219,8 +1277,8 @@ XMLH
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1366,7 +1424,7 @@ XMLH
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

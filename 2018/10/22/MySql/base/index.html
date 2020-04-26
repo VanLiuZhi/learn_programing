@@ -411,21 +411,21 @@ sho">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2019-12-27
+                    2020-04-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.1k
+                    5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    18 分
                 </div>
                 
 				
@@ -529,28 +529,30 @@ collation-server=utf8_general_ci<span aria-hidden="true" class="line-numbers-row
 <li>存取路径可以由用户建立、删除，也可以由系统动态地建立、删除。例如，在执行查询时DBMS的查询优化器会根据优化策略自动地建立索引，以提高查询效率；</li>
 <li>存取路径的物理组织通常采用顺序文件、Ｂ+树文件和散列文件结构等等。</li>
 </ul>
+<h2 id="表结构"><a href="#表结构" class="headerlink" title="表结构"></a>表结构</h2><p>innodb 表，数据和索引是一个文件<br>myisim 表，数据，索引，三个分开</p>
+<h2 id="为什么直接跳到8"><a href="#为什么直接跳到8" class="headerlink" title="为什么直接跳到8"></a>为什么直接跳到8</h2><p>MySQL 5.5 -&gt; MySQL 5<br>MySQL 5.6 -&gt; MySQL 6<br>MySQL 5.7 -&gt; MySQL 7<br>MySQL 8.0 -&gt; MySQL 8</p>
 <h2 id="DQL-DML-DDL-DCL"><a href="#DQL-DML-DDL-DCL" class="headerlink" title="DQL DML DDL DCL"></a>DQL DML DDL DCL</h2><p>SQL语言共分为四大类：数据查询语言DQL，数据操纵语言DML，数据定义语言DDL，数据控制语言DCL。</p>
 <ol>
-<li>数据查询语言DQL<br>数据查询语言DQL基本结构是由SELECT子句，FROM子句，WHERE<br>子句组成的查询块：<br>SELECT &lt;字段名表&gt;<br>FROM &lt;表或视图名&gt;<br>WHERE &lt;查询条件&gt;</li>
-</ol>
-<p>2 .数据操纵语言DML data manipulation language<br>数据操纵语言DML主要有三种形式：</p>
-<p>1) 插入：INSERT<br>2) 更新：UPDATE<br>3) 删除：DELETE</p>
-<ol start="3">
-<li>数据定义语言DDL<br>数据定义语言DDL用来创建数据库中的各种对象—–表、视图、<br>索引、同义词、聚簇等如：<br>CREATE TABLE/VIEW/INDEX/SYN/CLUSTER<br>| | | | |<br>表 视图 索引 同义词 簇</li>
+<li><p>数据查询语言DQL<br>数据查询语言DQL基本结构是由SELECT子句，FROM子句，WHERE<br>子句组成的查询块：<br>SELECT &lt;字段名表&gt;<br>FROM &lt;表或视图名&gt;<br>WHERE &lt;查询条件&gt;</p>
+</li>
+<li><p>数据操纵语言DML data manipulation language<br>数据操纵语言DML主要有三种形式：<br>1) 插入：INSERT<br>2) 更新：UPDATE<br>3) 删除：DELETE</p>
+</li>
+<li><p>数据定义语言DDL<br>数据定义语言DDL用来创建数据库中的各种对象—–表、视图、<br>索引、同义词、聚簇等如：<br>CREATE TABLE/VIEW/INDEX/SYN/CLUSTER<br>| | | | |<br>表 视图 索引 同义词 簇</p>
+</li>
 </ol>
 <p>DDL操作是隐性提交的！不能rollback </p>
 <ol start="4">
 <li>数据控制语言DCL<br>数据控制语言DCL用来授予或回收访问数据库的某种特权，并控制<br>数据库操纵事务发生的时间及效果，对数据库实行监视等。如：<br>1) GRANT：授权。</li>
 </ol>
 <p>2) ROLLBACK [WORK] TO [SAVEPOINT]：回退到某一点。<br>回滚—ROLLBACK<br>回滚命令使数据库状态回到上次最后提交的状态。其格式为：<br>SQL&gt;ROLLBACK;</p>
-<p>3) COMMIT [WORK]：提交。<br>在数据库的插入、删除和修改操作时，只有当事务在提交到数据<br>库时才算完成。在事务提交前，只有操作数据库的这个人才能有权看<br>到所做的事情，别人只有在最后提交完成后才可以看到。<br>提交数据有三种类型：显式提交、隐式提交及自动提交。下面分<br>别说明这三种类型。</p>
+<p>3) COMMIT [WORK]：提交。<br>在数据库的插入、删除和修改操作时，只有当事务在提交到数据<br>库时才算完成。在事务提交前，只有操作数据库的这个人才能有权看<br>到所做的事情，别人只有在最后提交完成后才可以看到(不是绝对的，看当前的事务隔离级别)。<br>提交数据有三种类型：显式提交、隐式提交及自动提交。下面分<br>别说明这三种类型。</p>
 <p>(1) 显式提交<br>用COMMIT命令直接完成的提交为显式提交。其格式为：<br>SQL&gt;COMMIT；</p>
 <p>(2) 隐式提交<br>用SQL命令间接完成的提交为隐式提交。这些命令是：<br>ALTER，AUDIT，COMMENT，CONNECT，CREATE，DISCONNECT，DROP，<br>EXIT，GRANT，NOAUDIT，QUIT，REVOKE，RENAME。</p>
 <p>(3) 自动提交<br>若把AUTOCOMMIT设置为ON，则在插入、修改、删除语句执行后，<br>系统将自动进行提交，这就是自动提交。其格式为：<br>SQL&gt;SET AUTOCOMMIT ON；</p>
 <h2 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h2><p>SELECT @@tx_isolation 查看数据库隔离级别，版本不一致命令也不同，8.0 为 select @@transaction_isolation</p>
 <p>start transaction;<br>update abc ts set ts.name=’abc’ where ts.id=’1’;</p>
 <p>ACID 原子性 一致性 隔离性 持久性</p>
-<p>事务隔离级别                   脏读     不可重复读    幻读<br>读未提交（read-uncommitted）    是      是       是<br>不可重复读（read-committed）    否      是       是<br>可重复读（repeatable-read）       否      否       是<br>串行化（serializable）           否      否       否</p>
+<p>事务隔离级别                   脏读     不可重复读    幻读<br>读未提交（read-uncommitted）    是      是       是<br>不可重复读(读已提交)（read-committed）    否      是       是<br>可重复读（repeatable-read）       否      否       是<br>串行化（serializable）           否      否       否</p>
 <p>理解事务隔离级别产生的问题: 脏读，不可重复读，幻读</p>
 <p>并发带来的问题: 丢失更新</p>
 <p>幻读举例，MySQL8.0 默认事务隔离级别，不可重复读</p>
@@ -571,6 +573,39 @@ collation-server=utf8_general_ci<span aria-hidden="true" class="line-numbers-row
 <li><p>反范式化<br>反范式化指的是通过增加冗余或重复的数据来提高数据库的读性能。<br>例如：在上例中的user_role用户-角色中间表增加字段role_name。<br>反范式化可以减少关联查询时，join表的次数。</p>
 </li>
 </ol>
+<h2 id="InnoDB-架构线程"><a href="#InnoDB-架构线程" class="headerlink" title="InnoDB 架构线程"></a>InnoDB 架构线程</h2><p>采用的是多线程模型，主要包括:</p>
+<ol>
+<li>Master Thread</li>
+</ol>
+<p>核心的后台线程，主要负责把缓冲池的数据异步刷新到磁盘，保证数据一致性</p>
+<ol start="2">
+<li>IO Thread</li>
+</ol>
+<p>存储引擎使用大量的异步IO处理IO请求，IO Thread主要负责这些IO请求的回调</p>
+<p>又可以细分到 write read insert buffer log 4中 IO Thread，线程数量不是单一的，读写线程比较多，版本演进也发生了变化</p>
+<ol start="3">
+<li>Purge Thread</li>
+</ol>
+<p>事务被提交后，使用到的undolog可能不再需要，需要Purge Thread来回收已经使用过的undo页。随着版本的演进也发生了变化</p>
+<ol start="4">
+<li>Page Cleaner Thread</li>
+</ol>
+<p>用来处理脏页刷新的，减轻Master Thread的压力</p>
+<h2 id="聚蔟索引和非聚蔟索引"><a href="#聚蔟索引和非聚蔟索引" class="headerlink" title="聚蔟索引和非聚蔟索引"></a>聚蔟索引和非聚蔟索引</h2><p>或者叫聚集索引也行</p>
+<p>非聚集索引索引项顺序存储，但索引项对应的内容却是随机存储的；</p>
+<p>表中主键id是该表的聚集索引、name为非聚集索引；<br>表中的每行数据都是按照聚集索引id排序存储的；<br>比如要查找name=’Arla’和name=’Arle’的两个同学，他们在name索引表中位置可能是相邻的，但是实际存储位置可能差的很远(B+树存储)<br>name索引表节点按照name排序，检索的是每一行数据的<code>主键</code><br>聚集索引表按照主键id排序，检索的是每一行数据的<code>真实内容</code></p>
+<p>也就是说查询name=’Arle’的记录时，首相通过name索引表查找到Arle的主键id（可能有多个主键id，因为有重名的同学），再根据主键id的聚集索引找到相应的行记录；</p>
+<p>聚集索引一般是表中的主键索引，如果表中没有显示指定主键，则会选择表中的第一个不允许为NULL的唯一索引，如果还是没有的话，就采用Innodb存储引擎为每行数据内置的6字节ROWID作为聚集索引</p>
+<p>每张表只有一个聚集索引，因为聚集索引在精确查找和范围查找方面良好的性能表现（相比于普通索引和全表扫描），聚集索引就显得弥足珍贵，聚集索引选择还是要慎重的（一般不会让没有语义的自增id充当聚集索引）</p>
+<p>sql举例，1用了主键索引，2用了非聚蔟索引。1就是顺序查找，然后直接得到数据。2就name找id，id可能是离散存储不是顺序的，然后通过id取到数据。总体来说多了一层IO，也就是回表，而且不能顺序读取，也会有一定的性能损坏</p>
+<p>（1）select * from student where id &gt;5000 and id &lt;20000;</p>
+<p>（2）select * from student where name &gt; ‘Alie’ and name &lt; ‘John’;</p>
+<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><p>悲观锁用for_update<br>乐观锁 通过判断version，不是一般事务隔离是可重复读吗？那么多个线程读到的版本应该是一样的吧，确实，就是为了这样，比如先读了version，是1。然后</p>
+<p>把select语句放在事务中,查询的就是master主库了 感觉这句话说的不对，应该和框架有关</p>
+<p>锁</p>
+<p>共享锁<br>排它锁</p>
+<p>意向共享锁<br>意向排它锁</p>
+<p>间隙锁</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1090,23 +1125,20 @@ collation-server=utf8_general_ci<span aria-hidden="true" class="line-numbers-row
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/MySql/sqlAlchemy-query/">
+                <a href="/2018/10/22/MongoDB/MongoEngine/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="sqlAlchemy-query 常见操作总结">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="MongoEngine 官方文档学习笔记">
                         
-                        <span class="card-title">sqlAlchemy-query 常见操作总结</span>
+                        <span class="card-title">MongoEngine 官方文档学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL 的 Python 版 ORM
-
-
-sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
-模型创建模型需要继承 db.Model ，db.Colum类描述table的字段，__tablename__ 描述ta
+                            文档http://docs.mongoengine.org/index.htmlMongoEngine是Python操作MongoDB的ORM封装，可以看到很多ORM框架的影子，比如Django的ORM。底层调用了pymongo。
+基本用法
                         
                     </div>
                     <div class="publish-info">
@@ -1132,12 +1164,12 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/database/">
-                        <span class="chip bg-color">database</span>
-                    </a>
-                    
                     <a href="/tags/python/">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/database/">
+                        <span class="chip bg-color">database</span>
                     </a>
                     
                 </div>
@@ -1151,22 +1183,23 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Other/base/">
+                <a href="/2018/10/22/MySql/install-problem/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="计算机知识补充">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="MySQL install-problem">
                         
-                        <span class="card-title">计算机知识补充</span>
+                        <span class="card-title">MySQL install-problem</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            计算机知识补充
+                            安装MySQL遇到的问题
 
 
-为什么不要用记事本来写代码？可能有人会怪windows怎么那么傻，一个\n不就可以了，为什么要用\r\n呢，给我们造成了多大的麻烦。其实这也不能怪windows。使用\r\n的历史可以追溯到遥远的19世纪。 那时候发明的
+安装遇到的问题安装软件总会遇到很多问题，很多问题仅在当时情况下出现，其实解决的思路都是大致的，多看报错和官方文档。
+mysql.sock 无法被创建mysql 的链接需要借助这个套接字，如果不小心删除了，会导致
                         
                     </div>
                     <div class="publish-info">
@@ -1177,8 +1210,8 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/other/" class="post-category">
-                                    other
+                            <a href="/categories/database/" class="post-category">
+                                    database
                                 </a>
                             
                             
@@ -1188,12 +1221,12 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/learn/">
-                        <span class="chip bg-color">learn</span>
+                    <a href="/tags/note/">
+                        <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/other/">
-                        <span class="chip bg-color">other</span>
+                    <a href="/tags/database/">
+                        <span class="chip bg-color">database</span>
                     </a>
                     
                 </div>
@@ -1339,7 +1372,7 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

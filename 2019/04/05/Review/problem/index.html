@@ -4,12 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java review, Java，Python，JavaScript，Linux">
+    <meta name="keywords" content="Java review Spring, Java，Python，JavaScript，Linux">
     <meta name="description" content="review
 
 
-problem泊松分布的参数λ是单位时间(或单位面积)内随机事件的平均发生次数。 泊松分布适合于描述单位时间内随机事件发生的次数。
-一致性哈希先了解一个概念，取模和取余，如果除数都是正整数，那么取余和取模都是一样的，求余数">
+一致性哈希先了解一个概念，取模和取余，如果除数都是正整数，那么取余和取模都是一样的，求余数当 x 和 y 的正负号一样的时候，两个函数结果是等同的；当 x 和 y 的符号不同时，rem函数结果的符号和 x 的一样，而 mo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +16,7 @@ problem泊松分布的参数λ是单位时间(或单位面积)内随机事件的
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java review | VanLiuZhi</title>
+    <title>Java review Spring | VanLiuZhi</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,13 +244,13 @@ problem泊松分布的参数λ是单位时间(或单位面积)内随机事件的
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java review
+                        Java review Spring
                     </div>
                 </div>
             </div>
@@ -405,21 +404,21 @@ problem泊松分布的参数λ是单位时间(或单位面积)内随机事件的
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-26
+                    2020-04-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 				
@@ -438,9 +437,45 @@ problem泊松分布的参数λ是单位时间(或单位面积)内随机事件的
                 <p>review</p>
 <a id="more"></a>
 
-<h1 id="problem"><a href="#problem" class="headerlink" title="problem"></a>problem</h1><p>泊松分布的参数λ是单位时间(或单位面积)内随机事件的平均发生次数。 泊松分布适合于描述单位时间内随机事件发生的次数。</p>
 <h2 id="一致性哈希"><a href="#一致性哈希" class="headerlink" title="一致性哈希"></a>一致性哈希</h2><p>先了解一个概念，取模和取余，如果除数都是正整数，那么取余和取模都是一样的，求余数<br>当 x 和 y 的正负号一样的时候，两个函数结果是等同的；当 x 和 y 的符号不同时，rem函数结果的符号和 x 的一样，而 mod 和 y 一样</p>
 <p>在分布式中，或者用分库分表来说明，user表存在在3台机器上，用<code>用户id的hashcode % 3</code>来决定该用户的数据存储在哪台机器上。当机器增加到4台的时候，此时的模3就不对了，造成数据混乱。而一致性哈希算法就是解决这个问题的，一致性哈希保证当分布式环境的节点增加的时候，原来请求分配到的节点还是原来的节点</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 有5个用户</span>
+    Integer a <span class="token operator">=</span> <span class="token number">123456</span><span class="token punctuation">;</span>
+    Integer b <span class="token operator">=</span> <span class="token number">123457</span><span class="token punctuation">;</span>
+    Integer c <span class="token operator">=</span> <span class="token number">123458</span><span class="token punctuation">;</span>
+    Integer d <span class="token operator">=</span> <span class="token number">123459</span><span class="token punctuation">;</span>
+    Integer e <span class="token operator">=</span> <span class="token number">123460</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 平均分配到3台机器</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"--------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 平均分配到4台机器</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//        结果</span>
+    <span class="token comment" spellcheck="true">//        0</span>
+    <span class="token comment" spellcheck="true">//        1</span>
+    <span class="token comment" spellcheck="true">//        2</span>
+    <span class="token comment" spellcheck="true">//        0</span>
+    <span class="token comment" spellcheck="true">//        1</span>
+    <span class="token comment" spellcheck="true">//                --------------</span>
+    <span class="token comment" spellcheck="true">//        0</span>
+    <span class="token comment" spellcheck="true">//        1</span>
+    <span class="token comment" spellcheck="true">//        2</span>
+    <span class="token comment" spellcheck="true">//        3</span>
+    <span class="token comment" spellcheck="true">//        0</span>
+
+    <span class="token comment" spellcheck="true">// 对于d,e来说，增加机器的时候就错乱了</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="http无状态"><a href="#http无状态" class="headerlink" title="http无状态"></a>http无状态</h2><p>这句话体现在每个请求都是独立的，第二次的请求和第一次不会有关联</p>
 <h2 id="对称加密和非对称加密"><a href="#对称加密和非对称加密" class="headerlink" title="对称加密和非对称加密"></a>对称加密和非对称加密</h2><p>1、加密和解密过程不同</p>
 <p>对称加密过程和解密过程使用的同一个密钥，加密过程相当于用原文+密钥可以传输出密文，同时解密过程用密文-密钥可以推导出原文。但非对称加密采用了两个密钥，一般使用公钥进行加密，使用私钥进行解密。</p>
@@ -448,76 +483,32 @@ problem泊松分布的参数λ是单位时间(或单位面积)内随机事件的
 <p>对称加密解密的速度比较快，适合数据比较长时的使用。非对称加密和解密花费的时间长、速度相对较慢，只适合对少量数据的使用。</p>
 <p>3、传输的安全性不同</p>
 <p>对称加密的过程中无法确保密钥被安全传递，密文在传输过程中是可能被第三方截获的，如果密码本也被第三方截获，则传输的密码信息将被第三方破获，安全性相对较低。<br>非对称加密算法中私钥是基于不同的算法生成不同的随机数，私钥通过一定的加密算法推导出公钥，但私钥到公钥的推导过程是单向的，也就是说公钥无法反推导出私钥。所以安全性较高。</p>
-<h2 id="Spring-boot-知识点收集"><a href="#Spring-boot-知识点收集" class="headerlink" title="Spring boot 知识点收集"></a>Spring boot 知识点收集</h2><ol>
-<li><p>配置: server.context-path 就是在请求上加个默认路径</p>
-</li>
-<li><p>@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})</p>
-</li>
-</ol>
-<p>排除此类的autoconfig，比如我们引入了mybatis的依赖，按照Spring的规范，就要装配对应的bean，没有配置数据库会报错。这个时候就能用这个注解来取消某些类的自动装配</p>
-<ol start="3">
-<li>@EnableDiscoveryClient与@EnableEurekaClient</li>
-</ol>
-<p>都是服务client用的，如果用eureka之外的，用EnableDiscoveryClient，主要是为了组件通用化，可以通过注解参数取消服务注册，新版本可以去掉注解，具体看使用哪个版本</p>
-<ol start="4">
-<li><p>spring-cloud-config-client 和 spring-cloud-starter-config 都是配置依赖，区别是一个是starter风格的</p>
-</li>
-<li><p>@Component(组件) @Service(业务层) @Controller(web控制层) @Repository(持久层) 都是组件，等效的，不过语义不一样</p>
-</li>
-</ol>
-<p>@Controller，装载的bean名称默认是类名首字母小写的名称，可以指定名称</p>
-<p>@Service 用在一个接口的实现类上面</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span><span class="token punctuation">(</span><span class="token string">"UserDetailsService"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserDetailsServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">UserDetailsService</span> <span class="token punctuation">{</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>@Service(“UserDetailsService”)注解是告诉Spring，当Spring要创建UserDetailsServiceImpl的的实例时，bean的名字必须叫做”UserDetailsService”，这样当Action需要使用UserServiceImpl的的实例时,就可以由Spring创建好的”UserDetailsService”，然后注入给Action：在Action只需要声明一个名字叫“UserDetailsService”的变量来接收由Spring注入的”UserDetailsService”即可，具体代码如下：</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 注入UserDetailsService</span>
-<span class="token annotation punctuation">@Resource</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"UserDetailsService"</span><span class="token punctuation">)</span>
-<span class="token keyword">private</span> UserDetailsService userDetailsService<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><strong>@Resource的作用相当于@Autowired，只不过@Autowired按byType自动注入，而@Resource默认按 byName自动注入罢了</strong></p>
-<p>@Repository对应数据访问层Bean</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Repository</span><span class="token punctuation">(</span>value<span class="token operator">=</span><span class="token string">"userDao"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserDaoImpl</span> <span class="token keyword">extends</span> <span class="token class-name">BaseDaoImpl</span><span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="6">
-<li>@ConfigurationProperties(prefix = “mysql”)</li>
-</ol>
-<p>使用这个注解，可以把配置的属性装配到对象上，mysql是配置文件中的属性前缀，下面把url的属性拿到，实例对象的时候就用配置的属性去实例化</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
-<span class="token annotation punctuation">@Configuration</span>
-<span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"mysql"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MysqlData</span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> String url<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//    private Integer port;</span>
-<span class="token punctuation">}</span>
-
-<span class="token annotation punctuation">@Autowired</span>
-<span class="token keyword">private</span> MysqlData mysqlData<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="7">
-<li>@Primary @Qualifier</li>
-</ol>
-<p>这两个注解都是用来对于Autowrite装配的时候，如果有多个实现，可以使用这两个注解<br>Qualifier接收一个参数指明实现的名称，和Autowrite一起使用，Primary只能存在一个(比如有2个实现，只能用在其中一个实现类上)，被注解的实现类优先用于Autowrite装配</p>
-<ol start="8">
-<li>@EnableAutoConfiguration</li>
-</ol>
-<p>对自动装配这个点再做一些补充</p>
-<p>要知道Spring的思想就是约定大于配置，这个注解在@SpringBootApplication下已经包含了，当我们使用pom引入依赖的时候，这些依赖的bean就会被装配的，主要就是自动装配发挥了作用，而约定就是这些依赖要按照一定的规范去开发，大家都遵守这些约定，才能被Spring装配到</p>
-<p>getCandidateConfigurations  读取spring-boot项目的classpath下META-INF/spring.factories的内容</p>
-<ol start="9">
-<li>修改系统服务的默认地址</li>
-</ol>
-<p>例如在监控中: 如果对<a href="http://localhost:8030/hystrix" target="_blank" rel="noopener">http://localhost:8030/hystrix</a> 地址中的hystrix 小尾巴不满意怎么办？还记得Spring MVC的服务器端跳转（forward）吗？只需添加类似如下的Controller，就可以使用<a href="http://localhost:8030/" target="_blank" rel="noopener">http://localhost:8030/</a> 访问到Hystrix Dashboard首页了。</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HystrixIndexController</span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span>
-  <span class="token keyword">public</span> String <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token string">"forward:/hystrix"</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h2><p>tcc lcn mq atomik seata</p>
 <h2 id="分布式session"><a href="#分布式session" class="headerlink" title="分布式session"></a>分布式session</h2><p>Spring-boot-statrte-data-redis</p>
+<h2 id="静态化"><a href="#静态化" class="headerlink" title="静态化"></a>静态化</h2><p>velocity freemarker 模板引擎</p>
+<h2 id="Component-需不需要-Autowired"><a href="#Component-需不需要-Autowired" class="headerlink" title="@Component 需不需要 @Autowired"></a>@Component 需不需要 @Autowired</h2><p>该问题还没解决，我自定义一个普通的类，用component注解<br><code>private MyUser myUser;</code> 去使用报空指针错误，必须要加上Autowired注解</p>
+<p>如果我在构造器中</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">MyUser</span><span class="token punctuation">(</span>RedisTemplate<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> redisTemplate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate <span class="token operator">=</span> redisTemplate<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>RedisTemplate是框架带的，加了这个后，可以不用Autowired注解访问</p>
+<p>这个问题值得探讨，以前全都用Autowired，后来我发现有些人的不用也行，但是不是全部这样的，猜测是有依赖可以</p>
+<h2 id="基本服务容器配置"><a href="#基本服务容器配置" class="headerlink" title="基本服务容器配置"></a>基本服务容器配置</h2><h3 id="nnginx"><a href="#nnginx" class="headerlink" title="nnginx"></a>nnginx</h3><p>docker run -p 80:80 –name nginx <br>-v /Users/liuzhi/mydata/nginx/html:/usr/share/nginx/html <br>-v /Users/liuzhi/mydata/nginx/logs:/var/log/nginx  <br>-d nginx:1.10</p>
+<p>docker run -p 8091:80 –name nginx <br>-v /Users/liuzhi/mydata/nginx/html:/usr/share/nginx/html <br>-v /Users/liuzhi/mydata/nginx/logs:/var/log/nginx  <br>-v /Users/liuzhi/mydata/nginx/conf:/etc/nginx <br>-d nginx:1.10</p>
+<h3 id="rabbitmq"><a href="#rabbitmq" class="headerlink" title="rabbitmq"></a>rabbitmq</h3><p>docker run -d –name rabbitmq <br>–publish 5671:5671 –publish 5672:5672 –publish 4369:4369 <br>–publish 25672:25672 –publish 15671:15671 –publish 15672:15672 <br>rabbitmq:3.7.15</p>
+<h3 id="elasticsearch"><a href="#elasticsearch" class="headerlink" title="elasticsearch"></a>elasticsearch</h3><p>docker run -p 9200:9200 -p 9300:9300 –name elasticsearch <br>-e “discovery.type=single-node” <br>-e “cluster.name=elasticsearch” <br>-d elasticsearch:6.4.0</p>
+<p>docker run -p 9201:9200 –name elasticsearch2 <br>-d elasticsearch:5.2.2</p>
+<p>docker run -p 9200:9200 -p 9300:9300 –name elasticsearch-5 <br>-e “discovery.type=single-node” <br>-e “cluster.name=elasticsearch” <br>-d elasticsearch:5.2.2</p>
+<h3 id="mongo"><a href="#mongo" class="headerlink" title="mongo"></a>mongo</h3><p>docker run -p 27017:27017 –name mongo-4-2-3 <br>-v /Users/liuzhi/mydata/mongo-4-2-3/db:/data/db <br>-d mongo:4.2.3</p>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>docker run –name redis-5.7 –requirepass “$123qwe” -p 6377:6379 redis:5.0.7-buster</p>
+<p>appendonly yes 开启持久化，数据存储在data目录，所以这个目录要映射出来，不然重启数据丢失，持久化就没有意义</p>
+<p>docker run -p 6377:6379 –name redis-5.7 <br>-v /Users/liuzhi/mydata/redis/data:/data <br>-d redis:5.0.7-buster redis-server –appendonly yes –requirepass “qweEX123”</p>
+<p>docker run –name redis -d redis:5.0.7-buster -p 6379:6379 –requirepass “qweEX123”</p>
+<p>docker run –name redis-3.2 -p 6479:6379 -d redis:3.2 </p>
+<h3 id="mysql-启动容器时区配置"><a href="#mysql-启动容器时区配置" class="headerlink" title="mysql 启动容器时区配置"></a>mysql 启动容器时区配置</h3><p>docker run –name mysql2 -p 3506:3306 \<br>-e MYSQL_ROOT_PASSWORD=test123456 \<br>-e TZ=Asia/Shanghai -d mysql:5.7 \<br>–default-time_zone=’+8:00’</p>
+<p>docker run -p 5506:3306 –name mysql-5.7-docker <br>-v /Users/liuzhi/mydata/mysql/log:/var/log/mysql <br>-v /Users/liuzhi/mydata/mysql/data:/var/lib/mysql <br>-v /Users/liuzhi/mydata/mysql/conf:/etc/mysql <br>-e MYSQL_ROOT_PASSWORD=root123  <br>-d mysql:5.7 <br>–default-time_zone=’+8:00’</p>
+<p>可以用TZ改时区，默认是UTC TZ=Asia/Shanghai 改成CST<br>记得一定加default-time_zone</p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><p><code>public boolean equalsIgnoreCase(String anotherString)</code> 字符串对象调用，和一个字符串比较，不区分大小写</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1037,13 +1028,13 @@ problem泊松分布的参数λ是单位时间(或单位面积)内随机事件的
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/04/05/Review/MySQL/">
+                <a href="/2019/04/05/Review/Overview/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Java review">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java review 散问题">
                         
-                        <span class="card-title">Java review</span>
+                        <span class="card-title">Java review 散问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1052,9 +1043,14 @@ problem泊松分布的参数λ是单位时间(或单位面积)内随机事件的
                             review
 
 
-表结构innodb 表，数据和索引是一个文件myisim 表，数据，索引，三个分开
-为什么直接跳到8 滑稽
-MySQL 5.5 -&gt; MySQL 5MySQL 5.6 -&gt; MySQL 6MySQL 5.7 -
+待处理接口幂等性：
+
+全局唯一ID
+去重表
+状态机
+
+创建多线程有几种方式？
+UDP是基于报文发送的，从UDP的帧结构可以看出，在UDP首部采用了16bit来指示UDP数据报文的长度，因此在应用层能很好的将不同的数据报文区
                         
                     </div>
                     <div class="publish-info">
@@ -1095,35 +1091,35 @@ MySQL 5.5 -&gt; MySQL 5MySQL 5.6 -&gt; MySQL 6MySQL 5.7 -
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/05/Review/currency/">
+                <a href="/2019/03/19/Web/Kafka/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Java review">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Kafka 学习笔记">
                         
-                        <span class="card-title">Java review</span>
+                        <span class="card-title">Kafka 学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            review
+                            消息队列Kafka
 
 
-基础与名词解释竞态条件: 多个线程竞争同一个资源，如果对资源的访问顺序敏感，就称存在竞态条件临界区: 导致竞态条件发生的代码称为临界区
-Java运行至少启动两个线程，一个是main线程，一个是垃圾回收线程;Java启动的每
+基础概念和术语Partition 分区，Partition是物理上的概念，每个Topic包含一个或多个Partition
+Consumer 消费者 向Kafka broker读取消息的客户端Consumer Grou
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/Middleware/" class="post-category">
+                                    Middleware
                                 </a>
                             
                             
@@ -1133,12 +1129,12 @@ Java运行至少启动两个线程，一个是main线程，一个是垃圾回收
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -1284,7 +1280,7 @@ Java运行至少启动两个线程，一个是main线程，一个是垃圾回收
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

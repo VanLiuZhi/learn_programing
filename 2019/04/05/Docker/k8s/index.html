@@ -8,8 +8,8 @@
     <meta name="description" content="Kubernetes 笔记
 
 
-基础协议规范:
-CNI( Container Network Interface)CSI（Container Storage Interface）CRI（Container Runtime Interface">
+基础各个服务架构一句话总结: Kubernetes是由容器和进程互相配合实现的
+这句话的意思是，部分操作，比如apiserver，scheduler是由容器来完成的，而像Kubelet是一个进程。Kubele">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -369,16 +369,16 @@ CNI( Container Network Interface)CSI（Container Storage Interface）CRI（Conta
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/note/">
+                                <span class="chip bg-color">note</span>
+                            </a>
+                        
                             <a href="/tags/linux/">
                                 <span class="chip bg-color">linux</span>
                             </a>
                         
                             <a href="/tags/docker/">
                                 <span class="chip bg-color">docker</span>
-                            </a>
-                        
-                            <a href="/tags/note/">
-                                <span class="chip bg-color">note</span>
                             </a>
                         
                     </div>
@@ -409,21 +409,21 @@ CNI( Container Network Interface)CSI（Container Storage Interface）CRI（Conta
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-08
+                    2020-04-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    578
+                    900
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 				
@@ -442,12 +442,15 @@ CNI( Container Network Interface)CSI（Container Storage Interface）CRI（Conta
                 <p>Kubernetes 笔记</p>
 <a id="more"></a>
 
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>协议规范:</p>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>各个服务架构一句话总结: Kubernetes是由容器和进程互相配合实现的</p>
+<p>这句话的意思是，部分操作，比如apiserver，scheduler是由容器来完成的，而像Kubelet是一个进程。Kubelet 实现了集群中最重要的关于 Node 和 Pod 的控制功能</p>
+<p>(不负责任的猜想，可能出于架构的设计，Kubelet并不是由容器提供的)</p>
+<p>协议规范:</p>
 <p>CNI( Container Network Interface)<br>CSI（Container Storage Interface）<br>CRI（Container Runtime Interface）</p>
 <p>etcd: 是一个高可用的分布式键值(key-value)数据库。etcd内部采用raft协议作为一致性算法，有点像zk，k8s集群使用etcd作为它的数据后端，etcd是一种无状态的分布式数据存储集群。数据以key-value的形式存储在其中</p>
 <p>swap: 在k8s中最好禁用swap，以免发生集群无法调度问题</p>
 <p>flannel: 用来通信的网络插件。要符号CNI规范</p>
-<h2 id="k8s-用的的镜像"><a href="#k8s-用的的镜像" class="headerlink" title="k8s 用的的镜像"></a>k8s 用的的镜像</h2><p>master节点</p>
+<h2 id="k8s-用的的镜像示例"><a href="#k8s-用的的镜像示例" class="headerlink" title="k8s 用的的镜像示例"></a>k8s 用的的镜像示例</h2><p>master节点</p>
 <table>
 <thead>
 <tr>
@@ -525,6 +528,7 @@ CNI( Container Network Interface)CSI（Container Storage Interface）CRI（Conta
 <td align="center">3.1da86e6ba6ca12yearsago742kB</td>
 </tr>
 </tbody></table>
+<p>除了容器外，还需要kubelet才是完整的</p>
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>kubectl explain node</p>
 <p>kubectl get pods -n kube-system -o wide<br>kubectl get nodes -o wide  </p>
 <p><code>kubectl get node</code> 可以使用 -o 配合 wide json yaml</p>
@@ -536,6 +540,13 @@ CNI( Container Network Interface)CSI（Container Storage Interface）CRI（Conta
 <p>Always<br>总是拉取：<br>首先获取仓库镜像信息，如果仓库中的镜像与本地不同，那么仓库中的镜像会被拉取并覆盖本地。<br>如果仓库中的镜像与本地一致，那么不会拉取镜像。<br>如果仓库不可用，那么pod运行失败。</p>
 <p>IfNotPresent<br>优先使用本地：<br>如果本地存在镜像，则使用本地的，<br>不管仓库是否可用。<br>不管仓库中镜像与本地是否一致。</p>
 <p>Never<br>只使用本地镜像，如果本地不存在，则pod运行失败</p>
+<h2 id="固定node发布"><a href="#固定node发布" class="headerlink" title="固定node发布"></a>固定node发布</h2><p>deploy上用选择器，就可以固定在一个node上</p>
+<h2 id="资源删除"><a href="#资源删除" class="headerlink" title="资源删除"></a>资源删除</h2><p>一般是 delete -f .yaml 删除对应的资源，然后apply再应用，资源生效</p>
+<p>删除pod: 先删除pod，然后再删除deployment。 只删除pod，去查看的时候pod还是存在的，再去删除dep，查看pod消失</p>
+<h2 id="service-和-deployment"><a href="#service-和-deployment" class="headerlink" title="service 和 deployment"></a>service 和 deployment</h2><p>deployment 负责创建 pod，只有de存在，pod就会维持住，pod被删除了也会被dev拉起。这样pod的服务是不确定的，它的ip一直在变化</p>
+<p>所以需要service</p>
+<p>Service 是 Kubernetes 中的一种服务发现机制：</p>
+<p>Pod 有自己的 IP 地址<br>Service 被赋予一个唯一的 dns name<br>Service 通过 label selector 选定一组 Pod<br>Service 实现负载均衡，可将请求均衡分发到选定这一组 Pod 中</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -617,16 +628,16 @@ CNI( Container Network Interface)CSI（Container Storage Interface）CRI（Conta
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/note/">
+                                    <span class="chip bg-color">note</span>
+                                </a>
+                            
                                 <a href="/tags/linux/">
                                     <span class="chip bg-color">linux</span>
                                 </a>
                             
                                 <a href="/tags/docker/">
                                     <span class="chip bg-color">docker</span>
-                                </a>
-                            
-                                <a href="/tags/note/">
-                                    <span class="chip bg-color">note</span>
                                 </a>
                             
                         </div>
@@ -1098,16 +1109,16 @@ K8S DashBoard服务创建服务后通过代理访问
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/note/">
+                        <span class="chip bg-color">note</span>
+                    </a>
+                    
                     <a href="/tags/linux/">
                         <span class="chip bg-color">linux</span>
                     </a>
                     
                     <a href="/tags/docker/">
                         <span class="chip bg-color">docker</span>
-                    </a>
-                    
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
                     </a>
                     
                 </div>
@@ -1121,28 +1132,24 @@ K8S DashBoard服务创建服务后通过代理访问
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/05/Java/RocketMQ/">
+                <a href="/2019/04/05/Java/IDEA/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="RocketMQ">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java IDEA">
                         
-                        <span class="card-title">RocketMQ</span>
+                        <span class="card-title">Java IDEA</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            title: RocketMQ
+                            IDEA 使用技巧补充总结
 
 
-安装这个安装还是特别容易的，下载对应程序，配置参数，启动，和Tomcat差不多
-遇到的问题:
-
-网卡绑定错误
-
-虚拟机测试很容易遇到这个问题，手动设置ip解决
-RocketMQ中broker配置brokc
+IDEA 工具使用ntellig idea 使用@Resource或者@Autowire报错，出现红色波浪线；
+虽然不影响使用，但是看着很不爽，所以还是解决了下：
+报错提示：Could not autowir
                         
                     </div>
                     <div class="publish-info">
@@ -1168,8 +1175,8 @@ RocketMQ中broker配置brokc
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1315,7 +1322,7 @@ RocketMQ中broker配置brokc
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

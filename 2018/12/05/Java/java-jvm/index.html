@@ -407,21 +407,21 @@ Java内存结构分为三大块，1和2是线">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-02-23
+                    2020-03-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.1k
+                    5.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    20 分
                 </div>
                 
 				
@@ -678,7 +678,20 @@ pf<span class="token punctuation">.</span><span class="token function">isEnQueue
 <h2 id="默认堆大小"><a href="#默认堆大小" class="headerlink" title="默认堆大小"></a>默认堆大小</h2><p>默认堆大小：<br>若没有在命令行中指定了初始化和最大的堆大小，则取决于计算机上的的物理内存大小</p>
 <p>服务器端的默认堆大小<br>初始化堆大小：客户端JVM相同<br>最大堆小大：<br>32位的JVM上，物理内存小于192MB时，为物理内存的一半；物理内存大192MB且小于4GB时，为物理内存的四分之一；大于等于4GB时，都为1GB<br>64位的JVM上，物理内存小于192MB时，为物理内存的一半；物理内存大192MB且小于128GB时，为物理内存的四分之一；大于等于128GB时，都为32GB</p>
 <p><code>System.out.println(Runtime.getRuntime().maxMemory());</code>可以打印，以我的计算机为例，结果是3817865216，差不多就是16GB的四分之一</p>
+<p>经过测试，spring boot项目，什么都不配置，每次启动的Heap可用空间会有不同，而且可用保持不变的，下次启动会改变。最大空间固定</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/duanxz/p/6076662.html" target="_blank" rel="noopener">https://www.cnblogs.com/duanxz/p/6076662.html</a><br><a href="https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html#default_heap_size" target="_blank" rel="noopener">https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html#default_heap_size</a></p>
+<h2 id="常量池、运行时常量池、字符串常量池"><a href="#常量池、运行时常量池、字符串常量池" class="headerlink" title="常量池、运行时常量池、字符串常量池"></a>常量池、运行时常量池、字符串常量池</h2><p>经常会看到这些概念，这里做个总结</p>
+<p><code>常量池</code>：即class文件常量池，是class文件的一部分，用于保存编译时确定的数据</p>
+<p>class文件常量池在元空间中</p>
+<p><img src="/images/Java/Java-jvm-const.png" alt="image"></p>
+<p>可以用命令javap -verbose class文件(比如Test) Classfile class文件地址 查看</p>
+<p><code>运行时常量池</code>：</p>
+<p>Java语言并不要求常量一定只能在编译期产生，运行期间也可能产生新的常量，这些常量被放在运行时常量池中。</p>
+<p>类加载后，常量池中的数据会在运行时常量池中存放！</p>
+<p>这里所说的常量包括：基本类型包装类（包装类不管理浮点型，整形只会管理-128到127，不在这个范围的包装类型会创建新的对象，在堆空间）和String（也可以通过String.intern()方法可以强制将String放入常量池）</p>
+<p><code>字符串常量池</code>：</p>
+<p>HotSpot VM里，记录interned string的一个全局表叫做StringTable，它本质上就是个HashSet<string>。注意它只存储对java.lang.String实例的引用，而不存储String对象的内容。就是我们创建String包装类型，如果是同样的内容，那么引入指向同一个地方，就在字符串常量池存储引用，当然数据本身是在方法区中分配的</string></p>
+<p>jdk 1.7后，移除了方法区(可能这么说也不规范，方法区是虚拟机规范的称呼，应该说是移除永久代吧)，<code>运行时常量池</code>在<code>方法区</code>里，<code>字符串常量池</code>在<code>堆</code>中，数据在方法区中</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1198,87 +1211,35 @@ pf<span class="token punctuation">.</span><span class="token function">isEnQueue
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/01/11/Web/elasticsearch/">
+                <a href="/2019/01/05/Java/concurrent/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="elasticsearch 全文搜索解引擎在 web 开发中的运用">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Java 并发">
                         
-                        <span class="card-title">elasticsearch 全文搜索解引擎在 web 开发中的运用</span>
+                        <span class="card-title">Java 并发</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            搜索服务是Web开发中非常常见的服务，一般比较基本的会直接访问到数据库，但是如果要查询多个数据库才能得到搜索结果，这无疑加大了数据库的负担，而且频繁的访问数据库容易成为应用的瓶颈。可以使用elasticsearch来提供搜索服务，降低数据库
+                            review
+
+
+基础与名词解释竞态条件: 多个线程竞争同一个资源，如果对资源的访问顺序敏感，就称存在竞态条件临界区: 导致竞态条件发生的代码称为临界区
+Java运行至少启动两个线程，一个是main线程，一个是垃圾回收线程(当然实际肯定不止
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-11
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-01-05
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
-                                    web开发
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2018/10/23/Python/marshmallow/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="用 marshmallow 模块序列化数据">
-                        
-                        <span class="card-title">用 marshmallow 模块序列化数据</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            在接口开发中，从数据库查询得到的数据通常是需要转换的，或者从一个对象序列化需要的特定数据，可以为此写一个方法，为何不尝试使用marshmallow模块呢，它提供了非常全面的数据处理方案。
-
-
-概述一般用法是创建scheme的类，使用实例化的
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-10-23
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/python%E7%BC%96%E7%A8%8B/" class="post-category">
-                                    python编程
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -1292,8 +1253,64 @@ pf<span class="token punctuation">.</span><span class="token function">isEnQueue
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/11/01/Java/Spring-framework/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Spring Framework 与 Spring Boot">
+                        
+                        <span class="card-title">Spring Framework 与 Spring Boot</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Spring Framework
+
+
+Ioc 设计理念IoC(Inversion of Control)控制反转；依赖注⼊(dependency injection, DI)。它是⼀个对象定义依赖关系的过程，也就是说，对象只通过构造函数参数
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-11-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
                 </div>
@@ -1439,7 +1456,7 @@ pf<span class="token punctuation">.</span><span class="token function">isEnQueue
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">223.6k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             
