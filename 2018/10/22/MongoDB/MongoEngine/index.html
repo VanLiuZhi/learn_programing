@@ -370,12 +370,12 @@
                                 <span class="chip bg-color">note</span>
                             </a>
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
-                            </a>
-                        
                             <a href="/tags/database/">
                                 <span class="chip bg-color">database</span>
+                            </a>
+                        
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
                     </div>
@@ -449,19 +449,19 @@
 </blockquote>
 <h2 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h2><p>执行delete，需要有id字段。</p>
 <h2 id="Document-IDs"><a href="#Document-IDs" class="headerlink" title="Document IDs"></a>Document IDs</h2><p>文档要保存了才能访问id，通过情况不需要声明id字段</p>
-<pre class="line-numbers language-s"><code class="language-s">>>> page = Page(title="Test Page")
->>> page.id
->>> page.save()
->>> page.id
+<pre class="line-numbers language-s"><code class="language-s">&gt;&gt;&gt; page = Page(title="Test Page")
+&gt;&gt;&gt; page.id
+&gt;&gt;&gt; page.save()
+&gt;&gt;&gt; page.id
 ObjectId('123456789abcdef000000000')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>通过设置字段的关键字来创建id，这里把email作为id，事实上id是主键的别名，pk == id 是等价的<br>? 修改了默认主键，是不是就不存在唯一表示了，既没有了ObjectId(‘123456789abcdef000000000’)</p>
-<pre class="line-numbers language-s"><code class="language-s">>>> class User(Document):
+<pre class="line-numbers language-s"><code class="language-s">&gt;&gt;&gt; class User(Document):
 ...     email = StringField(primary_key=True)
 ...     name = StringField()
 ...
->>> bob = User(email='bob@example.com', name='Bob')
->>> bob.save()
->>> bob.id == bob.email == 'bob@example.com'
+&gt;&gt;&gt; bob = User(email='bob@example.com', name='Bob')
+&gt;&gt;&gt; bob.save()
+&gt;&gt;&gt; bob.id == bob.email == 'bob@example.com'
 True<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="Querying-the-database"><a href="#Querying-the-database" class="headerlink" title="Querying the database"></a>Querying the database</h1><p>QuerySetManager QuerySet 的概念在MongoEngine中也是适用的。<br>查询集使用本地缓存，如果想返回新的结果，使用no_cache方法。</p>
 <h2 id="Filtering-queries"><a href="#Filtering-queries" class="headerlink" title="Filtering queries"></a>Filtering queries</h2><p>user = User.objects(name=’liu zhi’)</p>
@@ -598,12 +598,12 @@ Page.objects.get_awesome()</code></pre><h3 id="Aggregation"><a href="#Aggregatio
                                     <span class="chip bg-color">note</span>
                                 </a>
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
-                                </a>
-                            
                                 <a href="/tags/database/">
                                     <span class="chip bg-color">database</span>
+                                </a>
+                            
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
                         </div>
@@ -1089,29 +1089,24 @@ Page.objects.get_awesome()</code></pre><h3 id="Aggregation"><a href="#Aggregatio
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/MySql/base/">
+                <a href="/2018/10/22/Mac/HomeBrew/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Mysql 数据库基本">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="HomeBrew mac-os 软件管理工具">
                         
-                        <span class="card-title">Mysql 数据库基本</span>
+                        <span class="card-title">HomeBrew mac-os 软件管理工具</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            mysql学习笔记
+                            用mac电脑，你需要学会HomeBrew
 
 
-基础一般对于命令是不区分大小写的，为了区分保留关键字，一般保留关键字大写，变量和数据小写。
-sudo service mysql start
-
-mysql -u root
-
-mysql -u root -p
-
-sho
+HomeBrewmac 平台的包管理工具，官网地址https://brew.sh/
+安装命令
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubu
                         
                     </div>
                     <div class="publish-info">
@@ -1122,8 +1117,8 @@ sho
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/database/" class="post-category">
-                                    database
+                            <a href="/categories/mac/" class="post-category">
+                                    mac
                                 </a>
                             
                             
@@ -1133,12 +1128,12 @@ sho
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/util/">
+                        <span class="chip bg-color">util</span>
                     </a>
                     
-                    <a href="/tags/database/">
-                        <span class="chip bg-color">database</span>
+                    <a href="/tags/mac/">
+                        <span class="chip bg-color">mac</span>
                     </a>
                     
                 </div>
@@ -1284,7 +1279,7 @@ sho
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">253.2k</span>&nbsp;字
             
             
             

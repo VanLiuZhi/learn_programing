@@ -521,9 +521,9 @@ c2:     t2p0   t2p3     t2p2</code></pre><p><code>重复消费</code>: 分区策
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ConsumerRebalanceListener</span><span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 在rebalance开始之前和消费者停止读取消息之后被调用。可以通过这个回调方法 //来处理消费位移的提交， 以此来避免一些不必要的重复消费现象的发生。</span>
     <span class="token comment" spellcheck="true">//参数 partitions表示rebalance前所分配到的分区。</span>
-    <span class="token keyword">void</span> <span class="token function">onPartitionsRevoked</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span>TopicPartition<span class="token operator">></span> partitions<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 在重新分配分区之后和消费者开始读取消费之前被调用。</span>
+    <span class="token keyword">void</span> <span class="token function">onPartitionsRevoked</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span>TopicPartition<span class="token operator">&gt;</span> partitions<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 在重新分配分区之后和消费者开始读取消费之前被调用。</span>
     <span class="token comment" spellcheck="true">// 参数partitions表示再均衡后所分配到的分区。</span>
-    <span class="token keyword">void</span> <span class="token function">onPartitionsAssigned</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span>TopicPartition<span class="token operator">></span> partitions<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">onPartitionsAssigned</span><span class="token punctuation">(</span>Collection<span class="token operator">&lt;</span>TopicPartition<span class="token operator">&gt;</span> partitions<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="位移提交"><a href="#位移提交" class="headerlink" title="位移提交"></a>位移提交</h2><p>这里聊的是消费者的，假如消息是1到10，现在消费到了5，提交，偏移量记消息6的偏移量，下次就从6的偏移量开始消费。这个6对应的偏移量，就是commit offset(上次提交的消费位移)</p>
 <p><code>消费者的位移也是保存在kafka的主题里面的</code></p>
@@ -1361,7 +1361,7 @@ constructor对
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">253.2k</span>&nbsp;字
             
             
             

@@ -610,20 +610,20 @@ Java内存结构分为三大块，1和2是线">
 </li>
 </ol>
 <pre class="line-numbers language-java"><code class="language-java">Object obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-SoftReference<span class="token operator">&lt;</span>Object<span class="token operator">></span> sf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SoftReference</span><span class="token operator">&lt;</span>Object<span class="token operator">></span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+SoftReference<span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span> sf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SoftReference</span><span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> 
 obj <span class="token operator">=</span> null<span class="token punctuation">;</span> sf<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//有时候会返回null</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li>弱引用 被gc线程找到就会回收，或者说存在感低，有一些资料上说，第二次gc的时候会回收，在ThreadLocal中有使用</li>
 </ol>
 <pre class="line-numbers language-java"><code class="language-java">Object obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-WeakReference<span class="token operator">&lt;</span>Object<span class="token operator">></span> wf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakReference</span><span class="token operator">&lt;</span>Object<span class="token operator">></span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+WeakReference<span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span> wf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakReference</span><span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
 obj <span class="token operator">=</span> null<span class="token punctuation">;</span> 
 wf<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//有时候会返回null wf.isEnQueued();//返回是否被垃圾回收器标记为即将回收的垃圾</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="4">
 <li>虚引用 取不到，但是有相关的方法获取状态，可以用来判断对象是否已经从内存中删除</li>
 </ol>
 <pre class="line-numbers language-java"><code class="language-java">Object obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-PhantomReference<span class="token operator">&lt;</span>Object<span class="token operator">></span> pf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PhantomReference</span><span class="token operator">&lt;</span>Object<span class="token operator">></span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+PhantomReference<span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span> pf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PhantomReference</span><span class="token operator">&lt;</span>Object<span class="token operator">&gt;</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> 
 obj<span class="token operator">=</span>null<span class="token punctuation">;</span> 
 pf<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//永远返回null</span>
 pf<span class="token punctuation">.</span><span class="token function">isEnQueued</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//返回是否从内存中已经删除</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -1456,7 +1456,7 @@ Ioc 设计理念IoC(Inversion of Control)控制反转；依赖注⼊(dependency 
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">253.2k</span>&nbsp;字
             
             
             

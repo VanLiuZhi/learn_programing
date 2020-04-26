@@ -482,15 +482,15 @@ p标签原内容和执行结果同上。</code></pre><p>find（）方法 由给�
 <p>单双引号需嵌套使用；<br>传入 JSON 对象需要使用 JSON.stringify() 序列化为一个 JSON 字符串，并且更需要注意单双引号嵌套问题。<br>示例：</p>
 <pre class="line-numbers language-html"><code class="language-html">let html = "";
 for(var i=0;i&lt;data.length;i++){
-    html += '<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span>'+
-            '<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>'+ data[i].appName +'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>'+
-            '<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>'+ '&lt;button type="button" onclick="edit('+JSON.stringify(data[i]).replace(/\"/g,"'")+')">按钮1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>'+'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>'+
-            '<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>'+ "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>button<span class="token punctuation">'</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>del(<span class="token punctuation">"</span>+JSON.stringify(data[i])+<span class="token punctuation">"</span>)<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>按钮2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>"+'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span>'+
-            +'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>'
+    html += '<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span>'+
+            '<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>'+ data[i].appName +'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>'+
+            '<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>'+ '&lt;button type="button" onclick="edit('+JSON.stringify(data[i]).replace(/\"/g,"'")+')"&gt;按钮1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>'+'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>'+
+            '<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>'+ "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>button<span class="token punctuation">'</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>del(<span class="token punctuation">"</span>+JSON.stringify(data[i])+<span class="token punctuation">"</span>)<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>按钮2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>"+'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>'+
+            +'<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>'
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上述代码中，使用了两种不同的引号嵌套格式。按钮1外层使用单引号，因此需要将JSON字符串中所有双引号转化成单引号，比较繁琐。从语法角度考虑，JavaScript 字符串与 JSON 字符串的最大区别在于，JSON 字符串必须使用双引号（单引号会导致语法错误），因此不推荐此写法。</p>
 <p>推荐第二种写法，直接在外层嵌套双引号，无需进行额外操作</p>
-<pre class="line-numbers language-js"><code class="language-js">htmlstr <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">"&lt;a class='opt ib upd' href="</span> <span class="token operator">+</span> <span class="token string">'javascript:void(0);'</span> <span class="token operator">+</span> <span class="token string">" onclick='updateGetData("</span> <span class="token operator">+</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>useData<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">")'>修改&lt;/a>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-js"><code class="language-js">htmlstr <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">"&lt;a class='opt ib upd' href="</span> <span class="token operator">+</span> <span class="token string">'javascript:void(0);'</span> <span class="token operator">+</span> <span class="token string">" onclick='updateGetData("</span> <span class="token operator">+</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>useData<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">")'&gt;修改&lt;/a&gt;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1010,25 +1010,23 @@ for(var i=0;i&lt;data.length;i++){
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/JavaScript/element-UI/">
+                <a href="/2018/10/22/JavaScript/ECMAScript/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="element-UI 前端 Vue UI 组件">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="ECMAScript6 学习笔记">
                         
-                        <span class="card-title">element-UI 前端 Vue UI 组件</span>
+                        <span class="card-title">ECMAScript6 学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            饿了么前端团队出品的Vue UI框架
+                            ECMAScript6 是 JavaScript 的第六版本，是一个标准，主要增加了面向对象的支持和一些新特性。
 
 
-from rulesfrom rules 是表单组件中用于在表单验证规则的属性，把rules绑定给一个对象，对象的属性即为需要做验证的字段，属性值为验证规则
-
-rules: {
-type: [{ r
+扩展运算符（ spread ）是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。
+con
                         
                     </div>
                     <div class="publish-info">
@@ -1050,16 +1048,12 @@ type: [{ r
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/note/">
+                        <span class="chip bg-color">note</span>
+                    </a>
+                    
                     <a href="/tags/javascript/">
                         <span class="chip bg-color">javascript</span>
-                    </a>
-                    
-                    <a href="/tags/framework/">
-                        <span class="chip bg-color">framework</span>
-                    </a>
-                    
-                    <a href="/tags/Vue/">
-                        <span class="chip bg-color">Vue</span>
                     </a>
                     
                 </div>
@@ -1073,23 +1067,19 @@ type: [{ r
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/JavaScript/javascript/">
+                <a href="/2018/10/22/JavaScript/npm/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="JavaScript 学习笔记">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="npm JavaScript 包管理工具">
                         
-                        <span class="card-title">JavaScript 学习笔记</span>
+                        <span class="card-title">npm JavaScript 包管理工具</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            javascript学习笔记
-
-
-DOM对象DOM对象，即是我们用传统的方法(javascript)获得的对象，jQuery对象即是用jQuery类库的选择器获得的对象;复制代码 代码如下:
-var domObj = document.ge
+                            npm是node的包管理工具，不建议使用任何第三方的工具，也不建议换源，这些操作解决一时问题也带来其它问题。关于网络问题，是在不行用手机热点，如果你们公司的网络都下不了，那公司不用待了。第三方工具也是，开始npm确实比不上第三方工具，不过现
                         
                     </div>
                     <div class="publish-info">
@@ -1100,8 +1090,8 @@ var domObj = document.ge
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/javascript/" class="post-category">
-                                    javascript
+                            <a href="/categories/nodejs/" class="post-category">
+                                    nodejs
                                 </a>
                             
                             
@@ -1115,8 +1105,8 @@ var domObj = document.ge
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/javascript/">
-                        <span class="chip bg-color">javascript</span>
+                    <a href="/tags/nodejs/">
+                        <span class="chip bg-color">nodejs</span>
                     </a>
                     
                 </div>
@@ -1262,7 +1252,7 @@ var domObj = document.ge
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">253.2k</span>&nbsp;字
             
             
             

@@ -488,7 +488,7 @@
 <h2 id="静态化"><a href="#静态化" class="headerlink" title="静态化"></a>静态化</h2><p>velocity freemarker 模板引擎</p>
 <h2 id="Component-需不需要-Autowired"><a href="#Component-需不需要-Autowired" class="headerlink" title="@Component 需不需要 @Autowired"></a>@Component 需不需要 @Autowired</h2><p>该问题还没解决，我自定义一个普通的类，用component注解<br><code>private MyUser myUser;</code> 去使用报空指针错误，必须要加上Autowired注解</p>
 <p>如果我在构造器中</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">MyUser</span><span class="token punctuation">(</span>RedisTemplate<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> redisTemplate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">MyUser</span><span class="token punctuation">(</span>RedisTemplate<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">&gt;</span> redisTemplate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate <span class="token operator">=</span> redisTemplate<span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>RedisTemplate是框架带的，加了这个后，可以不用Autowired注解访问</p>
@@ -1280,7 +1280,7 @@ Consumer 消费者 向Kafka broker读取消息的客户端Consumer Grou
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">253.2k</span>&nbsp;字
             
             
             

@@ -474,13 +474,13 @@ app <span class="token operator">=</span> Flask<span class="token punctuation">(
 app<span class="token punctuation">.</span>url_map<span class="token punctuation">.</span>converters<span class="token punctuation">[</span><span class="token string">'list'</span><span class="token punctuation">]</span> <span class="token operator">=</span> ListConverter
 
 
-@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/list1/&lt;list:page_names>/'</span><span class="token punctuation">)</span>
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/list1/&lt;list:page_names&gt;/'</span><span class="token punctuation">)</span>
 <span class="token keyword">def</span> <span class="token function">list1</span><span class="token punctuation">(</span>page_names<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>page_names<span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token string">'Separator: {} {}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token string">'+'</span><span class="token punctuation">,</span> page_names<span class="token punctuation">)</span>
 
 
-@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/list2/&lt;list(separator=u"|"):page_names>/'</span><span class="token punctuation">)</span>
+@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/list2/&lt;list(separator=u"|"):page_names&gt;/'</span><span class="token punctuation">)</span>
 <span class="token keyword">def</span> <span class="token function">list2</span><span class="token punctuation">(</span>page_names<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token string">'Separator: {} {}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span><span class="token string">'|'</span><span class="token punctuation">,</span> page_names<span class="token punctuation">)</span>
 
@@ -1320,19 +1320,22 @@ application <span class="token operator">=</span> DispatcherMiddleware<span clas
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/Python/gunicorn/">
+                <a href="/2018/10/22/Python/collections/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="gunicorn python 应用服务器">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="collections 模块使用">
                         
-                        <span class="card-title">gunicorn python 应用服务器</span>
+                        <span class="card-title">collections 模块使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Gunicorn ‘Green Unicorn’ is a Python WSGI HTTP Server for UNIX. It’s a pre-fork worker model. The Gunicorn server is bro
+                            collections模块是python的内建模块，提供类很多实用的集合类。有时候很多数据结构其实标准库已经实现了，不妨来这里找找有没有你想要的。内容参考官方文档。
+
+
+nametuple(命名元组)从名字可以看出，这是一个对tuple定义
                         
                     </div>
                     <div class="publish-info">
@@ -1356,10 +1359,6 @@ application <span class="token operator">=</span> DispatcherMiddleware<span clas
                     
                     <a href="/tags/note/">
                         <span class="chip bg-color">note</span>
-                    </a>
-                    
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
                     </a>
                     
                     <a href="/tags/python/">
@@ -1571,7 +1570,7 @@ def borg(cls):
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">253.2k</span>&nbsp;字
             
             
             
