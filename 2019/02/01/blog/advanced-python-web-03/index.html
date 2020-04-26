@@ -497,7 +497,7 @@
 <p>使用命令 <code>docker-compose up -d</code> 就可以运行容器了，可以在本机访问9200测试elasticsearch是否已经提供正常服务。</p>
 <h2 id="部署中使用docker"><a href="#部署中使用docker" class="headerlink" title="部署中使用docker"></a>部署中使用docker</h2><p>部署的时候，需要构建python环境的镜像，就要使用到Dockerfile。</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml">FROM python<span class="token punctuation">:</span><span class="token number">3.6</span>
-LABEL author="liuzhi&lt;1441765847.com<span class="token punctuation">&gt;</span>"
+LABEL author="liuzhi&lt;1441765847.com<span class="token punctuation">></span>"
 
 <span class="token comment" spellcheck="true"># 换源，Python镜像基于Debian，使用阿里的Debian源</span>
 RUN rm /etc/apt/sources.list
@@ -1436,7 +1436,7 @@ http {
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">253.2k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

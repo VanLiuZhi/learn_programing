@@ -465,13 +465,13 @@
 <p>如此，由子组件发起的事件被父组件接收，由tagHandler方法来处理。</p>
 <h3 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h3><p>还有一个特性就是插槽，对于这个特性，可以用在编写组件的地方，但是最常用的还是各种框架会使用它，所以如果你不了解它，就不能很好的使用框架提供的组件。</p>
 <p>在 element-UI 的 el-table 组件中，把remark绑定到v-model中，就是使用了作用域插槽</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">slot-scope</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>scope<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">slot-scope</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>scope<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>textarea</span><span class="token style-attr language-css"><span class="token attr-name">
             <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">50</span>px<span class="token punctuation">;</span><span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">80</span>px<span class="token punctuation">;</span> <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">1</span>px solid <span class="token hexcode">#dedede</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span>
             <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>textarea<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>备注<span class="token punctuation">"</span></span>
-            <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>scope.row.remark<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>textarea</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>scope.row.remark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>textarea</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><p>这部分主要关注的是路由和状态管理，至于服务端渲染，还没有用过。</p>
 <p>路由是vue生态中一定会用的，它把前端的页面请求拦截了，交由特定的组件来处理，路由可以带参数，在组件页面可以通过 <code>this.$route.params.data</code> 获取路由对象相关的数据。</p>
 <pre class="line-numbers language-js"><code class="language-js">Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span>
@@ -1351,7 +1351,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">253.2k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

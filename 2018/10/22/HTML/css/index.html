@@ -444,10 +444,10 @@
 <li>使用 &amp;nbsp; </li>
 <li>使用样式，输出1 &nbsp; 2 &nbsp; 3 &nbsp;</li>
 </ul>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">white-space</span><span class="token punctuation">:</span>pre</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>1  2  3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><pre class="line-numbers language-s"><code class="language-s"> - 定义表行
- - 定义表头
- - 定义表元(表格的具体数据)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">white-space</span><span class="token punctuation">:</span>pre</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>1  2  3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><pre class="line-numbers language-s"><code class="language-s"><tr> - 定义表行
+<th> - 定义表头
+<td> - 定义表元(表格的具体数据)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="width"><a href="#width" class="headerlink" title="width"></a>width</h2><p>width  100%   auto</p>
 <ol>
 <li><p>某div不显示设置宽度，那么width为auto</p>
@@ -483,14 +483,14 @@
 <p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。</p>
 <p>盒模型允许我们在其它元素和周围元素边框之间的空间放置元素。</p>
 <p>盒子模型居中显示，设置内联元素时 text-align:center;  这句话就可以让内联元素居中设置块状元素时定宽：</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style language-css">
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
 <span class="token selector">div</span><span class="token punctuation">{</span>
     <span class="token property">border</span><span class="token punctuation">:</span><span class="token number">1</span>px solid red<span class="token punctuation">;</span><span class="token comment" spellcheck="true">/*为了显示居中效果明显为 div 设置了边框*/</span>
 
     <span class="token property">width</span><span class="token punctuation">:</span><span class="token number">200</span>px<span class="token punctuation">;</span><span class="token comment" spellcheck="true">/*定宽*/</span>
     <span class="token property">margin</span><span class="token punctuation">:</span><span class="token number">20</span>px auto<span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* margin-left 与 margin-right 设置为 auto */</span>
 <span class="token punctuation">}</span>
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>定宽就是width值固定，此时设置margin左或右为自动即可，注意两个设置缺一不可。</p>
 <p>不定宽：</p>
 <p>加table，或者将其改为内联</p>
@@ -504,26 +504,26 @@
 <p>第二步：为这个 table 设置“左右 margin 居中”（这个和定宽块状元素的方法一样）。</p>
 <p>举例如下：</p>
 <p>html代码：</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
- <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>我是第一行文本<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>我是第二行文本<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>我是第三行文本<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">&gt;</span></span>
- <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tbody</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tr</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>我是第一行文本<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>我是第二行文本<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>我是第三行文本<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 css代码：
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">&gt;</span></span><span class="token style language-css">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
 <span class="token selector">table</span><span class="token punctuation">{</span>
     <span class="token property">border</span><span class="token punctuation">:</span><span class="token number">1</span>px solid<span class="token punctuation">;</span>
     <span class="token property">margin</span><span class="token punctuation">:</span><span class="token number">0</span> auto<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>隐形改变display类型</p>
 <ol>
 <li>position : absolute </li>
@@ -563,9 +563,9 @@ css代码：
 <p>注意这样做的前提</p>
 <p>参照定位的元素box1必须是相对定位元素box2的前辈元素</p>
 <p>即：</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>box1<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>box2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>相对参照元素进行定位<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>box1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>box2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>相对参照元素进行定位<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>关于代码编写时移动的问题</p>
 <p>绝对定位中，比如实现div元素相对于浏览器右移100px</p>
 <p>此时代码写为  left:100px；</p>
@@ -584,10 +584,10 @@ css代码：
 <p>需要固定位置的时候，常使用 <code>position：fixed</code> 这种方式往往达不到理想的效果，我们经常需要的是容器在某个位置固定，这样你需要花时间去调整左右上下参数。可以让fixed定位的容器处在一个父容器内，父容器是relative定位的，这样我们固定定位的容器就不用调整位置了，以父容器为基准</p>
 <p>举例：</p>
 <pre class="line-numbers language-html"><code class="language-html">
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>rich_text_class<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span>fixed<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">v-html</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>menu<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>rich_text_class<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">position</span><span class="token punctuation">:</span>fixed<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">v-html</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>menu<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="index-z"><a href="#index-z" class="headerlink" title="index-z"></a>index-z</h2><p>z序决定了dom的层级关系，数值越大的在最上层。关于宽度，父容器的宽度受到子dom的影响，可以调整让子dom的宽度不超过父容器，在设置width属性的时候，是块的宽加上内边距，可以改属性，让这个width只有块的宽决定。理解外边距和内边距和元素自己。块级元素才是占一行。</p>
 <h2 id="hover"><a href="#hover" class="headerlink" title=":hover"></a>:hover</h2><p><code>:hover { }</code> css选择器中对被选中对象做操作，效果为鼠标指向时代码作用。例子鼠标指向时修改文字颜色（注意不能直接在便签中加style=color  先设置颜色，class设置的颜色就会失效，应该是遵循了就近原则）</p>
@@ -1190,25 +1190,20 @@ event.preventDefault(); 取消事件的默认行为，因为有些事件它就�
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/Algorithm/base/">
+                <a href="/2018/10/22/Docker/Docker/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Algorithm 算法学习">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Docker 容器在 web 开发中的运用">
                         
-                        <span class="card-title">Algorithm 算法学习</span>
+                        <span class="card-title">Docker 容器在 web 开发中的运用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            算法相关，对于非科班出身的人来说，只能慢慢学习和体会了
-
-
-算法
-有穷性(Finiteness)算法的有穷性是指算法必须能在执行有限个步骤之后终止；
-确切性(Definiteness)算法的每一步骤必须有确切的定义；
-输入项(Input)一
+                            docker 容器技术学习笔记
+docker是使用go语言开发的应用容器引擎，docker 的开发商是 Docker,Inc. 可以说现在还没对手（目前找不到可以代替的软件）。从各方面来说你都应该学习docker，对于开发你可以快速构建环境
                         
                     </div>
                     <div class="publish-info">
@@ -1219,8 +1214,8 @@ event.preventDefault(); 取消事件的默认行为，因为有些事件它就�
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/algorithm%E7%AE%97%E6%B3%95/" class="post-category">
-                                    algorithm算法
+                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
+                                    web开发
                                 </a>
                             
                             
@@ -1234,8 +1229,12 @@ event.preventDefault(); 取消事件的默认行为，因为有些事件它就�
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/algorithm/">
-                        <span class="chip bg-color">algorithm</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
+                    </a>
+                    
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
@@ -1249,22 +1248,23 @@ event.preventDefault(); 取消事件的默认行为，因为有些事件它就�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Git/git-command/">
+                <a href="/2018/10/22/JavaScript/ECMAScript/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="git 版本控制工具">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="ECMAScript6 学习笔记">
                         
-                        <span class="card-title">git 版本控制工具</span>
+                        <span class="card-title">ECMAScript6 学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。
+                            ECMAScript6 是 JavaScript 的第六版本，是一个标准，主要增加了面向对象的支持和一些新特性。
 
 
-Git使用GitHub，给出的地址我们一
+扩展运算符（ spread ）是三个点（…）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。
+con
                         
                     </div>
                     <div class="publish-info">
@@ -1275,8 +1275,8 @@ Git使用GitHub，给出的地址我们一
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
+                            <a href="/categories/javascript/" class="post-category">
+                                    javascript
                                 </a>
                             
                             
@@ -1290,12 +1290,8 @@ Git使用GitHub，给出的地址我们一
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
-                    </a>
-                    
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/javascript/">
+                        <span class="chip bg-color">javascript</span>
                     </a>
                     
                 </div>
@@ -1441,7 +1437,7 @@ Git使用GitHub，给出的地址我们一
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">253.2k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

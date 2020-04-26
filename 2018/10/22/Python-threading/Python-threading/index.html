@@ -524,7 +524,7 @@ logging<span class="token punctuation">.</span>basicConfig<span class="token pun
 <span class="token keyword">def</span> <span class="token function">worker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     count <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> count <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> count <span class="token operator">></span> <span class="token number">5</span><span class="token punctuation">:</span>
             <span class="token keyword">break</span>
         time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
         count <span class="token operator">+=</span> <span class="token number">1</span>
@@ -554,23 +554,23 @@ t<span class="token punctuation">.</span>join<span class="token punctuation">(</
 t2<span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token comment" spellcheck="true"># 输出结果</span>
-<span class="token comment" spellcheck="true"># &lt;_MainThread(MainThread, started 4587271616)&gt;</span>
+<span class="token comment" spellcheck="true"># &lt;_MainThread(MainThread, started 4587271616)></span>
 <span class="token comment" spellcheck="true"># start~~~~~~~~~~~~~</span>
 <span class="token comment" spellcheck="true"># run~~~~~~~~~~~~~~~</span>
 <span class="token comment" spellcheck="true"># start~~~~~~~~~~~~~</span>
 <span class="token comment" spellcheck="true"># run~~~~~~~~~~~~~~~</span>
-<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)&gt;</span>
+<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:worker 123145369858048 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
+<span class="token comment" spellcheck="true"># INFO:root:not worker 123145375113216 主线程：&lt;_MainThread(MainThread, started 4587271616)></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到两个线程交替运行，如果使用print，你跑多次这个结果是不一样的。</p>
 <p>打印前可以加入threading.main_thread()，这样可以看到俩个线程都是主线程派生出来的子线程。</p>
@@ -586,7 +586,7 @@ logging<span class="token punctuation">.</span>basicConfig<span class="token pun
 <span class="token keyword">def</span> <span class="token function">worker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     count <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> count <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> count <span class="token operator">></span> <span class="token number">5</span><span class="token punctuation">:</span>
             <span class="token keyword">break</span>
         time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
         count <span class="token operator">+=</span> <span class="token number">1</span>
@@ -612,19 +612,19 @@ t<span class="token punctuation">.</span>run<span class="token punctuation">(</s
 t2<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token comment" spellcheck="true"># run~~~~~~~~~~~~~~~</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
 <span class="token comment" spellcheck="true"># run~~~~~~~~~~~~~~~</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
-<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)&gt;</span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
+<span class="token comment" spellcheck="true"># INFO:root:MainThread 4705641920 主线程：&lt;_MainThread(MainThread, started 4705641920)></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到，run就是去调用函数，谁来调用呢？当然是<code>当前线程</code>了，可以看到 <code>print(threading.main_thread().name, threading.current_thread().name, threading.current_thread().ident)</code> 打印出来的都是主线程。</p>
 <p><strong>没有开新的线程，这就是普通函数调用，所以执行完t1.run()，然后执行t2.run()，这里就不是多线程。</strong></p>
@@ -1314,19 +1314,23 @@ threads <span class="token operator">=</span> <span class="token punctuation">[<
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/Python-asyncio/base/">
+                <a href="/2018/10/22/ReadBook/Core-python-programming/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Python-异步与协程">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Core-python-programming 读书笔记">
                         
-                        <span class="card-title">Python-异步与协程</span>
+                        <span class="card-title">Core-python-programming 读书笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            异步编程是一个很难的点，不同于同步编程，编程模型将变得复杂。下文引用理查德·史蒂文斯（William Richard (Rich) Stevens，1951年2月5日－1999年9月1日）所编写的《UNIX网络编程》关于I/O Models
+                            Python 核心编程 读书笔记，节选部分内容
+
+
+CGICGI：
+对于静态资源（文件图片等，或者静态的HTML页面），利用web服务器就可以处理了（比如nginx），而动态资源（计算出来的数据）就要用CGI应用程序来处理。python可以
                         
                     </div>
                     <div class="publish-info">
@@ -1337,8 +1341,8 @@ threads <span class="token operator">=</span> <span class="token punctuation">[<
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python%E7%BC%96%E7%A8%8B/" class="post-category">
-                                    python编程
+                            <a href="/categories/readbook/" class="post-category">
+                                    readbook
                                 </a>
                             
                             
@@ -1348,12 +1352,8 @@ threads <span class="token operator">=</span> <span class="token punctuation">[<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
-                    </a>
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/readbook/">
+                        <span class="chip bg-color">readbook</span>
                     </a>
                     
                 </div>
@@ -1367,22 +1367,25 @@ threads <span class="token operator">=</span> <span class="token punctuation">[<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Python-socket/base/">
+                <a href="/2018/10/22/SVN/svn-base/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Python-socket">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="svn 版本控制工具">
                         
-                        <span class="card-title">Python-socket</span>
+                        <span class="card-title">svn 版本控制工具</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            python网络编程笔记
+                            SVN版本控制
 
 
-EAGAIN当客户通过Socket提供的send函数发送大的数据包时，就可能返回一个EAGAIN的错误。该错误产生的原因是由于 send 函数中的size变量大小超过了tcp_sendspace的值。tcp_s
+命令
+查看日志
+
+svn log –search liuzhi -l 100  -v .svn log –search liuzhi -l 100  查看特定用户的提交日志和修改文件(注意这里的100条是全部的提交记录，
                         
                     </div>
                     <div class="publish-info">
@@ -1393,8 +1396,8 @@ EAGAIN当客户通过Socket提供的send函数发送大的数据包时，就可�
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python%E7%BC%96%E7%A8%8B/" class="post-category">
-                                    python编程
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
@@ -1408,8 +1411,12 @@ EAGAIN当客户通过Socket提供的send函数发送大的数据包时，就可�
                         <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/web/">
+                        <span class="chip bg-color">web</span>
+                    </a>
+                    
+                    <a href="/tags/svn/">
+                        <span class="chip bg-color">svn</span>
                     </a>
                     
                 </div>
@@ -1555,7 +1562,7 @@ EAGAIN当客户通过Socket提供的send函数发送大的数据包时，就可�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">253.2k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

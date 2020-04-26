@@ -551,8 +551,8 @@ PASSWORD_HASHERS <span class="token operator">=</span> <span class="token punctu
     serves_pizza <span class="token operator">=</span> models<span class="token punctuation">.</span>BooleanField<span class="token punctuation">(</span>default<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Place里面的所有字段在 Restaurant中也是有效的，只不过数据保存在另外一张数据表当中。所以下面两个语句都是可以运行的：</p>
-<pre class="line-numbers language-sh"><code class="language-sh">&gt;&gt;&gt; Place.objects.filter(name="Bob's Cafe")
-&gt;&gt;&gt; Restaurant.objects.filter(name="Bob's Cafe")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-sh"><code class="language-sh">>>> Place.objects.filter(name="Bob's Cafe")
+>>> Restaurant.objects.filter(name="Bob's Cafe")<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><code>代理继承</code></p>
 <p>使用多表继承时，model 的每个子类都会创建一张新数据表，通常情况下，这正是我们想要的操作。这是因为子类需要一个空间来存储不包含在基类中的字段数据。但有时，你可能只想更改 model 在 Python 层的行为实现。比如：更改默认的 manager ，或是添加一个新方法。</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
@@ -638,12 +638,12 @@ MyModel<span class="token punctuation">.</span>objects<span class="token punctua
 <p>queryset是查询集，就是传到服务器上的url里面的查询内容。Django会对查询返回的结果集QuerySet进行缓存，这是为了提高查询效率。也就是说，在你创建一个QuerySet对象的时候，Django并不会立即向数据库发出查询命令，只有在你需要用到这个QuerySet的时候才会这样做。</p>
 <p>缓存和查询集：</p>
 <p>每个查询集都包含一个缓存来最小化对数据库的访问。理解它是如何工作的将让你编写最高效的代码。<br>在一个新创建的查询集中，缓存为空。首次对查询集进行求值 —— 同时发生数据库查询 ——Django 将保存查询的结果到查询集的缓存中并返回明确请求的结果（例如，如果正在迭代查询集，则返回下一个结果）。接下来对该查询集 的求值将重用缓存的结果。<br>请牢记这个缓存行为，因为对查询集使用不当的话，它会坑你的。例如，下面的语句创建两个查询集，对它们求值，然后扔掉它们：</p>
-<pre class="line-numbers language-sh"><code class="language-sh">&gt;&gt;&gt; print([e.headline for e in Entry.objects.all()])
-&gt;&gt;&gt; print([e.pub_date for e in Entry.objects.all()])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-sh"><code class="language-sh">>>> print([e.headline for e in Entry.objects.all()])
+>>> print([e.pub_date for e in Entry.objects.all()])<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>这意味着相同的数据库查询将执行两次，显然倍增了你的数据库负载。同时，还有可能两个结果列表并不包含相同的数据库记录，因为在两次请求期间有可能有Entry被添加进来或删除掉。为了避免这个问题，只需保存查询集并重新使用它：</p>
-<pre class="line-numbers language-sh"><code class="language-sh">&gt;&gt;&gt; queryset = Entry.objects.all()
-&gt;&gt;&gt; print([p.headline for p in queryset]) # Evaluate the query set.
-&gt;&gt;&gt; print([p.pub_date for p in queryset]) # Re-use the cache from the evaluation.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-sh"><code class="language-sh">>>> queryset = Entry.objects.all()
+>>> print([p.headline for p in queryset]) # Evaluate the query set.
+>>> print([p.pub_date for p in queryset]) # Re-use the cache from the evaluation.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="查询集方法"><a href="#查询集方法" class="headerlink" title="查询集方法"></a>查询集方法</h3><ul>
 <li>order_by 排序</li>
 <li>pk__in  当需要取多个结果的时候，比如id=1,2,3这三条数据，<code>models.object.filter(pk__in = ids)</code>，ids=[1,2,3]</li>
@@ -817,32 +817,32 @@ Superuser created successfully.</code></pre><h2 id="配置"><a href="#配置" cl
 <h3 id="url-标签"><a href="#url-标签" class="headerlink" title="url 标签"></a>url 标签</h3><pre class="line-numbers language-py"><code class="language-py">urlpatterns = patterns('',    
     (r'^article$','news_index' ),
 )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/article<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>资讯<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/article<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>资讯<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>通常我们的URL都是硬编码的，在模板里面可能会有多个标签都是一个url，如果你要改变这个url，那么模板里面所有的url都要改变，这时候我们可以使用url标签。</p>
 <pre class="line-numbers language-py"><code class="language-py">urlpatterns = patterns('',    
     url(r'^article$','news_index' ，name="news_index"),
 )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{%url <span class="token punctuation">'</span>news_index<span class="token punctuation">'</span>%}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>资讯<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{%url <span class="token punctuation">'</span>news_index<span class="token punctuation">'</span>%}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>资讯<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>增加一个nema，当你改变原来的url时，模板的地址也会随之改变，在view中使用 <code>HttpResponseRedirect("/article")</code>。</p>
 <p>使用 <code>reverse()</code> 函数 <code>HttpResponseRedirect(reverse("news_index"))</code>。</p>
 <p>带参数的url </p>
-<pre class="line-numbers language-py"><code class="language-py">url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$','news_list',name="news_archive" )<span aria-hidden="true" class="line-numbers-rows"><span></span></span></month></year></code></pre>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{%url <span class="token punctuation">'</span>news_archive<span class="token punctuation">'</span> 2010  02%}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>2010年02月<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-py"><code class="language-py">url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$','news_list',name="news_archive" )<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{%url <span class="token punctuation">'</span>news_archive<span class="token punctuation">'</span> 2010  02%}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>2010年02月<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>或者这样:</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{%url <span class="token punctuation">'</span>news_archive<span class="token punctuation">'</span> year<span class="token punctuation">=</span>2010  month<span class="token punctuation">=</span>02%}<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>2010年02月<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>{%url <span class="token punctuation">'</span>news_archive<span class="token punctuation">'</span> year<span class="token punctuation">=</span>2010  month<span class="token punctuation">=</span>02%}<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>2010年02月<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h3><p>创建一个基本的骨架模板，将里面的部分内容用其它模板来替换。</p>
 <pre class="line-numbers language-html"><code class="language-html">{% block title %}
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Home<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/blog/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Blog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Home<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/blog/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Blog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
 {% endblock %}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在这个模板中，使用block标签， block 告诉模版引擎：子模版可能会覆盖掉模版中的这些位置。</p>
 <p>只是可能替换，不一定非要替换，如果没被替换，输出是原样：</p>
-<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Home<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/blog/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Blog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Home<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/blog/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Blog<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在子模板中，同样是block标签。比如</p>
 <pre class="line-numbers language-html"><code class="language-html">{% block title %}My amazing blog{% endblock %}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>则原模板在使用的时候，它的title包围的块被替换成 <code>My amazing blog</code>，子模板在开头加上extend标签，说明继承关系：</p>
@@ -1394,23 +1394,22 @@ test.</code></pre><p>这个注释是无效的。</p>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/MySql/sqlAlchemy-query/">
+                <a href="/2018/10/22/Python/collections/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="sqlAlchemy-query 常见操作总结">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="collections 模块使用">
                         
-                        <span class="card-title">sqlAlchemy-query 常见操作总结</span>
+                        <span class="card-title">collections 模块使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            MySQL 的 Python 版 ORM
+                            collections模块是python的内建模块，提供类很多实用的集合类。有时候很多数据结构其实标准库已经实现了，不妨来这里找找有没有你想要的。内容参考官方文档。
 
 
-sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
-模型创建模型需要继承 db.Model ，db.Colum类描述table的字段，__tablename__ 描述ta
+nametuple(命名元组)从名字可以看出，这是一个对tuple定义
                         
                     </div>
                     <div class="publish-info">
@@ -1421,8 +1420,8 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/database/" class="post-category">
-                                    database
+                            <a href="/categories/python%E7%BC%96%E7%A8%8B/" class="post-category">
+                                    python编程
                                 </a>
                             
                             
@@ -1434,10 +1433,6 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
                     
                     <a href="/tags/note/">
                         <span class="chip bg-color">note</span>
-                    </a>
-                    
-                    <a href="/tags/database/">
-                        <span class="chip bg-color">database</span>
                     </a>
                     
                     <a href="/tags/python/">
@@ -1455,29 +1450,24 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Other/yaml/">
+                <a href="/2018/10/22/Python/Flask/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="yaml 标记语言">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Flask 框架学习笔记">
                         
-                        <span class="card-title">yaml 标记语言</span>
+                        <span class="card-title">Flask 框架学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            yaml 语言
+                            Flask框架学习笔记
+Flask 也是Python web 开发中很重要的框架，相比Django来说，它体现在一个“微型”上，只提供核心功能，其余功能由模块来扩展。拥有很强大的灵活性，通过核心来不断的扩展实现需求。
 
 
-基本语法
-大小写敏感
-使用缩进表示层级关系
-缩进时不允许使用Tab键，只允许使用空格。
-缩进的空格数目不重要，只要相同层级的元素左侧对齐即可
-
-注释YAML 支持的数据结构有三种
-对象：键值对的集合，又称为映射（mapp
+Flask
+关于扩
                         
                     </div>
                     <div class="publish-info">
@@ -1488,8 +1478,8 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/other/" class="post-category">
-                                    other
+                            <a href="/categories/python%E7%BC%96%E7%A8%8B/" class="post-category">
+                                    python编程
                                 </a>
                             
                             
@@ -1499,12 +1489,16 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/other/">
-                        <span class="chip bg-color">other</span>
+                    <a href="/tags/note/">
+                        <span class="chip bg-color">note</span>
                     </a>
                     
-                    <a href="/tags/yaml/">
-                        <span class="chip bg-color">yaml</span>
+                    <a href="/tags/framework/">
+                        <span class="chip bg-color">framework</span>
+                    </a>
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
                     </a>
                     
                 </div>
@@ -1650,7 +1644,7 @@ sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">253.2k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

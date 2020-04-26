@@ -412,14 +412,14 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    6 分
                 </div>
                 
 				
@@ -492,12 +492,12 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
         <span class="token comment" spellcheck="true">// 奇数位用余数表示</span>
         buf<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> HEX_CHAR<span class="token punctuation">[</span>a <span class="token operator">%</span> <span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    <span class="token comment" spellcheck="true">// char[]--&gt;String</span>
+    <span class="token comment" spellcheck="true">// char[]-->String</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">/**
- * 方法三： byte[]--&gt;hexString
+ * 方法三： byte[]-->hexString
  * @explain 使用位运算
  * @param bytes
  * @return
@@ -507,7 +507,7 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
     <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// 利用位运算进行转换，可以看作方法二的变型</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">byte</span> b <span class="token operator">:</span> bytes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        buf<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> HEX_CHAR<span class="token punctuation">[</span>b <span class="token operator">&gt;&gt;&gt;</span> <span class="token number">4</span> <span class="token operator">&amp;</span> <span class="token number">0xf</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> HEX_CHAR<span class="token punctuation">[</span>b <span class="token operator">>>></span> <span class="token number">4</span> <span class="token operator">&amp;</span> <span class="token number">0xf</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
         buf<span class="token punctuation">[</span>index<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> HEX_CHAR<span class="token punctuation">[</span>b <span class="token operator">&amp;</span> <span class="token number">0xf</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
@@ -515,7 +515,7 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
 <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">/**
- * 方法四：byte[]--&gt;hexString
+ * 方法四：byte[]-->hexString
  * @param bytes
  * @return
  */</span>
@@ -547,7 +547,7 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> hexString<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment" spellcheck="true">// 每次截取2位</span>
         hex <span class="token operator">=</span> hexString<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>i <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> i <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// 16进制--&gt;十进制</span>
+        <span class="token comment" spellcheck="true">// 16进制-->十进制</span>
         bytes<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">)</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>hex<span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
@@ -611,7 +611,7 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
 
     <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">unpadding</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">int</span> i <span class="token operator">=</span> bytes<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&gt;=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> bytes<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> bytes<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
         <span class="token punctuation">{</span>
             <span class="token operator">--</span>i<span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
@@ -722,7 +722,7 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
         <span class="token keyword">return</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> objects<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="restTemplate-响应泛型"><a href="#restTemplate-响应泛型" class="headerlink" title="restTemplate 响应泛型"></a>restTemplate 响应泛型</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> A<span class="token operator">&gt;</span> T <span class="token function">exchange</span><span class="token punctuation">(</span>String url<span class="token punctuation">,</span> HttpMethod method<span class="token punctuation">,</span> ParameterizedTypeReference<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> responseBodyType<span class="token punctuation">,</span> A requestBody<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h2 id="restTemplate-响应泛型"><a href="#restTemplate-响应泛型" class="headerlink" title="restTemplate 响应泛型"></a>restTemplate 响应泛型</h2><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token operator">&lt;</span>T<span class="token punctuation">,</span> A<span class="token operator">></span> T <span class="token function">exchange</span><span class="token punctuation">(</span>String url<span class="token punctuation">,</span> HttpMethod method<span class="token punctuation">,</span> ParameterizedTypeReference<span class="token operator">&lt;</span>T<span class="token operator">></span> responseBodyType<span class="token punctuation">,</span> A requestBody<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         RestTemplate restTemplate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RestTemplate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">// 请求头</span>
         HttpHeaders headers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HttpHeaders</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -731,16 +731,16 @@ Byte[]与hex互相转换，用在某些数据传输场景下import java.util.Arr
         <span class="token comment" spellcheck="true">// 请求体</span>
         headers<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span>mediaType<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">// 发送请求</span>
-        HttpEntity<span class="token operator">&lt;</span>A<span class="token operator">&gt;</span> entity <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HttpEntity</span><span class="token operator">&lt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>requestBody<span class="token punctuation">,</span> headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        ResponseEntity<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span> resultEntity <span class="token operator">=</span> restTemplate<span class="token punctuation">.</span><span class="token function">exchange</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> method<span class="token punctuation">,</span> entity<span class="token punctuation">,</span> responseBodyType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        HttpEntity<span class="token operator">&lt;</span>A<span class="token operator">></span> entity <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HttpEntity</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>requestBody<span class="token punctuation">,</span> headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ResponseEntity<span class="token operator">&lt;</span>T<span class="token operator">></span> resultEntity <span class="token operator">=</span> restTemplate<span class="token punctuation">.</span><span class="token function">exchange</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> method<span class="token punctuation">,</span> entity<span class="token punctuation">,</span> responseBodyType<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> resultEntity<span class="token punctuation">.</span><span class="token function">getBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
 <span class="token comment" spellcheck="true">// 调用</span>
 
-ParameterizedTypeReference<span class="token operator">&lt;</span>ResponseBean<span class="token operator">&lt;</span>BasePushData<span class="token operator">&gt;&gt;</span> responseBodyType <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ParameterizedTypeReference</span><span class="token operator">&lt;</span>ResponseBean<span class="token operator">&lt;</span>BasePushData<span class="token operator">&gt;&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+ParameterizedTypeReference<span class="token operator">&lt;</span>ResponseBean<span class="token operator">&lt;</span>BasePushData<span class="token operator">>></span> responseBodyType <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ParameterizedTypeReference</span><span class="token operator">&lt;</span>ResponseBean<span class="token operator">&lt;</span>BasePushData<span class="token operator">>></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">//        String res = restTemplate.postForObject("http://localhost:8920/store", basePushData, String.class);</span>
-        ResponseBean<span class="token operator">&lt;</span>BasePushData<span class="token operator">&gt;</span> ret <span class="token operator">=</span> <span class="token function">exchange</span><span class="token punctuation">(</span><span class="token string">"http://localhost:8920/store"</span><span class="token punctuation">,</span> HttpMethod<span class="token punctuation">.</span>POST<span class="token punctuation">,</span> responseBodyType<span class="token punctuation">,</span> basePushData<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        ResponseBean<span class="token operator">&lt;</span>BasePushData<span class="token operator">></span> ret <span class="token operator">=</span> <span class="token function">exchange</span><span class="token punctuation">(</span><span class="token string">"http://localhost:8920/store"</span><span class="token punctuation">,</span> HttpMethod<span class="token punctuation">.</span>POST<span class="token punctuation">,</span> responseBodyType<span class="token punctuation">,</span> basePushData<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1500,7 +1500,7 @@ Lettuce：高级Redis客户端，用于线程安全同步，异步和响应使�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">253.2k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             

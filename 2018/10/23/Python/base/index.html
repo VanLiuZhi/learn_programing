@@ -681,14 +681,14 @@ ws = wb.active #激活 worksheet，就是创建一张表，表名默认，worksh
 <ul>
 <li>zip([iterable, …])<br>zip()是Python的一个内建函数，它接受一系列可迭代的对象作为参数，将对象中对应的元素打包成一个个tuple（元组），然后返回由这些tuples组成的list（列表）。若传入参数的长度不等，则返回list的长度和参数中长度最短的对象相同。利用*号操作符，可以将list unzip（解压）。</li>
 </ul>
-<pre class="line-numbers language-s"><code class="language-s">&gt;&gt;&gt; a = [1,2,3]
-&gt;&gt;&gt; b = [4,5,6]
-&gt;&gt;&gt; c = [4,5,6,7,8]
-&gt;&gt;&gt; zipped = zip(a,b)
+<pre class="line-numbers language-s"><code class="language-s">>>> a = [1,2,3]
+>>> b = [4,5,6]
+>>> c = [4,5,6,7,8]
+>>> zipped = zip(a,b)
 [(1, 4), (2, 5), (3, 6)]
-&gt;&gt;&gt; zip(a,c)
+>>> zip(a,c)
 [(1, 4), (2, 5), (3, 6)]
-&gt;&gt;&gt; zip(*zipped)
+>>> zip(*zipped)
 [(1, 2, 3), (4, 5, 6)]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="时间模块"><a href="#时间模块" class="headerlink" title="时间模块"></a>时间模块</h2><ul>
 <li><p>utc时区：协调世界时，又称世界统一时间，世界标准时间，国际协调时间，简称UTC 不属于任意时区</p>
@@ -1218,11 +1218,11 @@ func(1,2,b=2)<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <p>注意：使用该特性并不会对参数以及返回值做限制，lambda不支持函数注释</p>
 <p>例子：</p>
 <pre class="line-numbers language-python"><code class="language-python">
-    <span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token string">'x'</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token number">5</span> <span class="token operator">+</span> <span class="token number">6</span><span class="token punctuation">,</span> c<span class="token punctuation">:</span> list<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">:</span> <span class="token string">'xx'</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">:</span> float<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> max<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token string">'x'</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token number">5</span> <span class="token operator">+</span> <span class="token number">6</span><span class="token punctuation">,</span> c<span class="token punctuation">:</span> list<span class="token punctuation">,</span> <span class="token operator">*</span>args<span class="token punctuation">:</span> <span class="token string">'xx'</span><span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">:</span> float<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> max<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">pass</span>
 
     <span class="token keyword">print</span><span class="token punctuation">(</span>func<span class="token punctuation">.</span>__annotations__<span class="token punctuation">)</span>
-    <span class="token comment" spellcheck="true"># {'a': 'x', 'b': 11, 'c': &lt;class 'list'&gt;, 'args': 'xx', 'kwargs': &lt;class 'float'&gt;, 'return': 9}</span>
+    <span class="token comment" spellcheck="true"># {'a': 'x', 'b': 11, 'c': &lt;class 'list'>, 'args': 'xx', 'kwargs': &lt;class 'float'>, 'return': 9}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a>lambda</h2><p>也称为匿名函数（因为没有函数名）</p>
 <p>特性：是一个表达式，而不是一个语句；主体是一个单个的表达式，而不是一个代码块，只能编写简单的函数，不能用像if这样的语句（但可以写if关联的表达式）。由于是表达式，可以出现在列表中，def不能。一个表达式，得到的是函数的引用。</p>
@@ -1625,7 +1625,7 @@ a <span class="token operator">=</span> A<span class="token punctuation">(</span
 
 <span class="token comment" spellcheck="true"># 结果：</span>
 <span class="token comment" spellcheck="true"># as_view is False</span>
-<span class="token comment" spellcheck="true"># cls is &lt;class '__main__.A'&gt;</span>
+<span class="token comment" spellcheck="true"># cls is &lt;class '__main__.A'></span>
 <span class="token comment" spellcheck="true"># _instance</span>
 <span class="token comment" spellcheck="true"># param is (2,)--{}</span>
 <span class="token comment" spellcheck="true"># A not has need_login</span>
@@ -1654,7 +1654,7 @@ a <span class="token operator">=</span> A<span class="token punctuation">(</span
 
         <span class="token keyword">def</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
             content <span class="token operator">=</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"&lt;{tag}&gt;{content}&lt;/{tag}&gt;"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>tag<span class="token operator">=</span>tag_name<span class="token punctuation">,</span> content<span class="token operator">=</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"&lt;{tag}>{content}&lt;/{tag}>"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>tag<span class="token operator">=</span>tag_name<span class="token punctuation">,</span> content<span class="token operator">=</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'end of inner wrapper function.'</span><span class="token punctuation">)</span>
         <span class="token keyword">return</span> wrapper
@@ -1697,7 +1697,7 @@ end of inner wrapper function.
                 doc string
                 """</span>
                 content <span class="token operator">=</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"&lt;{tag}&gt;{content}&lt;/{tag}&gt;"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>tag<span class="token operator">=</span>tag_name<span class="token punctuation">,</span> content<span class="token operator">=</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"&lt;{tag}>{content}&lt;/{tag}>"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>tag<span class="token operator">=</span>tag_name<span class="token punctuation">,</span> content<span class="token operator">=</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
             <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'end of inner wrapper function.'</span><span class="token punctuation">)</span>
             <span class="token keyword">return</span> wrapper
@@ -1741,7 +1741,7 @@ end of inner wrapper function.
                 doc string
                 """</span>
                 content <span class="token operator">=</span> func<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span>
-                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"&lt;{tag}&gt;{content}&lt;/{tag}&gt;"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>tag<span class="token operator">=</span>tag_name<span class="token punctuation">,</span> content<span class="token operator">=</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"&lt;{tag}>{content}&lt;/{tag}>"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>tag<span class="token operator">=</span>tag_name<span class="token punctuation">,</span> content<span class="token operator">=</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
             <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'end of inner wrapper function.'</span><span class="token punctuation">)</span>
             <span class="token keyword">return</span> wrapper
@@ -2576,23 +2576,22 @@ f.close()<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/23/Python/pytho-advanced-1/">
+                <a href="/2018/10/23/Python/marshmallow/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="python 特殊方法">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="用 marshmallow 模块序列化数据">
                         
-                        <span class="card-title">python 特殊方法</span>
+                        <span class="card-title">用 marshmallow 模块序列化数据</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            常见特殊方法总结
+                            在接口开发中，从数据库查询得到的数据通常是需要转换的，或者从一个对象序列化需要的特定数据，可以为此写一个方法，为何不尝试使用marshmallow模块呢，它提供了非常全面的数据处理方案。
 
 
-描述符property(fget=None, fset=None, fdel=None, doc=None) -&gt; property attribute
-fget is a function to be used
+概述一般用法是创建scheme的类，使用实例化的
                         
                     </div>
                     <div class="publish-info">
@@ -2633,20 +2632,25 @@ fget is a function to be used
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Docker/Docker/">
+                <a href="/2018/10/22/Algorithm/base/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Docker 容器在 web 开发中的运用">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Algorithm 算法学习">
                         
-                        <span class="card-title">Docker 容器在 web 开发中的运用</span>
+                        <span class="card-title">Algorithm 算法学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            docker 容器技术学习笔记
-docker是使用go语言开发的应用容器引擎，docker 的开发商是 Docker,Inc. 可以说现在还没对手（目前找不到可以代替的软件）。从各方面来说你都应该学习docker，对于开发你可以快速构建环境
+                            算法相关，对于非科班出身的人来说，只能慢慢学习和体会了
+
+
+算法
+有穷性(Finiteness)算法的有穷性是指算法必须能在执行有限个步骤之后终止；
+确切性(Definiteness)算法的每一步骤必须有确切的定义；
+输入项(Input)一
                         
                     </div>
                     <div class="publish-info">
@@ -2657,8 +2661,8 @@ docker是使用go语言开发的应用容器引擎，docker 的开发商是 Dock
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
-                                    web开发
+                            <a href="/categories/algorithm%E7%AE%97%E6%B3%95/" class="post-category">
+                                    algorithm算法
                                 </a>
                             
                             
@@ -2668,12 +2672,8 @@ docker是使用go语言开发的应用容器引擎，docker 的开发商是 Dock
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
-                    </a>
-                    
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
+                    <a href="/tags/algorithm/">
+                        <span class="chip bg-color">algorithm</span>
                     </a>
                     
                     <a href="/tags/note/">
@@ -2823,7 +2823,7 @@ docker是使用go语言开发的应用容器引擎，docker 的开发商是 Dock
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">253.2k</span>&nbsp;字
+                class="white-color">252k</span>&nbsp;字
             
             
             
