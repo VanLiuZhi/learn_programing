@@ -1394,22 +1394,28 @@ test.</code></pre><p>这个注释是无效的。</p>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/Python/collections/">
+                <a href="/2018/10/22/Python/patter/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="collections 模块使用">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="python-patter 相关设计模式">
                         
-                        <span class="card-title">collections 模块使用</span>
+                        <span class="card-title">python-patter 相关设计模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            collections模块是python的内建模块，提供类很多实用的集合类。有时候很多数据结构其实标准库已经实现了，不妨来这里找找有没有你想要的。内容参考官方文档。
+                            Python常见设计模式总结
 
 
-nametuple(命名元组)从名字可以看出，这是一个对tuple定义
+Borg 模式这个模式创建的实例，属性都是共享的
+
+def borg(cls):
+    cls._state = {}
+    orig_init = cls.__init__
+
+    def new_
                         
                     </div>
                     <div class="publish-info">
