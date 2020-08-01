@@ -376,12 +376,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
                             <a href="/tags/Note/">
                                 <span class="chip bg-color">Note</span>
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -412,21 +412,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-26
+                    2020-07-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    2.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    9 分
                 </div>
                 
 				
@@ -544,6 +544,13 @@
 </li>
 </ol>
 <p>链接:<a href="https://pan.baidu.com/s/1pCViJ2lYrrl-k3-ic8ADZg" target="_blank" rel="noopener">https://pan.baidu.com/s/1pCViJ2lYrrl-k3-ic8ADZg</a>  密码:mimx</p>
+<p>vanliuzhi.github.io</p>
+<h2 id="常用的微服务限流架构："><a href="#常用的微服务限流架构：" class="headerlink" title="常用的微服务限流架构："></a>常用的微服务限流架构：</h2><p>接入层（api-gateway）限流：<br>单实例；<br>多实例：分布式限流算法；<br>调用外部限流服务限流：<br>微服务收到请求后，通过限流服务暴露的 RPC 接口查询是否超过阈值；<br>需单独部署限流服务；<br>切面层限流（SDK）：<br>限流功能集成在微服务系统切面层，与业务解耦；<br>可结合远程配置中心使用；<br>常用的限流策略包括：</p>
+<p>拒绝策略：<br>超过阈值直接返回错误；<br>调用方可做熔断降级处理。<br>延迟处理：<br>前端设置一个流量缓冲池，将所有的请求全部缓冲进这个池子，不立即处理。然后后端真正的业务处理程序从这个池子中取出请求依次处理，常见的可以用队列模式来实现（MQ：削峰填谷）；<br>用异步的方式去减少了后端的处理压力。<br>特权处理：<br>这个模式需要将用户进行分类，通过预设的分类，让系统优先处理需要高保障的用户群体，其它用户群的请求就会延迟处理或者直接不处理。<br>常用的限流算法包括：</p>
+<p>固定时间窗口限流：<br>首先需要选定一个时间起点，之后每次接口请求到来都累加计数器，如果在当前时间窗口内，根据限流规则（比如每秒钟最大允许 100 次接口请求），累加访问次数超过限流值，则限流熔断拒绝接口请求。当进入下一个时间窗口之后，计数器清零重新计数；<br>缺点在于：限流策略过于粗略，无法应对两个时间窗口临界时间内的突发流量。<br>滑动时间窗口算法：</p>
+<p>流量经过滑动时间窗口算法整形之后，可以保证任意时间窗口内，都不会超过最大允许的限流值，从流量曲线上来看会更加平滑，可以部分解决上面提到的临界突发流量问题，是对固定时间窗口算法的一种改进；<br>缺点在于：需要记录在时间窗口内每个接口请求到达的时间点，对内存的占用会比较多。<br>令牌桶算法：</p>
+<p>接口限制 t 秒内最大访问次数为 n，则每隔 t/n 秒会放一个 token 到桶中；<br>桶中最多可以存放 b 个 token，如果 token 到达时令牌桶已经满了，那么这个 token 会被丢弃；<br>接口请求会先从令牌桶中取 token，拿到 token 则处理接口请求，拿不到 token 就阻塞或者拒绝服务。<br>漏桶算法：</p>
+<p>对于取令牌的频率也有限制，要按照 t/n 固定的速度来取令牌；<br>实现往往依赖于队列，请求到达如果队列未满则直接放入队列，然后有一个处理器按照固定频率从队列头取出请求进行处理。如果请求量大，则会导致队列满，那么新来的请求就会被抛弃；<br>令牌桶和漏桶算法的算法思想大体类似，漏桶算法作为令牌桶限流算法的改进版本。<br>令牌桶算法和漏桶算法，在某些场景下（内存消耗、应对突发流量），这两种算法会优于时间窗口算法成为首选。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -625,12 +632,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
                                 <a href="/tags/Note/">
                                     <span class="chip bg-color">Note</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -1059,59 +1066,47 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/30/Review/future/">
+                <a href="/2020/07/13/Web/Apollo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Future">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Apollo配置中心">
                         
-                        <span class="card-title">Future</span>
+                        <span class="card-title">Apollo配置中心</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-先删缓存再改数据库
-
-可能会有这样的问题
-并发，1读，1写
-
-写1先删了缓存
-这个时候读1发现没缓存，就读数据库准备写到缓存
-然后写1要把数据写到数据库
-接着读1把自己读到的数据写到缓存
-
-这样缓存是读1放入的旧数据，数据库是写1放入的新
+                            Apollo配置中心
+各模块的作用Config Service提供配置的读取、推送等功能，服务对象是Apollo客户端Admin Service提供配置的修改、发布等功能，服务对象是Apollo Portal（管理界面）Config Ser
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-30
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/Middleware/" class="post-category">
+                                    Middleware
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                     <a href="/tags/Note/">
@@ -1172,12 +1167,12 @@
                         <span class="chip bg-color">Note</span>
                     </a>
                     
-                    <a href="/tags/Web/">
-                        <span class="chip bg-color">Web</span>
-                    </a>
-                    
                     <a href="/tags/Algorithm/">
                         <span class="chip bg-color">Algorithm</span>
+                    </a>
+                    
+                    <a href="/tags/Web/">
+                        <span class="chip bg-color">Web</span>
                     </a>
                     
                 </div>
@@ -1323,7 +1318,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">256.3k</span>&nbsp;字
             
             
             

@@ -366,16 +366,16 @@ docker是使用go语言开发的应用容器引擎，docker 的开发商是 Dock
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
-                            <a href="/tags/docker/">
-                                <span class="chip bg-color">docker</span>
+                            <a href="/tags/Docker/">
+                                <span class="chip bg-color">Docker</span>
                             </a>
                         
-                            <a href="/tags/note/">
-                                <span class="chip bg-color">note</span>
+                            <a href="/tags/Note/">
+                                <span class="chip bg-color">Note</span>
                             </a>
                         
                     </div>
@@ -386,8 +386,8 @@ docker是使用go语言开发的应用容器引擎，docker 的开发商是 Dock
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
-                                web开发
+                            <a href="/categories/Web%E5%BC%80%E5%8F%91/" class="post-category">
+                                Web开发
                             </a>
                         
                     </div>
@@ -406,21 +406,21 @@ docker是使用go语言开发的应用容器引擎，docker 的开发商是 Dock
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-17
+                    2020-08-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.9k
+                    7.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    22 分
+                    28 分
                 </div>
                 
 				
@@ -622,7 +622,7 @@ goofy_almeida：要启动的container的名称
 <blockquote><p>One of created, restarting, running, removing, paused, exited, or dead</p>
 </blockquote>
 
-<h2 id="容器导入导出"><a href="#容器导入导出" class="headerlink" title="容器导入导出"></a>容器导入导出</h2><pre><code>docker save imageID &gt; filename.tar
+<h2 id="容器导入导出"><a href="#容器导入导出" class="headerlink" title="容器导入导出"></a>容器导入导出</h2><pre><code>docker save imageID &gt; filename.tar 最好不要用 imageID，使用镜像名称加tag，这样 load 恢复的时候，容器名称会自动命名，如果使用id来save，load后容器没有名称
 docker load &lt; filename.tar
 
 docker export imageID &gt; filename.tar
@@ -635,7 +635,7 @@ docker import &lt; filename.tar</code></pre><p>镜像和容器导出和导入的
 <p>save 和 export区别：</p>
 <ol>
 <li>save 保存镜像所有的信息-包含历史</li>
-<li>export 只导出当前的信息</li>
+<li>export 只导出当前的信息，这个就是当前层，无法直接使用的（列如启动命令会消失，需要自己启动的时候加入），如果是拷贝镜像用save</li>
 </ol>
 <h2 id="Dockerfile-使用"><a href="#Dockerfile-使用" class="headerlink" title="Dockerfile 使用"></a>Dockerfile 使用</h2><p>除了通过拉取官方镜像的方式外，使用Dockerfile可以定制镜像，使其更加灵活。<br>整个Dockerfile文件就是执行的脚本，由特定的命令组成，一个redis镜像Dockerfile文件大概是这样的。</p>
 <pre class="line-numbers language-vim"><code class="language-vim">FROM centos<span class="token punctuation">:</span>latest
@@ -848,6 +848,184 @@ ff02::2    ip6-allrouters
 <p>export DOCKER_CLIENT_TIMEOUT=500<br>export COMPOSE_HTTP_TIMEOUT=500</p>
 <p>source /etc/profile</p>
 <p>默认是60秒，可以改长一点</p>
+<h2 id="config文件位置"><a href="#config文件位置" class="headerlink" title="config文件位置"></a>config文件位置</h2><p>docker inspect 命令可以查看容器在启动后传递的参数，具体配置文件在这里</p>
+<p><code>/var/lib/docker/containers/container_id/config.json</code></p>
+<h2 id="清理Docker占用的磁盘空间"><a href="#清理Docker占用的磁盘空间" class="headerlink" title="清理Docker占用的磁盘空间"></a>清理Docker占用的磁盘空间</h2><p>df -h 查看磁盘占用</p>
+<p>docker system df 查看docker的资源占用</p>
+<p><code>docker system prune</code> 命令可以用于清理磁盘，删除关闭的容器、无用的数据卷和网络，以及dangling镜像(即无tag的镜像)<br><code>docker system prune -a</code> 命令清理得更加彻底，可以将没有容器使用Docker镜像都删掉</p>
+<p>这两个命令会把你<code>暂时关闭的容器</code>，以及暂时没有用到的Docker镜像都删掉了</p>
+<h2 id="docker启动报错：standard-init-linux-go-211-exec-user-process-caused-“no-such-file-or-directory”"><a href="#docker启动报错：standard-init-linux-go-211-exec-user-process-caused-“no-such-file-or-directory”" class="headerlink" title="docker启动报错：standard_init_linux.go:211: exec user process caused “no such file or directory”"></a>docker启动报错：standard_init_linux.go:211: exec user process caused “no such file or directory”</h2><p>出现这个错误主要是两点：</p>
+<ol>
+<li>使用的镜像问题，但是一般都是基于alpine镜像构建，查到的资料说换其它镜像可以解决，未测试过</li>
+<li>Dockerfile文件模式(fileformat)问题，一般文件是unix，但是在windows上编辑的可能是doc模式。在linux上用vim打开文件，如果是doc模式可以看出来，<br>改成unix即可 vim 执行命令 <code>set ff=unix</code></li>
+</ol>
+<p>这也是一个比较坑的问题</p>
+<h2 id="Alpine-Linux构建镜像"><a href="#Alpine-Linux构建镜像" class="headerlink" title="Alpine Linux构建镜像"></a>Alpine Linux构建镜像</h2><p>一般生成用Alpine Linux来构建镜像</p>
+<p>Alpine Linux，一个只有5M的Docker镜像。是一个面向安全的轻型Linux发行版。不同于通常Linux发行版，Alpine Linux采用了musl libc和busybox以减小系统的体积和运行时资源消耗。在保持瘦身的同时，Alpine Linux还提供了自己的包管理工具apk，可以在其网站上查询，或者直接通过apk命令查询和安装</p>
+<p>示例：</p>
+<p>换源，然后更新，使用apk add命令安装软件，默认是sh，所以我们可以安装一个bash</p>
+<pre class="line-numbers language-sh"><code class="language-sh"># Build with:
+# docker build -t alpine-bash:3.8 .
+
+FROM alpine:3.8
+
+RUN \
+    echo "http://mirrors.aliyun.com/alpine/v3.8/main" > /etc/apk/repositories && \
+    echo "http://mirrors.aliyun.com/alpine/v3.8/community" >> /etc/apk/repositories  && \
+    apk update upgrade && \
+    apk add --no-cache procps curl bash && \
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    echo "Asia/Shanghai" > /etc/timezone
+
+CMD ["bash"]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Dockerfile-配置指令补充"><a href="#Dockerfile-配置指令补充" class="headerlink" title="Dockerfile 配置指令补充"></a>Dockerfile 配置指令补充</h2><p>有一些指令还在用到了才知道，这里做一下补充</p>
+<h3 id="VOLUME"><a href="#VOLUME" class="headerlink" title="VOLUME"></a>VOLUME</h3><p>这个是挂载指令，<code>VOLUME /tmp</code> 可以在构建镜像的时候声明一个匿名挂载目录，当我们的应用往这个目录写数据的时候，不会把数据写到容器的存储层，这样容器实例大小不会增加</p>
+<p>run命令的时候可以指定 /tmp 的映射，这样匿名数据卷就被覆盖了，使用我们定义的映射，如果不指定，默认会挂载到docker的安装目录 <code>/var/lib/docker/volumes</code> 下</p>
+<h3 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h3><p>ENTRYPOINT 中的参数始终会被使用，而 CMD 的额外参数可以在容器启动时动态替换掉</p>
+<p>比如 <code>CMD echo "hello world"</code>，直接docker run，会打印hello world，但是<code>docker run -it /bin/bash</code> 那么CMD的命令被覆盖</p>
+<p>如果是 <code>ENTRYPOINT ["/bin/echo", "hello"]</code> ，则 docker run 打印 hello, docker run Van ，打印 hello Van，参数被加上了</p>
+<p>同时使用</p>
+<pre class="line-numbers language-sh"><code class="language-sh">ENTRYPOINT ["/bin/echo", "hello"]  
+CMD ["world"]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>docker run 打印 hello world，docker run van 打印 hello van</p>
+<p>记住<code>ENTRYPOINT 中的参数始终会被使用，而 CMD 的额外参数可以在容器启动时动态替换掉</code></p>
+<p>两种写法格式：</p>
+<p><code>ENTRYPOINT ["executable", "param1", "param2"] (exec格式，推荐使用此格式)</code><br><code>ENTRYPOINT command param1 param2 (shell 格式)</code></p>
+<p>要注意，如果要使用环境变量，比如<code>$HOME</code>，那么<code>ENTRYPOINT ["echo", "$HOME"]</code>是不会替换环境变量的，只能使用shell模式<br><code>ENTRYPOINT echo $HOME</code></p>
+<h2 id="查看容器内存"><a href="#查看容器内存" class="headerlink" title="查看容器内存"></a>查看容器内存</h2><pre class="line-numbers language-sh"><code class="language-sh">docker stats $(docker ps --format={{.Names}})<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="docekr-mysql-数据库从映射文件中恢复"><a href="#docekr-mysql-数据库从映射文件中恢复" class="headerlink" title="docekr mysql 数据库从映射文件中恢复"></a>docekr mysql 数据库从映射文件中恢复</h2><p>在使用docker部署mysql后，映射出data目录，如果容器销毁后，本地目录还在，如何把数据恢复？</p>
+<p>如果直接启动一个新的容器实例，把映射目录指向原来的目录，会导致容器无法启动，正确的操作步骤应该是这样：</p>
+<ol>
+<li>启动一个新容器，data目录映射到一个空的目录</li>
+<li>容器启动成功，相关文件被初始化到data目录中</li>
+<li>把原来的data目录中，要恢复的数据库目录找到，以及一个 ibdata1 文件。假如数据库是DevConfigDB，<br>把数据库文件夹DevConfigDB 和 ibdata1 文件复制到新容器的data目录</li>
+<li>重启新容器，数据库就恢复了</li>
+</ol>
+<h2 id="docker-查询远程仓库镜像标签"><a href="#docker-查询远程仓库镜像标签" class="headerlink" title="docker 查询远程仓库镜像标签"></a>docker 查询远程仓库镜像标签</h2><p>可以通过curl 请求，官方地址加镜像加tag</p>
+<p>比如：<a href="https://registry.hub.docker.com/v1/repositories/nginx/tags" target="_blank" rel="noopener">https://registry.hub.docker.com/v1/repositories/nginx/tags</a></p>
+<p>把这个请求后返回的数据处理一下，就得到了一个实用的脚本工具</p>
+<pre class="line-numbers language-sh"><code class="language-sh">#!/bin/bash
+
+API="https://registry.hub.docker.com/v1/repositories"
+DEFAULT_NAME="nginx"
+DEFAULT_TIMEOUT=3
+
+function Usage(){
+cat << HELP
+
+Usage: docker-tags NAME[:TAG]
+
+docker-tags list all tags for docker image on a remote registry.
+
+Example:
+    docker-tags (default nginx)
+    docker-tags nginx
+    docker-tags nginx:1.15.8
+    docker search nginx | docker-tags
+    docker search nginx | docker-tags :1.15.8
+    echo nginx | docker-tags
+    echo nginx | docker-tags :1.15.8
+HELP
+}
+
+ARG=$1
+if [[ "$ARG" =~ "-h" ]];then
+    Usage
+    exit 0
+fi
+
+function ParseJson(){
+    tr -d '[\[\]" ]' | tr '}' '\n' | awk -F: -v image=$1 '{if(NR!=NF && $3 != ""){printf("%s:%s\n",image,$3)}}'
+}
+
+function GetTags(){
+    image=$1
+    tag=$2
+    ret=`curl -s ${API}/${image}/tags`
+    tag_list=`echo $ret | ParseJson ${image}`
+    if [ -z "$tag" ];then
+        echo -e "$tag_list"
+    else
+        echo -e "$tag_list" | grep -w "$tag"
+    fi
+}
+
+if [ -z $ARG ] || [[ ${ARG:0:1} == ":" ]];then
+    if [ -x /usr/bin/timeout ];then
+        images=`timeout $DEFAULT_TIMEOUT` awk '{print $1}' | grep -v "NAME" || echo $DEFAULT_NAME
+    else
+        images=`awk '{print $1}' | grep -v "NAME"`
+    fi
+else
+    images=`echo $ARG | awk -F: '{print $1}'`
+fi
+tag=`echo $ARG | awk -F: '{print $2}'`
+
+for i in ${images}
+do
+    tags=`GetTags $i $tag`
+    count=`echo $tags | wc -w`
+    if [[ $count -gt 0 ]];then
+        echo -e "IMAGE [$i:$tag]:"
+        echo -e "$tags"
+        echo
+    fi
+done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="修改已启动容器的端口"><a href="#修改已启动容器的端口" class="headerlink" title="修改已启动容器的端口"></a>修改已启动容器的端口</h2><p>要实现这个操作，需要先把容器停止了，然后把docker服务停止了，去修改配置文件，再重启docker服务</p>
+<ol>
+<li>停止docker容器，两个命令都可以</li>
+</ol>
+<p><code>docker stop $(docker ps -a | awk '{ print $1}' | tail -n +2)</code><br><code>docker stop</code> <code>docker ps -aq</code></p>
+<ol start="2">
+<li>停止docker服务</li>
+</ol>
+<p>service docker stop</p>
+<ol start="3">
+<li>修改config.v2.json文件</li>
+</ol>
+<p>docker inspect 命令找到配置文件</p>
+<p>如果是改端口映射，改这两个文件<br>hostconfig.json </p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token property">"PortBindings"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"6379/tcp"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+          <span class="token property">"HostIp"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+          <span class="token property">"HostPort"</span><span class="token operator">:</span> <span class="token string">"6388"</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>config.v2.json </p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token property">"Ports"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"6379/tcp"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+          <span class="token property">"HostIp"</span><span class="token operator">:</span> <span class="token string">"0.0.0.0"</span><span class="token punctuation">,</span>
+          <span class="token property">"HostPort"</span><span class="token operator">:</span> <span class="token string">"6388"</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果是改存储映射，改这两个文件<br>hostconfig.json Binds<br>config.v2.json MountPoints</p>
+<p>如果是改环境变量，修改<br>config.v2.json 里面找到ENV</p>
+<p>可以格式化文件后再修改</p>
+<ol start="4">
+<li>启动docker服务</li>
+</ol>
+<p>service docker start</p>
+<p>启动所有的容器<br><code>sudo docker start $(docker ps -a | awk '{ print $1}' | tail -n +2)</code></p>
+<p>总结：多测试一下，大部分都能改，记得要把容器停止了，然后停止docker服务，再去修改配置，这样才能生效</p>
+<h2 id="修改容器启动方式"><a href="#修改容器启动方式" class="headerlink" title="修改容器启动方式"></a>修改容器启动方式</h2><p>如果机器宕机重启后，由于docker服务一般是开机启动的，所以我们可以把容器也设置成随服务启动，这样机器宕机后再次启动，容器也会跟着启动</p>
+<p><code>docker container update --restart=always mysql-5.7-docker</code></p>
+<p>mysql-5.7-docker为容器名称</p>
+<pre class="line-numbers language-s"><code class="language-s">docker  run \
+--name nacos -d \
+-p 8848:8848 \
+--privileged=true \
+--restart=always \
+-e JVM_XMS=256m \
+-e JVM_XMX=256m \
+-e MODE=standalone \
+-e PREFER_HOST_MODE=hostname \
+-v /data/nacos/logs:/home/nacos/logs \
+-v /data/nacos/init.d/custom.properties:/home/nacos/init.d/custom.properties \
+nacos/nacos-server<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -929,16 +1107,16 @@ ff02::2    ip6-allrouters
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
-                                <a href="/tags/docker/">
-                                    <span class="chip bg-color">docker</span>
+                                <a href="/tags/Docker/">
+                                    <span class="chip bg-color">Docker</span>
                                 </a>
                             
-                                <a href="/tags/note/">
-                                    <span class="chip bg-color">note</span>
+                                <a href="/tags/Note/">
+                                    <span class="chip bg-color">Note</span>
                                 </a>
                             
                         </div>
@@ -1371,6 +1549,62 @@ ff02::2    ip6-allrouters
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2018/10/23/Python/base/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="python 学习笔记">
+                        
+                        <span class="card-title">python 学习笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            基础永远是重中之重，虽然在应用开发中，很少会去使用语言的一些特性，比如一些高级话题，描述符，元类。但是掌握这些可以帮助理解框架源代码，从更深层次理解语言。
+
+
+callable(object)检查对象object是否可调用。如果返回True
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-10-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python%E7%BC%96%E7%A8%8B/" class="post-category">
+                                    Python编程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2018/10/22/Algorithm/base/">
                     <div class="card-image">
                         
@@ -1393,62 +1627,6 @@ ff02::2    ip6-allrouters
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2018-10-22
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/algorithm%E7%AE%97%E6%B3%95/" class="post-category">
-                                    algorithm算法
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
-                    </a>
-                    
-                    <a href="/tags/algorithm/">
-                        <span class="chip bg-color">algorithm</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2018/10/22/HTML/css/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="css 在 web 开发中常见操作与学习总结">
-                        
-                        <span class="card-title">css 在 web 开发中常见操作与学习总结</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            css总结笔记，不属于ECMAScript的知识点一般整理到此，可能包括浏览器对象模型，DOM等
-
-
-自动换行style=’word-wrap:break-word; word-break:break-all;display:block;w
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2018-10-22
                             </span>
@@ -1456,8 +1634,8 @@ ff02::2    ip6-allrouters
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/css/" class="post-category">
-                                    css
+                            <a href="/categories/Algorithm%E7%AE%97%E6%B3%95/" class="post-category">
+                                    Algorithm算法
                                 </a>
                             
                             
@@ -1467,12 +1645,12 @@ ff02::2    ip6-allrouters
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/css/">
-                        <span class="chip bg-color">css</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
-                    <a href="/tags/html/">
-                        <span class="chip bg-color">html</span>
+                    <a href="/tags/Algorithm/">
+                        <span class="chip bg-color">Algorithm</span>
                     </a>
                     
                 </div>
@@ -1618,7 +1796,7 @@ ff02::2    ip6-allrouters
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">256.3k</span>&nbsp;字
             
             
             

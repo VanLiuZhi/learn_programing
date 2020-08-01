@@ -397,21 +397,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-18
+                    2020-07-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    407
+                    467
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 				
@@ -434,12 +434,12 @@
 </ol>
 <p>application/x-www-form-urlencoded 方式提交数据</p>
 <p>POST <a href="http://www.example.com" target="_blank" rel="noopener">http://www.example.com</a> HTTP/1.1<br>Content-Type: application/x-www-form-urlencoded;charset=utf-8</p>
-<p>name=qwe&amp;pwd=123</p>
+<p><code>下面是浏览器传递时数据的格式</code><br>name=qwe&amp;pwd=123</p>
 <ol start="2">
-<li>multipart/form-data</li>
+<li>multipart/form-data，和第一种类似，但是如果是文件上传，那么要用这个enctype</li>
 </ol>
 <p>Request URL:<a href="http://127.0.0.1:8000/index/" target="_blank" rel="noopener">http://127.0.0.1:8000/index/</a><br>Content-Type:multipart/form-data; boundary=—-WebKitFormBoundaryExT8avmSnrECoDbP</p>
-<p>——WebKitFormBoundaryExT8avmSnrECoDbP<br>Content-Disposition: form-data; name=”name”</p>
+<p><code>下面是浏览器传递时数据的格式，可以看到加了很多内容</code><br>——WebKitFormBoundaryExT8avmSnrECoDbP<br>Content-Disposition: form-data; name=”name”</p>
 <p>qwe<br>——WebKitFormBoundaryExT8avmSnrECoDbP<br>Content-Disposition: form-data; name=”pwd”</p>
 <p>123<br>——WebKitFormBoundaryExT8avmSnrECoDbP<br>Content-Disposition: form-data; name=”icon”; filename=”0fbc751ff63fa8cf3302b03889b9421e65d6592301”<br>Content-Type: application/octet-stream</p>
 <p>——WebKitFormBoundaryExT8avmSnrECoDbP–</p>
@@ -995,8 +995,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/technology-%E6%8A%80%E6%9C%AF/" class="post-category">
-                                    technology 技术
+                            <a href="/categories/Technology%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    Technology技术
                                 </a>
                             
                             
@@ -1006,8 +1006,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/technology/">
-                        <span class="chip bg-color">technology</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
                 </div>
@@ -1211,7 +1211,7 @@ XMLH
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">256.3k</span>&nbsp;字
             
             
             

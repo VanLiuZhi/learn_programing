@@ -368,12 +368,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/note/">
-                                <span class="chip bg-color">note</span>
+                            <a href="/tags/Note/">
+                                <span class="chip bg-color">Note</span>
                             </a>
                         
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
                             </a>
                         
                     </div>
@@ -404,21 +404,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-26
+                    2020-08-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
 				
@@ -486,13 +486,6 @@
 <h2 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h2><p>tcc lcn mq atomik seata</p>
 <h2 id="分布式session"><a href="#分布式session" class="headerlink" title="分布式session"></a>分布式session</h2><p>Spring-boot-statrte-data-redis</p>
 <h2 id="静态化"><a href="#静态化" class="headerlink" title="静态化"></a>静态化</h2><p>velocity freemarker 模板引擎</p>
-<h2 id="Component-需不需要-Autowired"><a href="#Component-需不需要-Autowired" class="headerlink" title="@Component 需不需要 @Autowired"></a>@Component 需不需要 @Autowired</h2><p>该问题还没解决，我自定义一个普通的类，用component注解<br><code>private MyUser myUser;</code> 去使用报空指针错误，必须要加上Autowired注解</p>
-<p>如果我在构造器中</p>
-<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token function">MyUser</span><span class="token punctuation">(</span>RedisTemplate<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> redisTemplate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>redisTemplate <span class="token operator">=</span> redisTemplate<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>RedisTemplate是框架带的，加了这个后，可以不用Autowired注解访问</p>
-<p>这个问题值得探讨，以前全都用Autowired，后来我发现有些人的不用也行，但是不是全部这样的，猜测是有依赖可以</p>
 <h2 id="基本服务容器配置"><a href="#基本服务容器配置" class="headerlink" title="基本服务容器配置"></a>基本服务容器配置</h2><h3 id="nnginx"><a href="#nnginx" class="headerlink" title="nnginx"></a>nnginx</h3><p>docker run -p 80:80 –name nginx <br>-v /Users/liuzhi/mydata/nginx/html:/usr/share/nginx/html <br>-v /Users/liuzhi/mydata/nginx/logs:/var/log/nginx  <br>-d nginx:1.10</p>
 <p>docker run -p 8091:80 –name nginx <br>-v /Users/liuzhi/mydata/nginx/html:/usr/share/nginx/html <br>-v /Users/liuzhi/mydata/nginx/logs:/var/log/nginx  <br>-v /Users/liuzhi/mydata/nginx/conf:/etc/nginx <br>-d nginx:1.10</p>
 <h3 id="rabbitmq"><a href="#rabbitmq" class="headerlink" title="rabbitmq"></a>rabbitmq</h3><p>docker run -d –name rabbitmq <br>–publish 5671:5671 –publish 5672:5672 –publish 4369:4369 <br>–publish 25672:25672 –publish 15671:15671 –publish 15672:15672 <br>rabbitmq:3.7.15</p>
@@ -506,7 +499,7 @@
 <p>docker run –name redis -d redis:5.0.7-buster -p 6379:6379 –requirepass “qweEX123”</p>
 <p>docker run –name redis-3.2 -p 6479:6379 -d redis:3.2 </p>
 <h3 id="mysql-启动容器时区配置"><a href="#mysql-启动容器时区配置" class="headerlink" title="mysql 启动容器时区配置"></a>mysql 启动容器时区配置</h3><p>docker run –name mysql2 -p 3506:3306 \<br>-e MYSQL_ROOT_PASSWORD=test123456 \<br>-e TZ=Asia/Shanghai -d mysql:5.7 \<br>–default-time_zone=’+8:00’</p>
-<p>docker run -p 5506:3306 –name mysql-5.7-docker <br>-v /Users/liuzhi/mydata/mysql/log:/var/log/mysql <br>-v /Users/liuzhi/mydata/mysql/data:/var/lib/mysql <br>-v /Users/liuzhi/mydata/mysql/conf:/etc/mysql <br>-e MYSQL_ROOT_PASSWORD=root123  <br>-d mysql:5.7 <br>–default-time_zone=’+8:00’</p>
+<p>docker run -p 5506:3306 –name mysql-5.7-docker <br>-v /data/mysql-docker/log:/var/log/mysql <br>-v /data/mysql-docker/data:/var/lib/mysql <br>-v /data/mysql-docker/conf:/etc/mysql <br>-e MYSQL_ROOT_PASSWORD=root123456  <br>-d hub.eos.h3c.com/base/mysql:5.7.24 <br>–default-time_zone=’+8:00’</p>
 <p>可以用TZ改时区，默认是UTC TZ=Asia/Shanghai 改成CST<br>记得一定加default-time_zone</p>
 <h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><p><code>public boolean equalsIgnoreCase(String anotherString)</code> 字符串对象调用，和一个字符串比较，不区分大小写</p>
 <script>
@@ -590,12 +583,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/note/">
-                                    <span class="chip bg-color">note</span>
+                                <a href="/tags/Note/">
+                                    <span class="chip bg-color">Note</span>
                                 </a>
                             
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -1069,12 +1062,12 @@ impor
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1132,12 +1125,12 @@ UDP是基于报文发送的，从UDP的帧结构可以看出，在UDP首部采�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1283,7 +1276,7 @@ UDP是基于报文发送的，从UDP的帧结构可以看出，在UDP首部采�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">256.3k</span>&nbsp;字
             
             
             

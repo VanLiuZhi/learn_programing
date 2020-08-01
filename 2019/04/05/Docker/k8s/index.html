@@ -369,16 +369,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
-                            <a href="/tags/docker/">
-                                <span class="chip bg-color">docker</span>
+                            <a href="/tags/Docker/">
+                                <span class="chip bg-color">Docker</span>
                             </a>
                         
-                            <a href="/tags/note/">
-                                <span class="chip bg-color">note</span>
+                            <a href="/tags/Note/">
+                                <span class="chip bg-color">Note</span>
                             </a>
                         
                     </div>
@@ -389,8 +389,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/web%E5%BC%80%E5%8F%91/" class="post-category">
-                                web开发
+                            <a href="/categories/Web%E5%BC%80%E5%8F%91/" class="post-category">
+                                Web开发
                             </a>
                         
                     </div>
@@ -409,21 +409,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-23
+                    2020-08-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    900
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    8 分
                 </div>
                 
 				
@@ -536,18 +536,104 @@
 <p>kubectl get nodes -o json | jq “.items[] | {name: .metadata.name} + .status.nodeInfo”</p>
 <h2 id="与k8s交互"><a href="#与k8s交互" class="headerlink" title="与k8s交互"></a>与k8s交互</h2><p>在 K8S 中进行部署或者说与 K8S 交互的方式主要有三种：</p>
 <p>命令式<br>命令式对象配置<br>声明式对象配置</p>
-<h2 id="镜像拉取策略"><a href="#镜像拉取策略" class="headerlink" title="镜像拉取策略"></a>镜像拉取策略</h2><p>默认值是IfNotPresent</p>
+<h2 id="镜像拉取策略"><a href="#镜像拉取策略" class="headerlink" title="镜像拉取策略"></a>镜像拉取策略</h2><p>默认值是IfNotPresent(在initContainers中，发现不配置并不会去使用本地的，所以最好显示的配置一下)</p>
 <p>Always<br>总是拉取：<br>首先获取仓库镜像信息，如果仓库中的镜像与本地不同，那么仓库中的镜像会被拉取并覆盖本地。<br>如果仓库中的镜像与本地一致，那么不会拉取镜像。<br>如果仓库不可用，那么pod运行失败。</p>
 <p>IfNotPresent<br>优先使用本地：<br>如果本地存在镜像，则使用本地的，<br>不管仓库是否可用。<br>不管仓库中镜像与本地是否一致。</p>
 <p>Never<br>只使用本地镜像，如果本地不存在，则pod运行失败</p>
 <h2 id="固定node发布"><a href="#固定node发布" class="headerlink" title="固定node发布"></a>固定node发布</h2><p>deploy上用选择器，就可以固定在一个node上</p>
 <h2 id="资源删除"><a href="#资源删除" class="headerlink" title="资源删除"></a>资源删除</h2><p>一般是 delete -f .yaml 删除对应的资源，然后apply再应用，资源生效</p>
-<p>删除pod: 先删除pod，然后再删除deployment。 只删除pod，去查看的时候pod还是存在的，再去删除dep，查看pod消失</p>
+<p>删除pod: 先删除pod，然后再删除deployment。只删除pod，去查看的时候pod还是存在的，再去删除dep，查看pod消失</p>
 <h2 id="service-和-deployment"><a href="#service-和-deployment" class="headerlink" title="service 和 deployment"></a>service 和 deployment</h2><p>deployment 负责创建 pod，只有de存在，pod就会维持住，pod被删除了也会被dev拉起。这样pod的服务是不确定的，它的ip一直在变化</p>
 <p>所以需要service</p>
 <p>Service 是 Kubernetes 中的一种服务发现机制：</p>
 <p>Pod 有自己的 IP 地址<br>Service 被赋予一个唯一的 dns name<br>Service 通过 label selector 选定一组 Pod<br>Service 实现负载均衡，可将请求均衡分发到选定这一组 Pod 中</p>
-<script>
+<h2 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h2><p>kubectl get pods –show-labels　　#查看pod所有标签信息<br>kubectl get pods -l app　　#过滤包含app的标签<br>kubectl get pods -l app    #过滤包含app的标签及显示值<br>kubectl label pods pod-demo release=canary　　#给pod-demo增加标签<br>kubectl label pods pod-demo release=stable –overwrite　　#修改标签</p>
+<p>通过标签来过滤资源</p>
+<p>kubectl get pods -l run=myapp<br>kubectl get pods -l run=myapp –show-labels<br>kubectl get pods -l run!=client –show-labels</p>
+<h2 id="通过标签部署到指定节点"><a href="#通过标签部署到指定节点" class="headerlink" title="通过标签部署到指定节点"></a>通过标签部署到指定节点</h2><p>nodeSelector 写上标签，调度的时候就只会调度到这几个有标签的节点(该特性在官方准备在新版本中去除了)</p>
+<p>nodeName: 指定主机名称，比如 k8s-09</p>
+<p><code>kubernetes.io/hostname=k8s-09</code> 一般节点都会打上这个标签，描述了主机名称信息</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token comment" spellcheck="true"># priorityClassName: system-cluster-critical</span>
+  <span class="token key atrule">nodeSelector</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kubernetes.io/hostname</span><span class="token punctuation">:</span> k8s<span class="token punctuation">-</span>worker06<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><p>资源创建的时候，可以指定命名空间，命名空间内各资源可以互相访问<br>如果pod和service在不同的命名空间，是不能直接访问的，这时候要跨命名空间访问</p>
+<p>使用 服务加命名空间的方式  比如服务 是 oap，那么web-b命名空间想访问web-f命名空间的 oap service，使用<code>oap.web-f</code></p>
+<h2 id="查看pod日志"><a href="#查看pod日志" class="headerlink" title="查看pod日志"></a>查看pod日志</h2><p>使用logs命令，加上pod实例，如果pod里面有多个容器，还要加上容器名称，举例如下：</p>
+<p>kubectl -n kube-system logs alertmanager-54f5b4447b-2jvzz prometheus-alertmanager</p>
+<h2 id="引用pod的信息"><a href="#引用pod的信息" class="headerlink" title="引用pod的信息"></a>引用pod的信息</h2><pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">env</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MY_NODE_NAME
+      <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+        <span class="token key atrule">fieldRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">fieldPath</span><span class="token punctuation">:</span> spec.nodeName
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MY_POD_NAME
+      <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+        <span class="token key atrule">fieldRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">fieldPath</span><span class="token punctuation">:</span> metadata.name
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MY_POD_NAMESPACE
+      <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+        <span class="token key atrule">fieldRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">fieldPath</span><span class="token punctuation">:</span> metadata.namespace
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MY_POD_IP
+      <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+        <span class="token key atrule">fieldRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">fieldPath</span><span class="token punctuation">:</span> status.podIP
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> MY_POD_SERVICE_ACCOUNT
+      <span class="token key atrule">valueFrom</span><span class="token punctuation">:</span>
+        <span class="token key atrule">fieldRef</span><span class="token punctuation">:</span>
+          <span class="token key atrule">fieldPath</span><span class="token punctuation">:</span> spec.serviceAccountName<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过环境变量，引用当前pod的container的信息注入到外部</p>
+<p>spec.nodeName ： pod所在节点的IP、宿主主机IP</p>
+<p>status.podIP ：pod IP</p>
+<p>metadata.namespace : pod 所在的namespace</p>
+<p>更多参数：<br><a href="https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/" target="_blank" rel="noopener">https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/</a></p>
+<p><a href="https://github.com/kubernetes/kubernetes/issues/24657" target="_blank" rel="noopener">https://github.com/kubernetes/kubernetes/issues/24657</a></p>
+<h2 id="单个文件的方式挂载-configMap"><a href="#单个文件的方式挂载-configMap" class="headerlink" title="单个文件的方式挂载 configMap"></a>单个文件的方式挂载 configMap</h2><p>主要是用了subPath这个配置，另外记得volumes挂载不要用驼峰命名，可以用横杆加小写</p>
+<p>挂载多个文件</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">volumeMounts</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /skywalking/config/application.yml
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> config
+    <span class="token key atrule">subPath</span><span class="token punctuation">:</span> application.yml
+<span class="token punctuation">-</span> <span class="token key atrule">mountPath</span><span class="token punctuation">:</span> /skywalking/config/alarm<span class="token punctuation">-</span>settings.yml
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> alarm<span class="token punctuation">-</span>config
+    <span class="token key atrule">subPath</span><span class="token punctuation">:</span> alarm<span class="token punctuation">-</span>settings.yml
+
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> application<span class="token punctuation">-</span>config
+  <span class="token key atrule">configMap</span><span class="token punctuation">:</span>
+    <span class="token key atrule">defaultMode</span><span class="token punctuation">:</span> <span class="token number">420</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> oap<span class="token punctuation">-</span>config
+    <span class="token key atrule">items</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> application.yml
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> application.yml
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> alarm<span class="token punctuation">-</span>config
+  <span class="token key atrule">configMap</span><span class="token punctuation">:</span>
+    <span class="token key atrule">defaultMode</span><span class="token punctuation">:</span> <span class="token number">420</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> oap<span class="token punctuation">-</span>config
+    <span class="token key atrule">items</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">key</span><span class="token punctuation">:</span> alarm<span class="token punctuation">-</span>settings.yml
+        <span class="token key atrule">path</span><span class="token punctuation">:</span> alarm<span class="token punctuation">-</span>settings.yml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="调度策略PriorityClass"><a href="#调度策略PriorityClass" class="headerlink" title="调度策略PriorityClass"></a>调度策略PriorityClass</h2><p>参考：<a href="https://www.ibm.com/support/knowledgecenter/zh/bluemix_stage/containers/cs_pod_priority.html" target="_blank" rel="noopener">https://www.ibm.com/support/knowledgecenter/zh/bluemix_stage/containers/cs_pod_priority.html</a></p>
+<p>除了常用的nodeSelector，k8s还提供了优先级调度，也就是抢占式调度，优先级高的pod会先调度，在资源不足的情况下会牺牲掉低优先级的pod先把高优先级的pod先调度</p>
+<p>具体做法就是在资源定义的时候关联一个PriorityClass对象，这个对象会设置优先级</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> scheduling.k8s.io/v1alpha1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> PriorityClass
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> high<span class="token punctuation">-</span>priority
+<span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token number">1000000</span>
+<span class="token key atrule">globalDefault</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"This priority class should be used for XYZ service pods only."</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>globalDefault
+
+    可选：将此字段设置为 true 可将此优先级类设置为全局缺省值，此缺省值将应用于安排的未指定 priorityClassName 值的每个 pod。集群中只能有 1 个优先级类可设置为全局缺省值。如果没有全局缺省值，那么没有指定 priorityClassName 的 pod 的优先级为零 (0)。
+
+缺省优先级类不会设置 globalDefault。如果在集群中创建了其他优先级类，那么可以通过运行 kubectl describe priorityclass &lt;name&gt;.</code></pre><p>在containers配置中加上 <code>priorityClassName: high-priority</code></p>
+<p>系统默认的优先级类</p>
+<pre><code>名称    设置方    优先级值    用途
+system-node-critical    Kubernetes    2000001000    选择在创建集群时部署到 kube-system 名称空间中的 pod 会使用此优先级类来保护工作程序节点的关键功能，例如联网、存储器、日志记录、监视和度量值 pod。
+system-cluster-critical    Kubernetes    2000000000    选择在创建集群时部署到 kube-system 名称空间中的 pod 会使用此优先级类来保护集群的关键功能，例如联网、存储器、日志记录、监视和度量值 pod。
+ibm-app-cluster-critical    IBM    900000000    选择在创建集群时部署到 ibm-system 名称空间中的 pod 会使用此优先级类来保护应用程序的关键功能，例如负载均衡器 pod</code></pre><p><code>kubectl get priorityclasses</code><br><code>kubectl get priorityclass &lt;priority_class&gt; -o yaml &gt; Downloads/priorityclass.yaml</code></p>
+<h2 id="Taints与Tolerations-污点和容忍"><a href="#Taints与Tolerations-污点和容忍" class="headerlink" title="Taints与Tolerations 污点和容忍"></a>Taints与Tolerations 污点和容忍</h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -628,16 +714,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
-                                <a href="/tags/docker/">
-                                    <span class="chip bg-color">docker</span>
+                                <a href="/tags/Docker/">
+                                    <span class="chip bg-color">Docker</span>
                                 </a>
                             
-                                <a href="/tags/note/">
-                                    <span class="chip bg-color">note</span>
+                                <a href="/tags/Note/">
+                                    <span class="chip bg-color">Note</span>
                                 </a>
                             
                         </div>
@@ -1109,12 +1195,12 @@ CentOS 安装：sudo
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
                 </div>
@@ -1128,24 +1214,28 @@ CentOS 安装：sudo
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/05/Java/IDEA/">
+                <a href="/2019/04/05/Java/RocketMQ/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java IDEA">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="RocketMQ">
                         
-                        <span class="card-title">Java IDEA</span>
+                        <span class="card-title">RocketMQ</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            IDEA 使用技巧补充总结
+                            title: RocketMQ
 
 
-IDEA 工具使用ntellig idea 使用@Resource或者@Autowire报错，出现红色波浪线；
-虽然不影响使用，但是看着很不爽，所以还是解决了下：
-报错提示：Could not autowir
+安装这个安装还是特别容易的，下载对应程序，配置参数，启动，和Tomcat差不多
+遇到的问题:
+
+网卡绑定错误
+
+虚拟机测试很容易遇到这个问题，手动设置ip解决
+RocketMQ中broker配置brokc
                         
                     </div>
                     <div class="publish-info">
@@ -1167,8 +1257,8 @@ IDEA 工具使用ntellig idea 使用@Resource或者@Autowire报错，出现红�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
                     <a href="/tags/Java/">
@@ -1318,7 +1408,7 @@ IDEA 工具使用ntellig idea 使用@Resource或者@Autowire报错，出现红�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">256.3k</span>&nbsp;字
             
             
             

@@ -375,12 +375,12 @@ sho">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/note/">
-                                <span class="chip bg-color">note</span>
+                            <a href="/tags/Note/">
+                                <span class="chip bg-color">Note</span>
                             </a>
                         
-                            <a href="/tags/database/">
-                                <span class="chip bg-color">database</span>
+                            <a href="/tags/DataBase/">
+                                <span class="chip bg-color">DataBase</span>
                             </a>
                         
                     </div>
@@ -391,8 +391,8 @@ sho">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/database/" class="post-category">
-                                database
+                            <a href="/categories/DataBase/" class="post-category">
+                                DataBase
                             </a>
                         
                     </div>
@@ -411,7 +411,7 @@ sho">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-24
+                    2020-08-01
                 </div>
                 
 
@@ -600,8 +600,7 @@ collation-server=utf8_general_ci<span aria-hidden="true" class="line-numbers-row
 <p>sql举例，1用了主键索引，2用了非聚蔟索引。1就是顺序查找，然后直接得到数据。2就name找id，id可能是离散存储不是顺序的，然后通过id取到数据。总体来说多了一层IO，也就是回表，而且不能顺序读取，也会有一定的性能损坏</p>
 <p>（1）select * from student where id &gt;5000 and id &lt;20000;</p>
 <p>（2）select * from student where name &gt; ‘Alie’ and name &lt; ‘John’;</p>
-<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><p>悲观锁用for_update<br>乐观锁 通过判断version，不是一般事务隔离是可重复读吗？那么多个线程读到的版本应该是一样的吧，确实，就是为了这样，比如先读了version，是1。然后</p>
-<p>把select语句放在事务中,查询的就是master主库了 感觉这句话说的不对，应该和框架有关</p>
+<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><p>悲观锁用for_update<br>乐观锁</p>
 <p>锁</p>
 <p>共享锁<br>排它锁</p>
 <p>意向共享锁<br>意向排它锁</p>
@@ -687,12 +686,12 @@ collation-server=utf8_general_ci<span aria-hidden="true" class="line-numbers-row
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/note/">
-                                    <span class="chip bg-color">note</span>
+                                <a href="/tags/Note/">
+                                    <span class="chip bg-color">Note</span>
                                 </a>
                             
-                                <a href="/tags/database/">
-                                    <span class="chip bg-color">database</span>
+                                <a href="/tags/DataBase/">
+                                    <span class="chip bg-color">DataBase</span>
                                 </a>
                             
                         </div>
@@ -1152,8 +1151,8 @@ mysql.sock 无法被创建mysql 的链接需要借助这个套接字，如果不
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/database/" class="post-category">
-                                    database
+                            <a href="/categories/DataBase/" class="post-category">
+                                    DataBase
                                 </a>
                             
                             
@@ -1163,12 +1162,12 @@ mysql.sock 无法被创建mysql 的链接需要借助这个套接字，如果不
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
-                    <a href="/tags/database/">
-                        <span class="chip bg-color">database</span>
+                    <a href="/tags/DataBase/">
+                        <span class="chip bg-color">DataBase</span>
                     </a>
                     
                 </div>
@@ -1182,29 +1181,23 @@ mysql.sock 无法被创建mysql 的链接需要借助这个套接字，如果不
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Other/yaml/">
+                <a href="/2018/10/22/MySql/sqlAlchemy-query/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="yaml 标记语言">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="sqlAlchemy-query 常见操作总结">
                         
-                        <span class="card-title">yaml 标记语言</span>
+                        <span class="card-title">sqlAlchemy-query 常见操作总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            yaml 语言
+                            MySQL 的 Python 版 ORM
 
 
-基本语法
-大小写敏感
-使用缩进表示层级关系
-缩进时不允许使用Tab键，只允许使用空格。
-缩进的空格数目不重要，只要相同层级的元素左侧对齐即可
-
-注释YAML 支持的数据结构有三种
-对象：键值对的集合，又称为映射（mapp
+sqlAlchemy 数据库操作sqlAlchemy提供了数据库的很多封装
+模型创建模型需要继承 db.Model ，db.Colum类描述table的字段，__tablename__ 描述ta
                         
                     </div>
                     <div class="publish-info">
@@ -1215,8 +1208,8 @@ mysql.sock 无法被创建mysql 的链接需要借助这个套接字，如果不
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/other/" class="post-category">
-                                    other
+                            <a href="/categories/DataBase/" class="post-category">
+                                    DataBase
                                 </a>
                             
                             
@@ -1226,12 +1219,16 @@ mysql.sock 无法被创建mysql 的链接需要借助这个套接字，如果不
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/yaml/">
-                        <span class="chip bg-color">yaml</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
-                    <a href="/tags/other/">
-                        <span class="chip bg-color">other</span>
+                    <a href="/tags/DataBase/">
+                        <span class="chip bg-color">DataBase</span>
+                    </a>
+                    
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
                 </div>
@@ -1377,7 +1374,7 @@ mysql.sock 无法被创建mysql 的链接需要借助这个套接字，如果不
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">256.3k</span>&nbsp;字
             
             
             

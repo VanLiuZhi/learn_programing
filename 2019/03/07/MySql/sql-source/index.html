@@ -370,12 +370,12 @@ select * from table_a a inner join tabl">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/note/">
-                                <span class="chip bg-color">note</span>
+                            <a href="/tags/Note/">
+                                <span class="chip bg-color">Note</span>
                             </a>
                         
-                            <a href="/tags/database/">
-                                <span class="chip bg-color">database</span>
+                            <a href="/tags/DataBase/">
+                                <span class="chip bg-color">DataBase</span>
                             </a>
                         
                     </div>
@@ -386,8 +386,8 @@ select * from table_a a inner join tabl">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/database/" class="post-category">
-                                database
+                            <a href="/categories/DataBase/" class="post-category">
+                                DataBase
                             </a>
                         
                     </div>
@@ -406,21 +406,21 @@ select * from table_a a inner join tabl">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-22
+                    2020-08-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    975
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 				
@@ -455,6 +455,7 @@ select * from table_a a full outer join table_b b on a.key = b.key where a.key i
 <p>在某些数据库中，FULL JOIN 称为 FULL OUTER JOIN。</p>
 <p>左连接以左边表为准，由于结果是两张表的字段，没匹配上的为null。 右连接类推，FULL JOIN 是 左右连接合并</p>
 <p>inner join 取笛卡尔积</p>
+<p>mysql: left join, left out join是一个东西，加上 inner join，只有3种，full不支持<br>用union 可以连接两张表，就是把B表拼接到A表后面，但是A,B必须字段数量相同<br>select table_a.id, table_a.table_b_id from table_a union select table_b.id, table_b.b_name from table_b;<br>这个例子用，虽然a表用的是table_b_id，b表是b_name，但是都是2个字段，这样就能拼接，但是b_name的数据被算到table_b_id这一列下</p>
 <h3 id="一些例子"><a href="#一些例子" class="headerlink" title="一些例子"></a>一些例子</h3><p>select a.id from app_info a right join agents_profit_setting b on a.id = b.id;<br>注意使用了别名a为表app_info取别名，所以在其它需要用到表app_info都使用别名访问</p>
 <p>select a.id, b.id as b_id from app_info a right join agents_profit_setting b on a.id = b.id;<br>返回a，b的id，并对b的id取别名b_id</p>
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>系统提供了一些通用函数，可以在语句中使用</p>
@@ -583,12 +584,12 @@ STR_TO_DATE<span class="token punctuation">(</span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/note/">
-                                    <span class="chip bg-color">note</span>
+                                <a href="/tags/Note/">
+                                    <span class="chip bg-color">Note</span>
                                 </a>
                             
-                                <a href="/tags/database/">
-                                    <span class="chip bg-color">database</span>
+                                <a href="/tags/DataBase/">
+                                    <span class="chip bg-color">DataBase</span>
                                 </a>
                             
                         </div>
@@ -1051,8 +1052,8 @@ constructor对
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/javascript/" class="post-category">
-                                    javascript
+                            <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
                                 </a>
                             
                             
@@ -1062,12 +1063,12 @@ constructor对
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
-                    <a href="/tags/javascript/">
-                        <span class="chip bg-color">javascript</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
@@ -1107,8 +1108,8 @@ WSGIWSGI协议是Python为web服务器制定的标准，只要遵循WSGI协议�
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/technology-%E6%8A%80%E6%9C%AF/" class="post-category">
-                                    technology 技术
+                            <a href="/categories/Technology%E6%8A%80%E6%9C%AF/" class="post-category">
+                                    Technology技术
                                 </a>
                             
                             
@@ -1118,16 +1119,16 @@ WSGIWSGI协议是Python为web服务器制定的标准，只要遵循WSGI协议�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web/">
-                        <span class="chip bg-color">web</span>
+                    <a href="/tags/Web/">
+                        <span class="chip bg-color">Web</span>
                     </a>
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/tags/technology/">
-                        <span class="chip bg-color">technology</span>
+                    <a href="/tags/Technology/">
+                        <span class="chip bg-color">Technology</span>
                     </a>
                     
                 </div>
@@ -1273,7 +1274,7 @@ WSGIWSGI协议是Python为web服务器制定的标准，只要遵循WSGI协议�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">256.3k</span>&nbsp;字
             
             
             

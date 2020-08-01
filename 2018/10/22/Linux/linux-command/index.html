@@ -369,12 +369,12 @@ e">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
-                            <a href="/tags/note/">
-                                <span class="chip bg-color">note</span>
+                            <a href="/tags/Note/">
+                                <span class="chip bg-color">Note</span>
                             </a>
                         
                     </div>
@@ -405,21 +405,21 @@ e">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-27
+                    2020-08-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.4k
+                    4.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    18 分
                 </div>
                 
 				
@@ -620,6 +620,16 @@ journalctl -u 服务名<span aria-hidden="true" class="line-numbers-rows"><span>
 <p>ps -ef| grep httpd | wc -l</p>
 <p>1。 使用top命令，具体用法是 top -H<br>加上这个选项，top的每一行就不是显示一个进程，而是一个线程。<br>2。 使用ps命令，具体用法是 ps -xH<br>这样可以查看所有存在的线程，也可以使用grep作进一步的过滤。<br>3。 使用ps命令，具体用法是 ps -mq PID</p>
 <h2 id="性能排查"><a href="#性能排查" class="headerlink" title="性能排查"></a>性能排查</h2><p>echo “内存使用情况”<br>echo “———————————-“<br>free -m<br>echo<br>echo “磁盘使用情况”<br>echo “———————————-“<br>df -h<br>echo<br>echo “网络连接情况”<br>echo “———————————-“<br>#过滤了127.0.0.1<br>netstat -n |grep -v ‘127.0.0.1’| awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}’<br>echo<br>echo “网络监听情况”<br>echo “———————————-“<br>netstat -tnpl | awk ‘NR&gt;2 {printf “%-20s %-15s \n”,$4,$7}’<br>echo<br>echo “内存占用Top 10”<br>echo “———————————-“<br>ps -eo rss,pmem,pcpu,vsize,args |body sort -k 1 -r -n | head -n 10<br>echo<br>echo “CPU占用Top 10”<br>echo “———————————-“<br>ps -eo rss,pmem,pcpu,vsize,args |body sort -k 3 -r -n | head -n 10<br>echo<br>echo “最近1小时网络流量统计”<br>echo “———————————-“<br>sar -n DEV -s <code>date -d "1 hour ago" +%H:%M:%S</code><br>echo<br>echo “最近1小时cpu使用统计”<br>echo “———————————-“<br>sar -u -s <code>date -d "1 hour ago" +%H:%M:%S</code><br>echo<br>echo “最近1小时磁盘IO统计”<br>echo “———————————-“<br>sar -b -s <code>date -d "1 hour ago" +%H:%M:%S</code><br>echo<br>echo “最近1小时进程队列和平均负载统计”<br>echo “———————————-“<br>sar -q -s <code>date -d "1 hour ago" +%H:%M:%S</code><br>echo<br>echo “最近1小时内存和交换空间的统计统计”<br>echo “———————————-“<br>sar -r -s <code>date -d "1 hour ago" +%H:%M:%S</code><br>echo </p>
+<h2 id="sftp"><a href="#sftp" class="headerlink" title="sftp"></a>sftp</h2><p>cd 路径                        更改远程目录到“路径”<br>lcd 路径                       更改本地目录到“路径”<br>ls [选项] [路径]               显示远程目录列表<br>lls [选项] [路径]              显示本地目录列表<br>put 本地路径                   上传文件<br>get 远程路径                   下载文件</p>
+<p>下载服务器文件夹，上传也是类似</p>
+<p>get -r logstash/.<br>put -r logstash/.</p>
+<p>rz</p>
+<h2 id="sh-c"><a href="#sh-c" class="headerlink" title="sh -c"></a>sh -c</h2><p>把数据写入文件</p>
+<p>echo “信息” &gt; test.asc</p>
+<p>但是如果test.asc是root才能执行的，这个时候 sudo echo “信息” &gt; test.asc 就报错了</p>
+<p>原因是sudo只是将echo有了root权限，但是重定向符号 “&gt;” 和 “&gt;&gt;” 也是 bash 的命令，还是没有权限</p>
+<p>解决办法：</p>
+<p>利用 “sh -c” 命令，它可以让 bash 将一个字串作为完整的命令来执行，这样就可以将 sudo 的影响范围扩展到整条命令。具体用法如下：<br>$ sudo sh -c ‘echo “又一行信息” &gt;&gt; test.asc’</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -701,12 +711,12 @@ journalctl -u 服务名<span aria-hidden="true" class="line-numbers-rows"><span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
-                                <a href="/tags/note/">
-                                    <span class="chip bg-color">note</span>
+                                <a href="/tags/Note/">
+                                    <span class="chip bg-color">Note</span>
                                 </a>
                             
                         </div>
@@ -1139,27 +1149,23 @@ journalctl -u 服务名<span aria-hidden="true" class="line-numbers-rows"><span>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2018/10/22/Linux/vim/">
+                <a href="/2018/10/22/Linux/question/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="vim 编辑器操作">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="linux-question">
                         
-                        <span class="card-title">vim 编辑器操作</span>
+                        <span class="card-title">linux-question</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            vim的使用
+                            Linux遇到的问题
 
 
-模式
-导航(navigation)模式： 这时候，字母就是上下左右键。
-输入模式：你按字母键，才会输入字母。
-命令模式：需要先输入”:” 冒号，才会进入。例如，你输入 :ls , 就相当于运行了 ls 命令。
-
-粘贴模式(
+遇到的问题export LC_CTYPE=en_US.UTF-8 在 user目录下面，.bashrc 文件加入这一行，执行 source .bashrc
+解决svn 编码错误问题。或者直接执行 LC_CTYPE=
                         
                     </div>
                     <div class="publish-info">
@@ -1181,12 +1187,12 @@ journalctl -u 服务名<span aria-hidden="true" class="line-numbers-rows"><span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/note/">
-                        <span class="chip bg-color">note</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
                 </div>
@@ -1200,24 +1206,22 @@ journalctl -u 服务名<span aria-hidden="true" class="line-numbers-rows"><span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/22/Mac/HomeBrew/">
+                <a href="/2018/10/22/Linux/linux-shell/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="HomeBrew mac-os 软件管理工具">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="linux-shell 环境变量">
                         
-                        <span class="card-title">HomeBrew mac-os 软件管理工具</span>
+                        <span class="card-title">linux-shell 环境变量</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            用mac电脑，你需要学会HomeBrew
+                            linux shell学习笔记
 
 
-HomeBrewmac 平台的包管理工具，官网地址https://brew.sh/
-安装命令
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubu
+定位系统环境变量登录shell的时候，默认情况下bash会在几个文件中查找命令，这些文件称为启动文件或环境文件。这就是我们经常设置的把某个程序的目录加到环境变量，如果你跟风，用了什么 item2 这样的第
                         
                     </div>
                     <div class="publish-info">
@@ -1228,8 +1232,8 @@ HomeBrewmac 平台的包管理工具，官网地址https://brew.sh/
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/mac/" class="post-category">
-                                    mac
+                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
+                                    操作系统
                                 </a>
                             
                             
@@ -1239,12 +1243,12 @@ HomeBrewmac 平台的包管理工具，官网地址https://brew.sh/
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/util/">
-                        <span class="chip bg-color">util</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/mac/">
-                        <span class="chip bg-color">mac</span>
+                    <a href="/tags/Note/">
+                        <span class="chip bg-color">Note</span>
                     </a>
                     
                 </div>
@@ -1390,7 +1394,7 @@ HomeBrewmac 平台的包管理工具，官网地址https://brew.sh/
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">252k</span>&nbsp;字
+                class="white-color">256.3k</span>&nbsp;字
             
             
             
